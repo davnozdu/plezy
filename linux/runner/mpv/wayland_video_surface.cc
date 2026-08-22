@@ -214,6 +214,9 @@ bool WaylandVideoSurface::BindGlobals(GdkDisplay* display, std::string* error) {
   if (target.color_manager != nullptr) {
     wl_proxy_set_queue(reinterpret_cast<wl_proxy*>(target.color_manager), nullptr);
   }
+  if (target.xdg_wm_base != nullptr) {
+    wl_proxy_set_queue(reinterpret_cast<wl_proxy*>(target.xdg_wm_base), nullptr);
+  }
   wl_event_queue_destroy(queue);
 
   // Every failure below has to release both globals itself. They are not yet
