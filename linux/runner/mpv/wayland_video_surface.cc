@@ -438,10 +438,14 @@ bool WaylandVideoSurface::Create(GtkWidget* view, std::string* error) {
       return Fail(error, "Failed to create the xdg_toplevel");
     }
     xdg_toplevel_set_fullscreen(xdg_toplevel_, nullptr);
-    // Commit to apply the role
+    // Commit to apply the role. The compositor will send a configure event
+    // asynchronously; we do not need to wait for it before creating the EGL
+    // surface — eglCreateWindowSurface only needs the wl_surface to have a
+    // role committed. (A synchronous roundtrip here crashes: the xdg proxies
+    // are on a private queue and wl_display_roundtrip dispatches the default
+    // queue, which causes libwayland to abort when it finds the xdg_wm_base
+    // proxy still attached to a destroyed queue.)
     wl_surface_commit(surface_);
-    // Roundtrip to let the compositor process the configure event
-    wl_display_roundtrip(wl_display_);
   }
 
   // A 1x1 window keeps EGL happy until the first SetRect() arrives.
