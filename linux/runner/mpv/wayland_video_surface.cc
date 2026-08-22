@@ -342,11 +342,12 @@ bool WaylandVideoSurface::Create(GtkWidget* view, std::string* error) {
   GdkDisplay* display = gtk_widget_get_display(view);
   if (!IsSupported(display)) return Fail(error, "Not a Wayland display");
 
-  // In standalone mode (GDK on X11, Wayland opened directly), there is no
-  // parent wl_surface — the video surface is independent. In GDK Wayland
-  // mode, the parent must exist for the subsurface.
+  // Determine standalone mode: GDK is NOT on Wayland but WAYLAND_DISPLAY is set.
+  // In standalone mode there is no parent wl_surface — the video surface is
+  // independent. This must be checked before BindGlobals sets owns_wl_display_.
+  const bool standalone = !GDK_IS_WAYLAND_DISPLAY(display);
   wl_surface* parent = nullptr;
-  if (!owns_wl_display_) {
+  if (!standalone) {
     parent = ParentSurface(view);
     if (parent == nullptr) return Fail(error, "Toplevel has no Wayland surface yet");
   }

@@ -50,4 +50,15 @@ if [[ -d "$INSTALL_DIR/share/glib-2.0/schemas" ]]; then
     export GSETTINGS_SCHEMA_DIR="$INSTALL_DIR/share/glib-2.0/schemas"
 fi
 
+# gamescope: expose the Wayland socket for plezy's standalone video plane
+# (patched code checks WAYLAND_DISPLAY via g_getenv), but force GTK to X11
+# so the UI uses XWayland (gamescope's Wayland seat is incomplete -> hangs).
+# GDK_BACKEND=x11 prevents GTK from trying Wayland even when WAYLAND_DISPLAY
+# is set. The patched video plane opens its own wl_display_connect() and
+# does not go through GDK for Wayland.
+if [[ -n "$GAMESCOPE_WAYLAND_DISPLAY" ]]; then
+    export WAYLAND_DISPLAY="$GAMESCOPE_WAYLAND_DISPLAY"
+    export GDK_BACKEND=x11
+fi
+
 exec "$INSTALL_DIR/plezy" "$@"
