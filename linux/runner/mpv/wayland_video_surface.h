@@ -3,6 +3,7 @@
 
 #include <EGL/egl.h>
 #include <gtk/gtk.h>
+#include <wayland-client.h>
 
 #include <cstdint>
 #include <functional>

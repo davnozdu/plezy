@@ -7,6 +7,10 @@
 #include <new>
 #include <optional>
 
+#ifdef GDK_WINDOWING_WAYLAND
+#include <gdk/gdkwayland.h>
+#endif
+
 #include "wayland_video_surface.h"
 
 using PlayerPtr = std::unique_ptr<mpv::MpvPlayer>;
