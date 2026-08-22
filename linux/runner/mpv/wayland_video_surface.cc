@@ -28,13 +28,17 @@ bool Fail(std::string* error, const char* message) {
 // Scratch state for the registry listener only. The registry proxy is destroyed
 // before BindGlobals returns, so a pointer to this frame cannot outlive it.
 struct RegistryTarget {
+  wl_compositor* compositor = nullptr;
   wl_subcompositor* subcompositor = nullptr;
   wp_color_manager_v1* color_manager = nullptr;
 };
 
 void RegistryGlobal(void* data, wl_registry* registry, uint32_t name, const char* interface, uint32_t version) {
   auto* target = static_cast<RegistryTarget*>(data);
-  if (g_strcmp0(interface, "wl_subcompositor") == 0 && target->subcompositor == nullptr) {
+  if (g_strcmp0(interface, "wl_compositor") == 0 && target->compositor == nullptr) {
+    target->compositor =
+        static_cast<wl_compositor*>(wl_registry_bind(registry, name, &wl_compositor_interface, 1));
+  } else if (g_strcmp0(interface, "wl_subcompositor") == 0 && target->subcompositor == nullptr) {
     target->subcompositor =
         static_cast<wl_subcompositor*>(wl_registry_bind(registry, name, &wl_subcompositor_interface, 1));
   } else if (g_strcmp0(interface, "wp_color_manager_v1") == 0 && target->color_manager == nullptr) {
@@ -115,15 +119,42 @@ void WaylandVideoSurface::HandleManagerDone(void* data, wp_color_manager_v1* man
 }
 
 bool WaylandVideoSurface::IsSupported(GdkDisplay* display) {
-  return display != nullptr && GDK_IS_WAYLAND_DISPLAY(display);
+  if (display != nullptr && GDK_IS_WAYLAND_DISPLAY(display)) return true;
+  // Fallback: when GTK runs on X11 (e.g. inside gamescope), check whether a
+  // Wayland display is reachable via WAYLAND_DISPLAY. gamescope creates a
+  // Wayland socket (GAMESCOPE_WAYLAND_DISPLAY) but sets XDG_SESSION_TYPE=x11,
+  // so GDK picks X11. We can still open the Wayland connection directly and
+  // create a standalone video surface — see Create().
+  const char* wayland_display = g_getenv("WAYLAND_DISPLAY");
+  return wayland_display != nullptr && wayland_display[0] != '\0';
 }
 
 bool WaylandVideoSurface::BindGlobals(GdkDisplay* display, std::string* error) {
-  wl_display_ = gdk_wayland_display_get_wl_display(GDK_WAYLAND_DISPLAY(display));
-  compositor_ = gdk_wayland_display_get_wl_compositor(GDK_WAYLAND_DISPLAY(display));
-  if (wl_display_ == nullptr || compositor_ == nullptr) {
-    return Fail(error, "Wayland display or compositor is unavailable");
+  if (display != nullptr && GDK_IS_WAYLAND_DISPLAY(display)) {
+    wl_display_ = gdk_wayland_display_get_wl_display(GDK_WAYLAND_DISPLAY(display));
+    compositor_ = gdk_wayland_display_get_wl_compositor(GDK_WAYLAND_DISPLAY(display));
+  } else {
+    // Standalone mode: GDK is on X11, but WAYLAND_DISPLAY points at a
+    // compositor we can connect to directly (gamescope). We own this
+    // connection and must disconnect in Destroy().
+    const char* wayland_display = g_getenv("WAYLAND_DISPLAY");
+    if (wayland_display == nullptr || wayland_display[0] == '\0') {
+      return Fail(error, "No Wayland display available and GDK is not on Wayland");
+    }
+    wl_display_ = wl_display_connect(wayland_display);
+    if (wl_display_ == nullptr) {
+      return Fail(error, "Failed to connect to Wayland display (WAYLAND_DISPLAY is set but connection failed)");
+    }
+    owns_wl_display_ = true;
+    // compositor_ will be bound from the registry below, same as the GDK path.
+    compositor_ = nullptr;
   }
+  if (wl_display_ == nullptr) {
+    return Fail(error, "Wayland display is unavailable");
+  }
+  // In standalone mode compositor_ is still nullptr — bind it from registry.
+  // In GDK mode it may already be set, but the registry roundtrip below also
+  // binds the subcompositor and colour manager, so we always run it.
 
   // Bind on a private queue so the roundtrip cannot dispatch GDK's own events
   // from inside this call, then hand the bound global back to the default queue
@@ -187,11 +218,22 @@ bool WaylandVideoSurface::BindGlobals(GdkDisplay* display, std::string* error) {
   auto abandon = [&](const char* message) {
     if (target.color_manager != nullptr) wp_color_manager_v1_destroy(target.color_manager);
     if (target.subcompositor != nullptr) wl_subcompositor_destroy(target.subcompositor);
+    if (target.compositor != nullptr) wl_compositor_destroy(target.compositor);
     manager_caps_ = ManagerCaps{};
     return Fail(error, message);
   };
   if (!round_tripped) return abandon("Wayland roundtrip failed while binding globals");
-  if (target.subcompositor == nullptr) return abandon("Compositor does not expose wl_subcompositor");
+  // In standalone mode, compositor_ is bound from the registry. In GDK mode,
+  // it was already set by gdk_wayland_display_get_wl_compositor, but we
+  // override it with the registry-bound one to keep the path uniform.
+  if (target.compositor != nullptr) {
+    compositor_ = target.compositor;
+  }
+  if (compositor_ == nullptr) return abandon("Compositor does not expose wl_compositor");
+  // In standalone mode (no parent surface), wl_subcompositor is not needed.
+  // In GDK Wayland mode it is required for creating the subsurface.
+  if (!owns_wl_display_ && target.subcompositor == nullptr)
+    return abandon("Compositor does not expose wl_subcompositor");
 
   subcompositor_ = target.subcompositor;
 
@@ -300,8 +342,14 @@ bool WaylandVideoSurface::Create(GtkWidget* view, std::string* error) {
   GdkDisplay* display = gtk_widget_get_display(view);
   if (!IsSupported(display)) return Fail(error, "Not a Wayland display");
 
-  wl_surface* parent = ParentSurface(view);
-  if (parent == nullptr) return Fail(error, "Toplevel has no Wayland surface yet");
+  // In standalone mode (GDK on X11, Wayland opened directly), there is no
+  // parent wl_surface — the video surface is independent. In GDK Wayland
+  // mode, the parent must exist for the subsurface.
+  wl_surface* parent = nullptr;
+  if (!owns_wl_display_) {
+    parent = ParentSurface(view);
+    if (parent == nullptr) return Fail(error, "Toplevel has no Wayland surface yet");
+  }
 
   view_ = view;
   if (!BindGlobals(display, error) || !InitEgl(error)) {
@@ -342,13 +390,18 @@ bool WaylandVideoSurface::Create(GtkWidget* view, std::string* error) {
     wl_region_destroy(opaque);
   }
 
-  subsurface_ = wl_subcompositor_get_subsurface(subcompositor_, surface_, parent);
-  if (subsurface_ == nullptr) {
-    Destroy();
-    return Fail(error, "Failed to create the video wl_subsurface");
+  subsurface_ = nullptr;
+  if (!owns_wl_display_ && subcompositor_ != nullptr && parent != nullptr) {
+    subsurface_ = wl_subcompositor_get_subsurface(subcompositor_, surface_, parent);
+    if (subsurface_ == nullptr) {
+      Destroy();
+      return Fail(error, "Failed to create the video wl_subsurface");
+    }
+    wl_subsurface_place_below(subsurface_, parent);
+    wl_subsurface_set_desync(subsurface_);
   }
-  wl_subsurface_place_below(subsurface_, parent);
-  wl_subsurface_set_desync(subsurface_);
+  // In standalone mode, surface_ is a top-level surface — gamescope composites
+  // it as a separate layer. No subsurface / parent needed.
 
   // A 1x1 window keeps EGL happy until the first SetRect() arrives.
   egl_window_ = wl_egl_window_create(surface_, 1, 1);
@@ -1118,9 +1171,18 @@ void WaylandVideoSurface::Destroy() {
     wl_subcompositor_destroy(subcompositor_);
     subcompositor_ = nullptr;
   }
-  // compositor_, wl_display_ and the EGLDisplay itself are owned by GDK/EGL and
-  // are shared process-wide; only our own references are dropped here.
+  // In standalone mode we own compositor_ (bound from registry); in GDK mode
+  // GDK owns it. Only destroy what we own.
+  if (owns_wl_display_ && compositor_ != nullptr) {
+    wl_compositor_destroy(compositor_);
+  }
   compositor_ = nullptr;
+  // In standalone mode we own wl_display_ (opened via wl_display_connect);
+  // in GDK mode GDK owns it. Only disconnect what we own.
+  if (owns_wl_display_ && wl_display_ != nullptr) {
+    wl_display_disconnect(wl_display_);
+  }
+  owns_wl_display_ = false;
   wl_display_ = nullptr;
   egl_config_ = nullptr;
   egl_display_ = EGL_NO_DISPLAY;
@@ -1209,7 +1271,7 @@ void WaylandVideoSurface::SetRect(int32_t x, int32_t y, int32_t width, int32_t h
   view_x_ = view_x;
   view_y_ = view_y;
 
-  if (surface_ == nullptr || subsurface_ == nullptr || egl_window_ == nullptr) return;
+  if (surface_ == nullptr || egl_window_ == nullptr) return;
 
   // A buffer_scale change must not reach the wire before the first frame is
   // presented: mesa commits the EGL surface's pre-allocated 1x1 back buffer
@@ -1224,11 +1286,17 @@ void WaylandVideoSurface::SetRect(int32_t x, int32_t y, int32_t width, int32_t h
     scale_sent_ = scale_;
   }
   if (size_changed || scale_changed) wl_egl_window_resize(egl_window_, width_, height_, 0, 0);
-  // Both axes are floored into surface-local units and then offset by the
-  // view's position inside the toplevel; PlaneSurfacePosition explains why.
-  wl_subsurface_set_position(
-      subsurface_, PlaneSurfacePosition(x_, scale_, view_x_), PlaneSurfacePosition(y_, scale_, view_y_));
-  RequestParentCommit();
+  if (subsurface_ != nullptr) {
+    // Both axes are floored into surface-local units and then offset by the
+    // view's position inside the toplevel; PlaneSurfacePosition explains why.
+    wl_subsurface_set_position(
+        subsurface_, PlaneSurfacePosition(x_, scale_, view_x_), PlaneSurfacePosition(y_, scale_, view_y_));
+    RequestParentCommit();
+  } else {
+    // Standalone mode: no subsurface — just commit the surface to apply the
+    // resize. The compositor (gamescope) positions it fullscreen.
+    wl_surface_commit(surface_);
+  }
 }
 
 void WaylandVideoSurface::DetachBuffer() {
@@ -1295,6 +1363,11 @@ bool WaylandVideoSurface::Present() {
   // compositor that never pays it cannot freeze the plane (see
   // ArmFrameAckWatchdog).
   ArmFrameAckWatchdog();
+  // In standalone mode we own the wl_display and must flush ourselves — GDK
+  // does not dispatch our private connection.
+  if (owns_wl_display_ && wl_display_ != nullptr) {
+    wl_display_flush(wl_display_);
+  }
   return true;
 }
 

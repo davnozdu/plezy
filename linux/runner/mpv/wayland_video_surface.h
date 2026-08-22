@@ -108,6 +108,14 @@ class WaylandVideoSurface {
   // toplevel's frame, matching what the Dart side sends via setVideoRect.
   void SetRect(int32_t x, int32_t y, int32_t width, int32_t height, int32_t scale);
 
+  // Dispatches pending Wayland events on our private connection. Only needed
+  // in standalone mode (owns_wl_display_); in GDK mode GDK dispatches for us.
+  void DispatchPending() {
+    if (owns_wl_display_ && wl_display_ != nullptr) {
+      wl_display_dispatch_pending(wl_display_);
+    }
+  }
+
   // Hides the plane by attaching a null buffer. The next Present() re-shows it.
   void SetVisible(bool visible);
   bool visible() const { return visible_; }
@@ -348,7 +356,12 @@ class WaylandVideoSurface {
 
   GtkWidget* view_ = nullptr;
 
-  wl_display* wl_display_ = nullptr;           // owned by GDK
+  // True when we opened wl_display_ ourselves (standalone mode: GDK on X11,
+  // Wayland connection opened via wl_display_connect). False when GDK owns
+  // the display (normal Wayland session).
+  bool owns_wl_display_ = false;
+
+  wl_display* wl_display_ = nullptr;           // owned by GDK or by us (see owns_wl_display_)
   wl_compositor* compositor_ = nullptr;        // owned by GDK
   wl_subcompositor* subcompositor_ = nullptr;  // bound by us
   wl_surface* surface_ = nullptr;

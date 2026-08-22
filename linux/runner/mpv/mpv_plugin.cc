@@ -39,6 +39,10 @@ struct _MpvPlugin {
   // initialize() has brought it up; there is no second render path, so a null
   // here on a video instance means initialization refused.
   VideoSurfacePtr video_surface;
+  // In standalone mode (GDK on X11, Wayland opened directly), this GLib source
+  // dispatches Wayland events on our private wl_display connection — GDK does
+  // not know about it and cannot dispatch it for us.
+  guint wayland_dispatch_source = 0;
   // Set when the plane must be redrawn even though mpv has no new frame -
   // after a resize or after becoming visible, where the buffer on screen is
   // stale or absent. Sticky, because the render it asks for may first have to
@@ -202,6 +206,11 @@ static void release_video_resources(MpvPlugin* self) {
   if (self->hdr_mpv_leg_timeout_source_ != 0) {
     g_source_remove(self->hdr_mpv_leg_timeout_source_);
     self->hdr_mpv_leg_timeout_source_ = 0;
+  }
+  // Remove the standalone Wayland dispatch source if installed.
+  if (self->wayland_dispatch_source != 0) {
+    g_source_remove(self->wayland_dispatch_source);
+    self->wayland_dispatch_source = 0;
   }
   // Queued transactions will never run, and each may be holding a reference to a
   // Dart method call that has to be answered or it is leaked along with its
@@ -799,13 +808,20 @@ static gboolean start_video_plane(MpvPlugin* self, FlView* view, std::string* er
   // not take, presenting here would put video behind an opaque surface: the
   // video area would go blank while every other symptom looked healthy. Say so
   // instead, because the symptom on its own points nowhere near here.
-  GtkWidget* toplevel = gtk_widget_get_toplevel(widget);
-  if (toplevel != nullptr && gtk_widget_is_toplevel(toplevel)) {
-    GdkScreen* screen = gtk_widget_get_screen(toplevel);
-    GdkVisual* rgba = screen != nullptr ? gdk_screen_get_rgba_visual(screen) : nullptr;
-    if (rgba == nullptr || gtk_widget_get_visual(toplevel) != rgba) {
-      *error = "The compositor gave the window no alpha channel, so a video plane below it could never be seen";
-      return FALSE;
+  //
+  // In standalone mode (GDK on X11, Wayland opened directly) there is no
+  // parent surface and no alpha compositing — the video surface is independent.
+  // Skip the RGBA check.
+  const bool standalone = !GDK_IS_WAYLAND_DISPLAY(gtk_widget_get_display(widget));
+  if (!standalone) {
+    GtkWidget* toplevel = gtk_widget_get_toplevel(widget);
+    if (toplevel != nullptr && gtk_widget_is_toplevel(toplevel)) {
+      GdkScreen* screen = gtk_widget_get_screen(toplevel);
+      GdkVisual* rgba = screen != nullptr ? gdk_screen_get_rgba_visual(screen) : nullptr;
+      if (rgba == nullptr || gtk_widget_get_visual(toplevel) != rgba) {
+        *error = "The compositor gave the window no alpha channel, so a video plane below it could never be seen";
+        return FALSE;
+      }
     }
   }
 
@@ -823,6 +839,22 @@ static gboolean start_video_plane(MpvPlugin* self, FlView* view, std::string* er
   self->video_surface->SetForcedRenderCallback([self]() { render_video_plane(self, TRUE); });
   self->video_surface->SetPreferredChangedCallback([self]() { handle_preferred_changed(self); });
   self->player->SetRedrawCallback([self]() { render_video_plane(self, FALSE); });
+
+  // In standalone mode, install a GLib idle source to dispatch Wayland events
+  // on our private connection. GDK's main loop drives its own display; ours
+  // needs an explicit pump for frame callbacks and registry events to arrive.
+  if (standalone) {
+    self->wayland_dispatch_source = g_idle_add_full(
+        G_PRIORITY_DEFAULT,
+        +[](gpointer data) -> gboolean {
+          MpvPlugin* self = MPV_PLUGIN(data);
+          if (self->video_surface != nullptr) {
+            self->video_surface->DispatchPending();
+          }
+          return G_SOURCE_CONTINUE;
+        },
+        self, nullptr);
+  }
   // playback-restart is not ordered against the video reconfigure that gives the
   // source its colour space, so the re-apply observe_event_for_hdr asks for can
   // land on the previous file's metadata - or on none at all for the first file.
