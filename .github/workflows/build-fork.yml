@@ -1,0 +1,137 @@
+name: Build Linux (fork)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [gamescope-wayland-support]
+
+env:
+  FLUTTER_VERSION: "3.44.0"
+  LINUX_APT_PACKAGES: >-
+    clang cmake meson ninja-build pkg-config nasm libgtk-3-dev libevdev-dev liblzma-dev
+    libstdc++-12-dev libasound2-dev libass-dev libfreetype-dev libfontconfig-dev libfribidi-dev
+    libharfbuzz-dev libepoxy-dev libegl-dev libgl-dev libgnutls28-dev libpipewire-0.3-dev
+    libva-dev libvdpau-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev
+    libxss-dev libxpresent-dev libxkbcommon-dev libpulse-dev libdbus-1-dev libdrm-dev
+    libdisplay-info-dev libgbm-dev libwayland-dev wayland-protocols liblcms2-dev libmujs-dev liblua5.2-dev
+    ruby ruby-dev rubygems build-essential rpm libarchive-tools imagemagick libcurl4-openssl-dev
+
+jobs:
+  build-linux:
+    name: Build Linux (x64)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+          pub-cache: false
+
+      - name: Cache Pub dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-${{ runner.arch }}-pub-${{ hashFiles('pubspec.yaml', 'pubspec.lock') }}
+
+      - name: Install Linux dependencies
+        shell: bash
+        run: |
+          read -r -a packages <<< "$LINUX_APT_PACKAGES"
+          for attempt in 1 2 3; do
+            if sudo apt-get update -o Acquire::Retries=3 && sudo apt-get install -y -o Acquire::Retries=3 "${packages[@]}"; then
+              exit 0
+            fi
+            sudo apt-get clean
+            sudo rm -rf /var/lib/apt/lists/*
+            sleep $((attempt * 15))
+          done
+          exit 1
+
+      - name: Cache libmpv build
+        id: libmpv-cache
+        uses: actions/cache@v4
+        with:
+          path: libmpv-prefix
+          key: libmpv-${{ runner.arch }}-${{ hashFiles('linux/packaging/build-libmpv.sh', 'linux/packaging/native-inputs.json') }}
+
+      - name: Build libmpv
+        if: steps.libmpv-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: bash linux/packaging/build-libmpv.sh
+
+      - name: Install fpm
+        shell: bash
+        run: sudo gem install fpm --version 1.17.0 --no-document
+
+      - name: Install dependencies
+        shell: bash
+        run: flutter pub get --enforce-lockfile --no-example
+
+      - name: Build Linux x64
+        shell: bash
+        run: flutter build linux --release --dart-define=GIT_COMMIT=${{ github.sha }}
+        env:
+          PKG_CONFIG_PATH: ${{ github.workspace }}/libmpv-prefix/lib/pkgconfig:${{ github.workspace }}/libmpv-prefix/lib/x86_64-linux-gnu/pkgconfig
+
+      - name: Resolve bundle directory
+        shell: bash
+        run: |
+          bundle_dir=build/linux/x64/release/bundle
+          if [[ -z "$bundle_dir" || ! -d "$bundle_dir" ]]; then
+            echo "ERROR: Linux bundle directory not found" >&2
+            exit 1
+          fi
+          echo "BUNDLE_DIR=$bundle_dir" >> "$GITHUB_ENV"
+
+      - name: Copy libmpv into bundle
+        shell: bash
+        run: |
+          BUNDLE_LIB="$BUNDLE_DIR/lib"
+          LIBMPV_DIR=$(dirname "$(find libmpv-prefix -name 'libmpv.so' | head -1)")
+          cp -a "$LIBMPV_DIR"/libmpv.so* "$BUNDLE_LIB/"
+          cp -a libmpv-prefix/lib/libshaderc_shared.so* "$BUNDLE_LIB/"
+
+      - name: Bundle shared libraries
+        shell: bash
+        run: bash linux/packaging/bundle-libs.sh "$BUNDLE_DIR"
+
+      - name: Copy wrapper script into bundle
+        shell: bash
+        run: cp linux/packaging/plezy.sh "$BUNDLE_DIR/plezy.sh"
+
+      - name: Verify every unbundled library the bundle needs is declared
+        shell: bash
+        run: python3 linux/packaging/check-bundle-host-deps.py "$BUNDLE_DIR"
+
+      - name: Build Linux Packages
+        shell: bash
+        run: |
+          BUILD_DIR="$BUNDLE_DIR" \
+          ARCH_SUFFIX=x64 \
+          OUTPUT_DIR="$GITHUB_WORKSPACE" \
+          PLEZY_SKIP_HOST_DEP_CHECK=1 \
+          python3 linux/packaging/build-packages.py
+
+      - name: Create tarball
+        shell: bash
+        run: |
+          cd "$BUNDLE_DIR"
+          tar -czf "$GITHUB_WORKSPACE/plezy-linux-x64.tar.gz" *
+
+      - name: Upload Linux x64 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-x64
+          path: |
+            plezy-linux-x64.tar.gz
+            plezy-linux-x64.deb
+            plezy-linux-x64.rpm
+            plezy-linux-x64.pkg.tar.zst
