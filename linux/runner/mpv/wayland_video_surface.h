@@ -18,6 +18,9 @@ struct wl_egl_window;
 struct wl_subcompositor;
 struct wl_subsurface;
 struct wl_surface;
+struct xdg_surface;
+struct xdg_toplevel;
+struct xdg_wm_base;
 struct wp_color_management_surface_v1;
 struct wp_color_management_surface_feedback_v1;
 struct wp_color_manager_v1;
@@ -367,6 +370,11 @@ class WaylandVideoSurface {
   wl_subcompositor* subcompositor_ = nullptr;  // bound by us
   wl_surface* surface_ = nullptr;
   wl_subsurface* subsurface_ = nullptr;
+  // Standalone mode only: xdg_toplevel gives the surface a role so the
+  // compositor (gamescope) accepts it and EGL can create a window surface.
+  xdg_wm_base* xdg_wm_base_ = nullptr;
+  xdg_surface* xdg_surface_ = nullptr;
+  xdg_toplevel* xdg_toplevel_ = nullptr;
   wl_egl_window* egl_window_ = nullptr;
 
   EGLDisplay egl_display_ = EGL_NO_DISPLAY;

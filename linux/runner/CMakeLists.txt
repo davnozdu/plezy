@@ -49,7 +49,9 @@ pkg_check_modules(EPOXY REQUIRED IMPORTED_TARGET epoxy)
 #   wayland-scanner client-header "$xml" linux/runner/wayland/color-management-v1-client-protocol.h
 #   wayland-scanner private-code  "$xml" linux/runner/wayland/color-management-v1-protocol.c
 enable_language(C)
-add_library(wayland_protocols STATIC "wayland/color-management-v1-protocol.c")
+add_library(wayland_protocols STATIC
+    "wayland/color-management-v1-protocol.c"
+    "wayland/xdg-shell-protocol.c")
 target_include_directories(wayland_protocols PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/wayland")
 target_link_libraries(wayland_protocols PUBLIC PkgConfig::WAYLAND_CLIENT)
 target_compile_options(wayland_protocols PRIVATE -w)

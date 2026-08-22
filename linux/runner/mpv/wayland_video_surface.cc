@@ -11,6 +11,7 @@
 
 #include "color-management-v1-client-protocol.h"
 #include "plane_geometry.h"
+#include "xdg-shell-client-protocol.h"
 
 namespace mpv {
 namespace {
@@ -31,6 +32,7 @@ struct RegistryTarget {
   wl_compositor* compositor = nullptr;
   wl_subcompositor* subcompositor = nullptr;
   wp_color_manager_v1* color_manager = nullptr;
+  xdg_wm_base* xdg_wm_base = nullptr;
 };
 
 void RegistryGlobal(void* data, wl_registry* registry, uint32_t name, const char* interface, uint32_t version) {
@@ -41,6 +43,9 @@ void RegistryGlobal(void* data, wl_registry* registry, uint32_t name, const char
   } else if (g_strcmp0(interface, "wl_subcompositor") == 0 && target->subcompositor == nullptr) {
     target->subcompositor =
         static_cast<wl_subcompositor*>(wl_registry_bind(registry, name, &wl_subcompositor_interface, 1));
+  } else if (g_strcmp0(interface, "xdg_wm_base") == 0 && target->xdg_wm_base == nullptr) {
+    target->xdg_wm_base =
+        static_cast<xdg_wm_base*>(wl_registry_bind(registry, name, &xdg_wm_base_interface, 1));
   } else if (g_strcmp0(interface, "wp_color_manager_v1") == 0 && target->color_manager == nullptr) {
     const uint32_t bind_version = version < kColorManagerMaxVersion ? version : kColorManagerMaxVersion;
     target->color_manager = static_cast<wp_color_manager_v1*>(
@@ -219,6 +224,7 @@ bool WaylandVideoSurface::BindGlobals(GdkDisplay* display, std::string* error) {
     if (target.color_manager != nullptr) wp_color_manager_v1_destroy(target.color_manager);
     if (target.subcompositor != nullptr) wl_subcompositor_destroy(target.subcompositor);
     if (target.compositor != nullptr) wl_compositor_destroy(target.compositor);
+    if (target.xdg_wm_base != nullptr) xdg_wm_base_destroy(target.xdg_wm_base);
     manager_caps_ = ManagerCaps{};
     return Fail(error, message);
   };
@@ -236,6 +242,8 @@ bool WaylandVideoSurface::BindGlobals(GdkDisplay* display, std::string* error) {
     return abandon("Compositor does not expose wl_subcompositor");
 
   subcompositor_ = target.subcompositor;
+  // Standalone mode: keep xdg_wm_base for creating a toplevel surface.
+  xdg_wm_base_ = target.xdg_wm_base;
 
   if (target.color_manager != nullptr) {
     color_manager_ = target.color_manager;
@@ -402,7 +410,39 @@ bool WaylandVideoSurface::Create(GtkWidget* view, std::string* error) {
     wl_subsurface_set_desync(subsurface_);
   }
   // In standalone mode, surface_ is a top-level surface — gamescope composites
-  // it as a separate layer. No subsurface / parent needed.
+  // it as a separate layer. No subsurface / parent needed. We create an
+  // xdg_toplevel so the compositor gives it a role (required for EGL surfaces).
+  if (owns_wl_display_ && xdg_wm_base_ != nullptr) {
+    static const xdg_wm_base_listener kWmBaseListener = {
+        [](void* data, xdg_wm_base* wm_base, uint32_t serial) {
+          xdg_wm_base_pong(wm_base, serial);
+        },
+    };
+    xdg_wm_base_add_listener(xdg_wm_base_, &kWmBaseListener, nullptr);
+
+    xdg_surface_ = xdg_wm_base_get_xdg_surface(xdg_wm_base_, surface_);
+    if (xdg_surface_ == nullptr) {
+      Destroy();
+      return Fail(error, "Failed to create the xdg_surface");
+    }
+    static const xdg_surface_listener kSurfaceListener = {
+        [](void* data, xdg_surface* surface, uint32_t serial) {
+          xdg_surface_ack_configure(surface, serial);
+        },
+    };
+    xdg_surface_add_listener(xdg_surface_, &kSurfaceListener, nullptr);
+
+    xdg_toplevel_ = xdg_surface_get_toplevel(xdg_surface_);
+    if (xdg_toplevel_ == nullptr) {
+      Destroy();
+      return Fail(error, "Failed to create the xdg_toplevel");
+    }
+    xdg_toplevel_set_fullscreen(xdg_toplevel_, nullptr);
+    // Commit to apply the role
+    wl_surface_commit(surface_);
+    // Roundtrip to let the compositor process the configure event
+    wl_display_roundtrip(wl_display_);
+  }
 
   // A 1x1 window keeps EGL happy until the first SetRect() arrives.
   egl_window_ = wl_egl_window_create(surface_, 1, 1);
@@ -1164,6 +1204,14 @@ void WaylandVideoSurface::Destroy() {
     wl_subsurface_destroy(subsurface_);
     subsurface_ = nullptr;
   }
+  if (xdg_toplevel_ != nullptr) {
+    xdg_toplevel_destroy(xdg_toplevel_);
+    xdg_toplevel_ = nullptr;
+  }
+  if (xdg_surface_ != nullptr) {
+    xdg_surface_destroy(xdg_surface_);
+    xdg_surface_ = nullptr;
+  }
   if (surface_ != nullptr) {
     wl_surface_destroy(surface_);
     surface_ = nullptr;
@@ -1178,6 +1226,10 @@ void WaylandVideoSurface::Destroy() {
     wl_compositor_destroy(compositor_);
   }
   compositor_ = nullptr;
+  if (xdg_wm_base_ != nullptr) {
+    xdg_wm_base_destroy(xdg_wm_base_);
+    xdg_wm_base_ = nullptr;
+  }
   // In standalone mode we own wl_display_ (opened via wl_display_connect);
   // in GDK mode GDK owns it. Only disconnect what we own.
   if (owns_wl_display_ && wl_display_ != nullptr) {
