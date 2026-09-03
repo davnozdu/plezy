@@ -138,6 +138,7 @@ jobs:
         run: |
           gh release create "$TAG" \
             --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
             --title "$TAG (X11 build)" \
             --notes "Linux x64 build of plezy with the Flutter-texture renderer restored, so video plays on X11 and XWayland (SteamOS Desktop Mode and Gaming Mode).
 
