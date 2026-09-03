@@ -3586,6 +3586,8 @@ extension on TranslationsBg {
 			'fileInfo.filePresent' => 'Файлът е наличен',
 			'fileInfo.fileReadable' => 'Четим от сървъра',
 			'fileInfo.streamPath' => 'Път на потока',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Оптимизирано за стрийминг',
 			'fileInfo.has64bitOffsets' => '64-битови отмествания',
 			'fileInfo.protocol' => 'Протокол',
@@ -3643,8 +3645,6 @@ extension on TranslationsBg {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy не успя да провери кои файлове ще бъдат премахнати, така че може да изтрие повече от посочения по-горе елемент. Откажете и опитайте отново, или изтрийте въпреки това.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Сървърът ви не предостави данни за файловете на този елемент, така че Plezy не може да провери кои файлове ще бъдат премахнати. Може да изтрие повече от посочения по-горе елемент.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Елементът е изтрит успешно',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Неуспешно изтриване на елемента',
 			'mediaMenu.rate' => 'Оцени',
 			'mediaMenu.playFromBeginning' => 'Пусни от началото',
@@ -4123,6 +4123,8 @@ extension on TranslationsBg {
 			'libraries.groupings.tracks' => 'Песни',
 			'libraries.groupings.folders' => 'Папки',
 			'libraries.filterCategories.genre' => 'Жанр',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Година',
 			'libraries.filterCategories.contentRating' => 'Възрастов рейтинг',
 			'libraries.filterCategories.tag' => 'Таг',
@@ -4237,8 +4239,6 @@ extension on TranslationsBg {
 			'explore.watchlistNoMatch' => 'Този елемент не можа да бъде съпоставен със списък за гледане',
 			'explore.notInLibrary' => 'Не е в твоята библиотека',
 			'explore.inTheseLibraries' => 'В тези библиотеки',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Проверка на твоята библиотека...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('bg'))(n, one: 'Неуспешна проверка на ${n} сървър', other: 'Неуспешна проверка на ${n} сървъра', ), 
 			'explore.emptyTitle' => 'Тук все още няма нищо',
@@ -4657,6 +4657,8 @@ extension on TranslationsBg {
 			'downloads.syncRuleUpdated' => 'Правилото за синхронизация е обновено',
 			'downloads.syncRuleRemoved' => 'Правилото за синхронизация е премахнато',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Правилото за синхронизация и свързаните изтегляния са премахнати',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Правилата за синхронизация в момента се обновяват. Опитайте отново след малко.',
 			'downloads.syncRuleCleanupUnavailable' => 'Свързаните изтегляния не можаха да бъдат идентифицирани безопасно. Свържете се отново със сървъра и опитайте отново, или премахнете правилото, без да изтривате изтеглянията.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Синхронизирани са ${count} нови епизода за ${title}',
@@ -4800,8 +4802,6 @@ extension on TranslationsBg {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Неуспешно свързване към който и да е адрес',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Връзката е загубена след ${attempts} опита',
 			'companionRemote.errors.connectionLost' => 'Връзката е загубена',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Връзката беше затворена преди удостоверяването',
 			'videoSettings.playbackSpeed' => 'Скорост на възпроизвеждане',
 			'videoSettings.normalSpeed' => 'Нормална',

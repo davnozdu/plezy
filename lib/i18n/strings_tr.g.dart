@@ -3586,6 +3586,8 @@ extension on TranslationsTr {
 			'fileInfo.filePresent' => 'Dosya Mevcut',
 			'fileInfo.fileReadable' => 'Sunucu Tarafından Okunabilir',
 			'fileInfo.streamPath' => 'Akış Yolu',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Akış İçin Optimize Edilmiş',
 			'fileInfo.has64bitOffsets' => '64-bit Ofsetler',
 			'fileInfo.protocol' => 'Protokol',
@@ -3643,8 +3645,6 @@ extension on TranslationsTr {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy bunun hangi dosyaları sileceğini kontrol edemedi, bu yüzden yukarıda adı geçen ögeden daha fazlasını silebilir. İptal edip tekrar deneyin veya yine de silin.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Sunucunuz bu öge için dosya ayrıntıları sağlamadı, bu yüzden Plezy bunun hangi dosyaları sileceğini kontrol edemiyor. Yukarıda adı geçen ögeden daha fazlasını silebilir.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Medya ögesi başarıyla silindi',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Medya ögesi silinemedi',
 			'mediaMenu.rate' => 'Oyla',
 			'mediaMenu.playFromBeginning' => 'Baştan Oynat',
@@ -4123,6 +4123,8 @@ extension on TranslationsTr {
 			'libraries.groupings.tracks' => 'Parçalar',
 			'libraries.groupings.folders' => 'Klasörler',
 			'libraries.filterCategories.genre' => 'Tür',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Yıl',
 			'libraries.filterCategories.contentRating' => 'İçerik Derecelendirmesi',
 			'libraries.filterCategories.tag' => 'Etiket',
@@ -4237,8 +4239,6 @@ extension on TranslationsTr {
 			'explore.watchlistNoMatch' => 'Bu öğe bir izleme listesiyle eşleştirilemedi',
 			'explore.notInLibrary' => 'Kitaplığınızda yok',
 			'explore.inTheseLibraries' => 'Bu kitaplıklarda var',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Kitaplığınız kontrol ediliyor...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('tr'))(n, one: '${n} sunucu kontrol edilemedi', other: '${n} sunucu kontrol edilemedi', ), 
 			'explore.emptyTitle' => 'Henüz burada bir şey yok',
@@ -4657,6 +4657,8 @@ extension on TranslationsTr {
 			'downloads.syncRuleUpdated' => 'Eşitleme kuralı güncellendi',
 			'downloads.syncRuleRemoved' => 'Eşitleme kuralı kaldırıldı',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Eşitleme kuralı ve ilişkili indirmeler kaldırıldı',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Eşitleme kuralları şu anda güncelleniyor. Birazdan tekrar deneyin.',
 			'downloads.syncRuleCleanupUnavailable' => 'İlişkili indirmeler güvenli biçimde belirlenemedi. Sunucuya yeniden bağlanıp tekrar deneyin veya kuralı indirmeleri silmeden kaldırın.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} için ${count} yeni bölüm eşitlendi',
@@ -4800,8 +4802,6 @@ extension on TranslationsTr {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Hiçbir adrese bağlanılamadı',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => '${attempts} denemeden sonra bağlantı kesildi',
 			'companionRemote.errors.connectionLost' => 'Bağlantı kesildi',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Bağlantı, kimlik doğrulamadan önce kapandı',
 			'videoSettings.playbackSpeed' => 'Oynatma Hızı',
 			'videoSettings.normalSpeed' => 'Normal',

@@ -3586,6 +3586,8 @@ extension on TranslationsAz {
 			'fileInfo.filePresent' => 'Fayl mövcuddur',
 			'fileInfo.fileReadable' => 'Server tərəfindən oxuna bilir',
 			'fileInfo.streamPath' => 'Axın yolu',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Yayım üçün optimallaşdırılıb',
 			'fileInfo.has64bitOffsets' => '64-bit ofsetlər',
 			'fileInfo.protocol' => 'Protokol',
@@ -3643,8 +3645,6 @@ extension on TranslationsAz {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy bunun hansı faylları siləcəyini yoxlaya bilmədi, ona görə də yuxarıda adı çəkilən elementdən daha çoxunu silə bilər. Ləğv edib təzədən cəhd edin və ya yenə də silin.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Serveriniz bu element üçün fayl təfərrüatlarını təqdim etmədi, ona görə Plezy bunun hansı faylları siləcəyini yoxlaya bilmir. Yuxarıda adı çəkilən elementdən daha çoxunu silə bilər.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Media elementi uğurla silindi',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Media elementi silinə bilmədi',
 			'mediaMenu.rate' => 'Qiymətləndir',
 			'mediaMenu.playFromBeginning' => 'Əvvəldən oynat',
@@ -4123,6 +4123,8 @@ extension on TranslationsAz {
 			'libraries.groupings.tracks' => 'Mahnılar',
 			'libraries.groupings.folders' => 'Qovluqlar',
 			'libraries.filterCategories.genre' => 'Janr',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'İl',
 			'libraries.filterCategories.contentRating' => 'Məzmun reytinqi',
 			'libraries.filterCategories.tag' => 'Teq',
@@ -4237,8 +4239,6 @@ extension on TranslationsAz {
 			'explore.watchlistNoMatch' => 'Bu elementi heç bir baxış siyahısı ilə uyğunlaşdırmaq olmadı',
 			'explore.notInLibrary' => 'Kitabxananızda yoxdur',
 			'explore.inTheseLibraries' => 'Bu kitabxanalarda var',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Kitabxananız yoxlanılır...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('az'))(n, one: '${n} serveri yoxlamaq olmadı', other: '${n} serveri yoxlamaq olmadı', ), 
 			'explore.emptyTitle' => 'Hələlik burada heç nə yoxdur',
@@ -4657,6 +4657,8 @@ extension on TranslationsAz {
 			'downloads.syncRuleUpdated' => 'Eyniləşdirmə qaydası yeniləndi',
 			'downloads.syncRuleRemoved' => 'Eyniləşdirmə qaydası silindi',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Eyniləşdirmə qaydası və əlaqəli yükləmələr silindi',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Eyniləşdirmə qaydaları hazırda yenilənir. Bir azdan təzədən cəhd edin.',
 			'downloads.syncRuleCleanupUnavailable' => 'Əlaqəli yükləmələr təhlükəsiz şəkildə müəyyən edilə bilmədi. Serverə yenidən qoşulub cəhd edin və ya qaydanı yükləmələri silmədən silin.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} üçün ${count} yeni seriya eyniləşdirildi',
@@ -4800,8 +4802,6 @@ extension on TranslationsAz {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Heç bir ünvana qoşuluna bilmədi',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => '${attempts} cəhddən sonra əlaqə kəsildi',
 			'companionRemote.errors.connectionLost' => 'Əlaqə kəsildi',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Bağlantı autentifikasiyadan əvvəl bağlandı',
 			'videoSettings.playbackSpeed' => 'Oynatma sürəti',
 			'videoSettings.normalSpeed' => 'Normal',

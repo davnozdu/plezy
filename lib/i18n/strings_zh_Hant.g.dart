@@ -3576,6 +3576,8 @@ extension on TranslationsZhHant {
 			'fileInfo.filePresent' => '檔案存在',
 			'fileInfo.fileReadable' => '伺服器可讀取',
 			'fileInfo.streamPath' => '串流路徑',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => '已最佳化串流播放',
 			'fileInfo.has64bitOffsets' => '具 64 位元偏移量',
 			'fileInfo.protocol' => '通訊協定',
@@ -3633,8 +3635,6 @@ extension on TranslationsZhHant {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy 無法確認此操作會刪除哪些檔案，因此刪除範圍可能超出上方所列的項目。請取消後重試，或仍要刪除。',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => '您的伺服器未提供此項目的檔案資訊，因此 Plezy 無法確認此操作會刪除哪些檔案。刪除範圍可能超出上方所列的項目。',
 			'mediaMenu.mediaDeletedSuccessfully' => '媒體已成功刪除',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => '刪除媒體失敗',
 			'mediaMenu.rate' => '評分',
 			'mediaMenu.playFromBeginning' => '從頭播放',
@@ -4113,6 +4113,8 @@ extension on TranslationsZhHant {
 			'libraries.groupings.tracks' => '曲目',
 			'libraries.groupings.folders' => '資料夾',
 			'libraries.filterCategories.genre' => '類型',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => '年份',
 			'libraries.filterCategories.contentRating' => '分級',
 			'libraries.filterCategories.tag' => '標籤',
@@ -4227,8 +4229,6 @@ extension on TranslationsZhHant {
 			'explore.watchlistNoMatch' => '無法將此項目與待看清單配對',
 			'explore.notInLibrary' => '不在您的媒體庫中',
 			'explore.inTheseLibraries' => '在這些媒體庫中',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => '正在檢查您的媒體庫…',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('zh'))(n, other: '無法檢查 ${n} 台伺服器', ), 
 			'explore.emptyTitle' => '這裡還沒有任何內容',
@@ -4647,6 +4647,8 @@ extension on TranslationsZhHant {
 			'downloads.syncRuleUpdated' => '同步規則已更新',
 			'downloads.syncRuleRemoved' => '同步規則已刪除',
 			'downloads.syncRuleAndDownloadsRemoved' => '同步規則與相關的下載內容已刪除',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => '同步規則正在更新中。請稍後再試。',
 			'downloads.syncRuleCleanupUnavailable' => '無法安全地識別相關的下載內容。請重新連線伺服器後再試，或在不刪除下載內容的情況下移除規則。',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '已為 ${title} 同步 ${count} 個新單集',
@@ -4790,8 +4792,6 @@ extension on TranslationsZhHant {
 			'companionRemote.errors.failedToConnectAnyAddress' => '無法連線至任何位址',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => '嘗試 ${attempts} 次後連線中斷',
 			'companionRemote.errors.connectionLost' => '連線已中斷',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => '連線在驗證前已關閉',
 			'videoSettings.playbackSpeed' => '播放速度',
 			'videoSettings.normalSpeed' => '正常速度',
