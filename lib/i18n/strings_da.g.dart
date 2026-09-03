@@ -3445,6 +3445,8 @@ extension on TranslationsDa {
 			'fileInfo.filePresent' => 'Fil til stede',
 			'fileInfo.fileReadable' => 'Læsbar af serveren',
 			'fileInfo.streamPath' => 'Strømsti',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Optimeret til streaming',
 			'fileInfo.has64bitOffsets' => '64-bit-forskydninger',
 			'fileInfo.protocol' => 'Protokol',
@@ -3504,8 +3506,6 @@ extension on TranslationsDa {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy kunne ikke kontrollere, hvilke filer dette vil fjerne, så det kan slette mere end det ovennævnte emne. Annuller og prøv igen, eller slet alligevel.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Din server leverede ikke filoplysninger for dette emne, så Plezy kan ikke kontrollere, hvilke filer dette vil fjerne. Det kan slette mere end det ovennævnte emne.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Mediet blev slettet',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Mediet kunne ikke slettes',
 			'mediaMenu.rate' => 'Bedøm',
 			'mediaMenu.playFromBeginning' => 'Afspil fra begyndelsen',
@@ -3961,6 +3961,8 @@ extension on TranslationsDa {
 			'libraries.groupings.tracks' => 'Numre',
 			'libraries.groupings.folders' => 'Mapper',
 			'libraries.filterCategories.genre' => 'Genre',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'År',
 			'libraries.filterCategories.contentRating' => 'Aldersvurdering',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -4074,8 +4076,6 @@ extension on TranslationsDa {
 			'explore.watchlistNoMatch' => 'Kunne ikke knytte dette element til en overvågningsliste',
 			'explore.notInLibrary' => 'Ikke i dit bibliotek',
 			'explore.inTheseLibraries' => 'I disse biblioteker',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Tjekker dit bibliotek...',
 			'explore.emptyTitle' => 'Der er ikke noget her endnu',
 			'explore.emptyMessage' => ({required Object source}) => 'Indholdsrækker fra ${source} vises her, når de har indhold.',
@@ -4477,6 +4477,8 @@ extension on TranslationsDa {
 			'downloads.syncRuleUpdated' => 'Synkroniseringsregel opdateret',
 			'downloads.syncRuleRemoved' => 'Synkroniseringsregel fjernet',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Synkroniseringsregel og tilknyttede downloads fjernet',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Synkroniseringsregler opdateres lige nu. Prøv igen om et øjeblik.',
 			'downloads.syncRuleCleanupUnavailable' => 'Tilknyttede downloads kunne ikke identificeres sikkert. Genopret forbindelse til serveren og prøv igen, eller fjern reglen uden at slette downloads.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Synkroniserede ${count} nye episoder for ${title}',
@@ -4612,8 +4614,6 @@ extension on TranslationsDa {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Kunne ikke oprette forbindelse til nogen adresse',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Forbindelse mistet efter ${attempts} forsøg',
 			'companionRemote.errors.connectionLost' => 'Forbindelse mistet',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Forbindelsen blev lukket før godkendelsen',
 			'videoSettings.playbackSpeed' => 'Afspilningshastighed',
 			'videoSettings.normalSpeed' => 'Normal',
