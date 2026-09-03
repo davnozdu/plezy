@@ -528,6 +528,10 @@ class _Translations$settings$sv extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Per bibliotek';
 	@override String get playerScopeTitle => 'Per serie eller film';
 	@override String get exportDialogTitle => 'Exportera Plezy-inställningar';
+	@override String get linuxVideoRenderMode => 'Videorenderingsläge';
+	@override String get linuxVideoRenderModeDescription => 'Automatiskt föredrar det inbyggda Wayland-planet (HDR-kompatibelt); Texture tvingar SDR-reservvägen.';
+	@override String get linuxVideoRenderModeAuto => 'Automatiskt';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -3422,6 +3426,10 @@ extension on TranslationsSv {
 			'settings.playerScopeLibrary' => 'Per bibliotek',
 			'settings.playerScopeTitle' => 'Per serie eller film',
 			'settings.exportDialogTitle' => 'Exportera Plezy-inställningar',
+			'settings.linuxVideoRenderMode' => 'Videorenderingsläge',
+			'settings.linuxVideoRenderModeDescription' => 'Automatiskt föredrar det inbyggda Wayland-planet (HDR-kompatibelt); Texture tvingar SDR-reservvägen.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatiskt',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Sök filmer, serier, musik...',
 			'search.tryDifferentTerm' => 'Prova en annan sökterm',
 			'search.searchYourMedia' => 'Sök i dina media',
@@ -3603,6 +3611,8 @@ extension on TranslationsSv {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy kunde inte kontrollera vilka filer detta tar bort, så det kan ta bort mer än objektet ovan. Avbryt och försök igen, eller ta bort ändå.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Din server tillhandahöll inte filinformation för detta objekt, så Plezy kan inte kontrollera vilka filer detta tar bort. Det kan ta bort mer än objektet ovan.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Medieobjektet har tagits bort',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Det gick inte att ta bort medieobjektet',
 			'mediaMenu.rate' => 'Betygsätt',
 			'mediaMenu.playFromBeginning' => 'Spela från början',
@@ -4191,6 +4201,8 @@ extension on TranslationsSv {
 			'explore.watchlistNoMatch' => 'Det gick inte att matcha det här objektet mot en bevakningslista',
 			'explore.notInLibrary' => 'Finns inte i ditt bibliotek',
 			'explore.inTheseLibraries' => 'I dessa bibliotek',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Kontrollerar ditt bibliotek...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('sv'))(n, one: 'Kunde inte kontrollera ${n} server', other: 'Kunde inte kontrollera ${n} servrar', ), 
 			'explore.emptyTitle' => 'Inget här ännu',
@@ -4745,6 +4757,8 @@ extension on TranslationsSv {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Det gick inte att ansluta till någon adress',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Anslutningen bröts efter ${attempts} försök',
 			'companionRemote.errors.connectionLost' => 'Anslutningen bröts',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Anslutningen stängdes före autentiseringen',
 			'videoSettings.playbackSpeed' => 'Uppspelningshastighet',
 			'videoSettings.normalSpeed' => 'Normal',

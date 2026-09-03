@@ -528,6 +528,10 @@ class _Translations$settings$pl extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Na bibliotekę';
 	@override String get playerScopeTitle => 'Na serial lub film';
 	@override String get exportDialogTitle => 'Eksport ustawień Plezy';
+	@override String get linuxVideoRenderMode => 'Tryb renderowania wideo';
+	@override String get linuxVideoRenderModeDescription => 'Automatyczny preferuje natywną płaszczyznę Wayland (zgodną z HDR); Texture wymusza ścieżkę zapasową SDR.';
+	@override String get linuxVideoRenderModeAuto => 'Automatyczny';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -3444,6 +3448,10 @@ extension on TranslationsPl {
 			'settings.playerScopeLibrary' => 'Na bibliotekę',
 			'settings.playerScopeTitle' => 'Na serial lub film',
 			'settings.exportDialogTitle' => 'Eksport ustawień Plezy',
+			'settings.linuxVideoRenderMode' => 'Tryb renderowania wideo',
+			'settings.linuxVideoRenderModeDescription' => 'Automatyczny preferuje natywną płaszczyznę Wayland (zgodną z HDR); Texture wymusza ścieżkę zapasową SDR.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatyczny',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Szukaj filmów, seriali, muzyki...',
 			'search.tryDifferentTerm' => 'Spróbuj innego wyszukiwania',
 			'search.searchYourMedia' => 'Przeszukaj swoje media',
@@ -3625,6 +3633,8 @@ extension on TranslationsPl {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy nie mogło sprawdzić, które pliki zostaną usunięte, więc może usunąć więcej niż element wymieniony powyżej. Anuluj i spróbuj ponownie albo usuń mimo to.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Twój serwer nie podał informacji o plikach tego elementu, więc Plezy nie może sprawdzić, które pliki zostaną usunięte. Może usunąć więcej niż element wymieniony powyżej.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Usunięto element multimedialny',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Nie udało się usunąć elementu multimedialnego',
 			'mediaMenu.rate' => 'Oceń',
 			'mediaMenu.playFromBeginning' => 'Odtwórz od początku',
@@ -4213,6 +4223,8 @@ extension on TranslationsPl {
 			'explore.watchlistNoMatch' => 'Nie udało się dopasować tej pozycji do listy do obejrzenia',
 			'explore.notInLibrary' => 'Nie ma tego w Twojej bibliotece',
 			'explore.inTheseLibraries' => 'W tych bibliotekach',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Sprawdzanie Twojej biblioteki...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pl'))(n, one: 'Nie udało się sprawdzić ${n} serwera', few: 'Nie udało się sprawdzić ${n} serwerów', many: 'Nie udało się sprawdzić ${n} serwerów', other: 'Nie udało się sprawdzić ${n} serwerów', ), 
 			'explore.emptyTitle' => 'Jeszcze nic tu nie ma',
@@ -4767,6 +4779,8 @@ extension on TranslationsPl {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Nie udało się połączyć z żadnym adresem',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Połączenie utracone po ${attempts} próbach',
 			'companionRemote.errors.connectionLost' => 'Połączenie utracone',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Połączenie zostało zamknięte przed uwierzytelnieniem',
 			'videoSettings.playbackSpeed' => 'Prędkość odtwarzania',
 			'videoSettings.normalSpeed' => 'Normalna',

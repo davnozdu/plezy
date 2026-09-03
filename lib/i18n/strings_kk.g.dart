@@ -528,6 +528,10 @@ class _Translations$settings$kk extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Кітапхана бойынша';
 	@override String get playerScopeTitle => 'Сериал немесе фильм бойынша';
 	@override String get exportDialogTitle => 'Plezy параметрлерін экспорттау';
+	@override String get linuxVideoRenderMode => 'Бейнені көрсету режимі';
+	@override String get linuxVideoRenderModeDescription => 'Автоматты режим жергілікті Wayland жазықтығын қалайды (HDR қолдайды); Texture SDR резервтік жолды мәжбүрлейді.';
+	@override String get linuxVideoRenderModeAuto => 'Автоматты';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -3422,6 +3426,10 @@ extension on TranslationsKk {
 			'settings.playerScopeLibrary' => 'Кітапхана бойынша',
 			'settings.playerScopeTitle' => 'Сериал немесе фильм бойынша',
 			'settings.exportDialogTitle' => 'Plezy параметрлерін экспорттау',
+			'settings.linuxVideoRenderMode' => 'Бейнені көрсету режимі',
+			'settings.linuxVideoRenderModeDescription' => 'Автоматты режим жергілікті Wayland жазықтығын қалайды (HDR қолдайды); Texture SDR резервтік жолды мәжбүрлейді.',
+			'settings.linuxVideoRenderModeAuto' => 'Автоматты',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Фильмдер, сериалдар, музыка іздеу...',
 			'search.tryDifferentTerm' => 'Басқа іздеу сөзін байқап көріңіз',
 			'search.searchYourMedia' => 'Медиафайлдардан іздеу',
@@ -3603,6 +3611,8 @@ extension on TranslationsKk {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy қандай файлдар өшірілетінін тексере алмады, сондықтан ол жоғарыда аталған элементтен артық өшіруі мүмкін. Бас тартып, қайталап көріңіз немесе бәрібір өшіріңіз.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Серверіңіз бұл элемент үшін файл мәліметтерін ұсынбады, сондықтан Plezy қандай файлдар өшірілетінін тексере алмайды. Ол жоғарыда аталған элементтен артық өшіруі мүмкін.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Медиа элементі сәтті өшірілді',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Медиа элементін өшіру мүмкін болмады',
 			'mediaMenu.rate' => 'Бағалау',
 			'mediaMenu.playFromBeginning' => 'Басынан бастап ойнату',
@@ -4191,6 +4201,8 @@ extension on TranslationsKk {
 			'explore.watchlistNoMatch' => 'Бұл элементті көру тізімімен сәйкестендіру мүмкін болмады',
 			'explore.notInLibrary' => 'Кітапханаңызда жоқ',
 			'explore.inTheseLibraries' => 'Осы кітапханаларда бар',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Кітапхана тексерілуде...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('kk'))(n, one: '${n} серверді тексеру мүмкін болмады', other: '${n} серверді тексеру мүмкін болмады', ), 
 			'explore.emptyTitle' => 'Әлі де мұнда ештеңе жоқ',
@@ -4745,6 +4757,8 @@ extension on TranslationsKk {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Ешбір мекенжайға қосылу мүмкін болмады',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => '${attempts} әрекеттен кейін байланыс үзілді',
 			'companionRemote.errors.connectionLost' => 'Байланыс үзілді',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Аутентификациядан бұрын байланыс жабылды',
 			'videoSettings.playbackSpeed' => 'Ойнату жылдамдығы',
 			'videoSettings.normalSpeed' => 'Қалыпты',

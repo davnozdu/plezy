@@ -528,6 +528,10 @@ class _Translations$settings$hu extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Könyvtáronként';
 	@override String get playerScopeTitle => 'Sorozatonként vagy filmenként';
 	@override String get exportDialogTitle => 'Plezy-beállítások exportálása';
+	@override String get linuxVideoRenderMode => 'Videó megjelenítési mód';
+	@override String get linuxVideoRenderModeDescription => 'Az Automatikus a natív Wayland síkot részesíti előnyben (HDR-képes); a Texture az SDR tartalék utat kényszeríti ki.';
+	@override String get linuxVideoRenderModeAuto => 'Automatikus';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -3422,6 +3426,10 @@ extension on TranslationsHu {
 			'settings.playerScopeLibrary' => 'Könyvtáronként',
 			'settings.playerScopeTitle' => 'Sorozatonként vagy filmenként',
 			'settings.exportDialogTitle' => 'Plezy-beállítások exportálása',
+			'settings.linuxVideoRenderMode' => 'Videó megjelenítési mód',
+			'settings.linuxVideoRenderModeDescription' => 'Az Automatikus a natív Wayland síkot részesíti előnyben (HDR-képes); a Texture az SDR tartalék utat kényszeríti ki.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatikus',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Keresés filmek, sorozatok és zenék között...',
 			'search.tryDifferentTerm' => 'Próbálj másik keresési kifejezést',
 			'search.searchYourMedia' => 'Keresés a saját médiatartalmak között',
@@ -3603,6 +3611,8 @@ extension on TranslationsHu {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'A Plezy nem tudta ellenőrizni, mely fájlokat távolítja el ez, ezért a fent nevezett elemnél többet is törölhet. Szakítsa meg és próbálja újra, vagy töröljön mindenképp.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'A szerver nem szolgáltatott fájladatokat ehhez az elemhez, ezért a Plezy nem tudja ellenőrizni, mely fájlokat távolít el. A fent nevezett elemnél többet is törölhet.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Médiaelem sikeresen törölve',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Nem sikerült a médiaelem törlése',
 			'mediaMenu.rate' => 'Értékelés',
 			'mediaMenu.playFromBeginning' => 'Lejátszás az elejétől',
@@ -4191,6 +4201,8 @@ extension on TranslationsHu {
 			'explore.watchlistNoMatch' => 'Nem sikerült ezt az elemet figyelőlistához társítani',
 			'explore.notInLibrary' => 'Nincs a könyvtáradban',
 			'explore.inTheseLibraries' => 'Ezekben a könyvtárakban',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Könyvtár ellenőrzése...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('hu'))(n, one: 'Nem sikerült ${n} szervert ellenőrizni', other: 'Nem sikerült ${n} szervert ellenőrizni', ), 
 			'explore.emptyTitle' => 'Még nincs itt semmi',
@@ -4745,6 +4757,8 @@ extension on TranslationsHu {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Egyetlen címhez sem sikerült csatlakozni',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'A kapcsolat megszakadt ${attempts} próbálkozás után',
 			'companionRemote.errors.connectionLost' => 'A kapcsolat megszakadt',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'A kapcsolat a hitelesítés előtt megszakadt',
 			'videoSettings.playbackSpeed' => 'Lejátszási sebesség',
 			'videoSettings.normalSpeed' => 'Normál',
