@@ -15,8 +15,15 @@ import 'base_shared_preferences_service.dart';
 /// via auto_updater for native update dialogs and in-app installs.
 /// On all other platforms: falls back to GitHub API check + browser link dialog.
 class UpdateService {
-  static const String _githubRepo = 'edde746/plezy';
-  static const String _feedUrl = 'https://cdn.jsdelivr.net/gh/edde746/plezy@appcast/appcast.xml';
+  /// Repository the update check reads releases from. Overridable at build
+  /// time so a fork that ships its own builds points users at its own
+  /// releases instead of upstream's, whose binaries would not carry the
+  /// fork's changes.
+  static const String _githubRepo = String.fromEnvironment('UPDATE_REPO', defaultValue: 'edde746/plezy');
+  static const String _feedUrl = String.fromEnvironment(
+    'UPDATE_FEED_URL',
+    defaultValue: 'https://cdn.jsdelivr.net/gh/edde746/plezy@appcast/appcast.xml',
+  );
 
   static const String _keySkippedVersion = 'update_skipped_version';
   static const String _keyLastCheckTime = 'update_last_check_time';
