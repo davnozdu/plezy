@@ -608,6 +608,10 @@ class _Translations$settings$nl extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Per bibliotheek';
 	@override String get playerScopeTitle => 'Per serie of film';
 	@override String get exportDialogTitle => 'Plezy-instellingen exporteren';
+	@override String get linuxVideoRenderMode => 'Videoweergavemodus';
+	@override String get linuxVideoRenderModeDescription => 'Automatisch geeft de voorkeur aan het native Wayland-vlak (HDR-compatibel); Texture dwingt het SDR-reservepad af.';
+	@override String get linuxVideoRenderModeAuto => 'Automatisch';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3888,6 +3892,10 @@ extension on TranslationsNl {
 			'settings.playerScopeLibrary' => 'Per bibliotheek',
 			'settings.playerScopeTitle' => 'Per serie of film',
 			'settings.exportDialogTitle' => 'Plezy-instellingen exporteren',
+			'settings.linuxVideoRenderMode' => 'Videoweergavemodus',
+			'settings.linuxVideoRenderModeDescription' => 'Automatisch geeft de voorkeur aan het native Wayland-vlak (HDR-compatibel); Texture dwingt het SDR-reservepad af.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatisch',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Ingebouwd',
 			'themeEditor.presets' => 'Voorinstellingen',
 			'themeEditor.custom' => 'Aangepast',
@@ -3903,12 +3911,12 @@ extension on TranslationsNl {
 			'themeEditor.preview' => 'Voorbeeld',
 			'themeEditor.slots.bg' => 'Achtergrond',
 			'themeEditor.slots.surface' => 'Oppervlak',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.outline' => 'Rand',
 			'themeEditor.slots.text' => 'Tekst',
 			'themeEditor.slots.textMuted' => 'Secundaire tekst',
 			'themeEditor.slots.accent' => 'Accent',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.opacity' => 'Dekking',
 			'themeEditor.hexHint' => '#RRGGBB of #AARRGGBB',
 			'themeEditor.fromOtherThemes' => 'Uit andere thema\'s',
@@ -4417,12 +4425,12 @@ extension on TranslationsNl {
 			'profiles.pinProtectionOptional' => 'Pincodebeveiliging (optioneel)',
 			'profiles.pinExplain' => 'Een viercijferige pincode is vereist om van profiel te wisselen.',
 			'profiles.continueButton' => 'Doorgaan',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.pinsDontMatch' => 'De pincodes komen niet overeen',
 			'profiles.tokenIdentityMismatch' => 'Het token van het Plex-profiel bleek bij een onverwachte server te horen',
 			'connections.sectionTitle' => 'Verbindingen',
 			'connections.addConnection' => 'Verbinding toevoegen',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnectionSubtitleNoProfile' => 'Meld je aan met Plex of verbind een Jellyfin- of Emby-server',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Toevoegen aan ${displayName}: Plex, Jellyfin, Emby of een andere profielverbinding',
 			'connections.sessionExpiredOne' => ({required Object name}) => 'Sessie verlopen voor ${name}',
@@ -4931,12 +4939,12 @@ extension on TranslationsNl {
 			'liveTv.recordSettings.anyChannel' => 'Op elke zender opnemen',
 			'liveTv.recordSettings.anyTime' => 'Op elk tijdstip opnemen',
 			'liveTv.recordSettings.skipInLibrary' => 'Afleveringen overslaan die al in de bibliotheek staan',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpTo' => 'Te bewaren afleveringen',
 			'liveTv.recordSettings.keepUpToHint' => '0 bewaart alle afleveringen',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Begint over ${minutes} min',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} om ${time}',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.invalidPlaybackData' => ({required Object product}) => '${product} heeft ongeldige afspeelgegevens voor Live-tv geretourneerd',
 			'liveTv.failedToStartChannel' => 'Kon de livezender niet starten',
 			'liveTv.failedToBuildStreamUrl' => 'Kon de stream-URL niet samenstellen',
@@ -5445,12 +5453,12 @@ extension on TranslationsNl {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderSoftware' => 'Software',
 			'performanceOverlay.decoderHardware' => 'Hardware',
 			'performanceOverlay.tunnelingActive' => 'Actief',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} mislukt)',
-			_ => null,
-		} ?? switch (path) {
 			'externalPlayer.title' => 'Externe speler',
 			'externalPlayer.useExternalPlayer' => 'Externe speler gebruiken',
 			'externalPlayer.useExternalPlayerDescription' => 'Open video\'s in een andere app',

@@ -514,7 +514,11 @@
     "playerScopeGlobal": "Överallt",
     "playerScopeLibrary": "Per bibliotek",
     "playerScopeTitle": "Per serie eller film",
-    "exportDialogTitle": "Exportera Plezy-inställningar"
+    "exportDialogTitle": "Exportera Plezy-inställningar",
+    "linuxVideoRenderMode": "Videorenderingsläge",
+    "linuxVideoRenderModeDescription": "Automatiskt föredrar det inbyggda Wayland-planet (HDR-kompatibelt); Texture tvingar SDR-reservvägen.",
+    "linuxVideoRenderModeAuto": "Automatiskt",
+    "linuxVideoRenderModeTexture": "Texture (SDR)"
   },
   "themeEditor": {
     "builtIn": "Inbyggda",

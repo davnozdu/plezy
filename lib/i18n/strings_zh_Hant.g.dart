@@ -609,6 +609,10 @@ class _Translations$settings$zh_Hant extends Translations$settings$zh {
 	@override String get playerScopeLibrary => '依媒體庫';
 	@override String get playerScopeTitle => '依影集或電影';
 	@override String get exportDialogTitle => '匯出 Plezy 設定';
+	@override String get linuxVideoRenderMode => '影片轉譯模式';
+	@override String get linuxVideoRenderModeDescription => '自動偏好原生 Wayland 平面（支援 HDR）；紋理強制使用 SDR 備援路徑。';
+	@override String get linuxVideoRenderModeAuto => '自動';
+	@override String get linuxVideoRenderModeTexture => '紋理（SDR）';
 }
 
 // Path: themeEditor
@@ -3877,6 +3881,10 @@ extension on TranslationsZhHant {
 			'settings.playerScopeLibrary' => '依媒體庫',
 			'settings.playerScopeTitle' => '依影集或電影',
 			'settings.exportDialogTitle' => '匯出 Plezy 設定',
+			'settings.linuxVideoRenderMode' => '影片轉譯模式',
+			'settings.linuxVideoRenderModeDescription' => '自動偏好原生 Wayland 平面（支援 HDR）；紋理強制使用 SDR 備援路徑。',
+			'settings.linuxVideoRenderModeAuto' => '自動',
+			'settings.linuxVideoRenderModeTexture' => '紋理（SDR）',
 			'themeEditor.builtIn' => '內建',
 			'themeEditor.presets' => '精選',
 			'themeEditor.custom' => '自訂',
@@ -3892,12 +3900,12 @@ extension on TranslationsZhHant {
 			'themeEditor.preview' => '預覽',
 			'themeEditor.slots.bg' => '背景',
 			'themeEditor.slots.surface' => '面板',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.outline' => '外框',
 			'themeEditor.slots.text' => '文字',
 			'themeEditor.slots.textMuted' => '次要文字',
 			'themeEditor.slots.accent' => '強調色',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.opacity' => '不透明度',
 			'themeEditor.hexHint' => '#RRGGBB 或 #AARRGGBB',
 			'themeEditor.fromOtherThemes' => '來自其他主題',
@@ -4406,12 +4414,12 @@ extension on TranslationsZhHant {
 			'profiles.pinProtectionOptional' => 'PIN 碼保護（選填）',
 			'profiles.pinExplain' => '切換至此使用者設定檔時需要 4 位數 PIN 碼。',
 			'profiles.continueButton' => '繼續',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.pinsDontMatch' => 'PIN 碼不符合',
 			'profiles.tokenIdentityMismatch' => 'Plex 使用者設定檔權杖解析到非預期的伺服器',
 			'connections.sectionTitle' => '連線',
 			'connections.addConnection' => '新增連線',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnectionSubtitleNoProfile' => '使用 Plex 登入或連線至 Jellyfin 或 Emby 伺服器',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => '新增至 ${displayName}：Plex、Jellyfin、Emby 或其他設定檔連線',
 			'connections.sessionExpiredOne' => ({required Object name}) => '${name} 的工作階段已過期',
@@ -4920,12 +4928,12 @@ extension on TranslationsZhHant {
 			'liveTv.recordSettings.anyChannel' => '在任何頻道錄影',
 			'liveTv.recordSettings.anyTime' => '在任何時間錄影',
 			'liveTv.recordSettings.skipInLibrary' => '略過媒體庫中已有的劇集',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpTo' => '要保留的劇集數',
 			'liveTv.recordSettings.keepUpToHint' => '0 表示保留所有劇集',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => '${minutes} 分鐘後開始',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} ${time}',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.invalidPlaybackData' => ({required Object product}) => '${product} 傳回了無效的直播電視播放資料',
 			'liveTv.failedToStartChannel' => '無法啟動直播頻道',
 			'liveTv.failedToBuildStreamUrl' => '無法建立串流 URL',
@@ -5434,12 +5442,12 @@ extension on TranslationsZhHant {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm 硬體',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek 硬體',
 			'performanceOverlay.decoderExynosHw' => 'Exynos 硬體',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderSoftware' => '軟體',
 			'performanceOverlay.decoderHardware' => '硬體',
 			'performanceOverlay.tunnelingActive' => '已啟用',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted}（${failures} 個失敗）',
-			_ => null,
-		} ?? switch (path) {
 			'externalPlayer.title' => '外部播放器',
 			'externalPlayer.useExternalPlayer' => '使用外部播放器',
 			'externalPlayer.useExternalPlayerDescription' => '在其他應用程式中開啟影片',

@@ -608,6 +608,10 @@ class _Translations$settings$ko extends Translations$settings$en {
 	@override String get playerScopeLibrary => '라이브러리별';
 	@override String get playerScopeTitle => '시리즈 또는 영화별';
 	@override String get exportDialogTitle => 'Plezy 설정 내보내기';
+	@override String get linuxVideoRenderMode => '동영상 렌더링 모드';
+	@override String get linuxVideoRenderModeDescription => '자동은 네이티브 Wayland 평면(HDR 지원)을 선호하고, Texture는 SDR 대체 경로를 강제합니다.';
+	@override String get linuxVideoRenderModeAuto => '자동';
+	@override String get linuxVideoRenderModeTexture => 'Texture(SDR)';
 }
 
 // Path: themeEditor
@@ -3876,6 +3880,10 @@ extension on TranslationsKo {
 			'settings.playerScopeLibrary' => '라이브러리별',
 			'settings.playerScopeTitle' => '시리즈 또는 영화별',
 			'settings.exportDialogTitle' => 'Plezy 설정 내보내기',
+			'settings.linuxVideoRenderMode' => '동영상 렌더링 모드',
+			'settings.linuxVideoRenderModeDescription' => '자동은 네이티브 Wayland 평면(HDR 지원)을 선호하고, Texture는 SDR 대체 경로를 강제합니다.',
+			'settings.linuxVideoRenderModeAuto' => '자동',
+			'settings.linuxVideoRenderModeTexture' => 'Texture(SDR)',
 			'themeEditor.builtIn' => '기본 제공',
 			'themeEditor.presets' => '프리셋',
 			'themeEditor.custom' => '사용자 지정',
@@ -3891,12 +3899,12 @@ extension on TranslationsKo {
 			'themeEditor.preview' => '미리보기',
 			'themeEditor.slots.bg' => '배경',
 			'themeEditor.slots.surface' => '표면',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.outline' => '윤곽선',
 			'themeEditor.slots.text' => '텍스트',
 			'themeEditor.slots.textMuted' => '보조 텍스트',
 			'themeEditor.slots.accent' => '강조색',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.opacity' => '불투명도',
 			'themeEditor.hexHint' => '#RRGGBB 또는 #AARRGGBB',
 			'themeEditor.fromOtherThemes' => '다른 테마에서',
@@ -4405,12 +4413,12 @@ extension on TranslationsKo {
 			'profiles.pinProtectionOptional' => 'PIN 보호 (선택 사항)',
 			'profiles.pinExplain' => '프로필 전환에는 4자리 PIN이 필요합니다.',
 			'profiles.continueButton' => '계속',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.pinsDontMatch' => 'PIN이 일치하지 않습니다',
 			'profiles.tokenIdentityMismatch' => 'Plex 프로필 토큰이 예상과 다른 서버로 확인되었습니다',
 			'connections.sectionTitle' => '연결',
 			'connections.addConnection' => '연결 추가',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnectionSubtitleNoProfile' => 'Plex로 로그인하거나 Jellyfin 또는 Emby 서버에 연결',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => '${displayName}에 추가: Plex, Jellyfin, Emby 또는 다른 프로필 연결',
 			'connections.sessionExpiredOne' => ({required Object name}) => '${name}의 세션이 만료되었습니다',
@@ -4919,12 +4927,12 @@ extension on TranslationsKo {
 			'liveTv.recordSettings.anyChannel' => '모든 채널에서 녹화',
 			'liveTv.recordSettings.anyTime' => '모든 시간대에 녹화',
 			'liveTv.recordSettings.skipInLibrary' => '라이브러리에 이미 있는 에피소드 건너뛰기',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpTo' => '보관할 에피소드 수',
 			'liveTv.recordSettings.keepUpToHint' => '0이면 모든 에피소드 보관',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => '${minutes}분 후 시작',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} ${time}',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.invalidPlaybackData' => ({required Object product}) => '${product}에서 잘못된 실시간 TV 재생 데이터를 반환했습니다',
 			'liveTv.failedToStartChannel' => '실시간 채널을 시작할 수 없습니다',
 			'liveTv.failedToBuildStreamUrl' => '스트림 URL을 생성할 수 없습니다',
@@ -5433,12 +5441,12 @@ extension on TranslationsKo {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderSoftware' => '소프트웨어',
 			'performanceOverlay.decoderHardware' => '하드웨어',
 			'performanceOverlay.tunnelingActive' => '활성',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures}개 실패)',
-			_ => null,
-		} ?? switch (path) {
 			'externalPlayer.title' => '외부 플레이어',
 			'externalPlayer.useExternalPlayer' => '외부 플레이어 사용',
 			'externalPlayer.useExternalPlayerDescription' => '동영상을 다른 앱에서 열기',
