@@ -1,0 +1,146 @@
+name: Build Linux (X11 / Steam Deck)
+
+# Fork-only build of the Linux x64 tarball with the Flutter-texture renderer
+# restored, so the player works on SteamOS (Desktop Mode is Plasma on X11,
+# Gaming Mode runs native apps through Gamescope's XWayland). Upstream's
+# build.yml is not reused: it refuses to run outside refs/heads/main, builds
+# every platform, and needs signing secrets this fork does not have.
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Tag to publish a release under; omit to only upload a build artifact
+        default: ''
+        type: string
+  push:
+    branches: [x11-restore]
+
+env:
+  FLUTTER_VERSION: "3.47.1"
+  # ENABLE_UPDATE_CHECK plus UPDATE_REPO points the in-app update check at this
+  # fork's releases: upstream's binaries do not carry the X11 renderer, so
+  # offering them as an update would break the install they replace.
+  RELEASE_DART_DEFINES: >-
+    --dart-define=ENABLE_UPDATE_CHECK=true
+    --dart-define=UPDATE_REPO=${{ github.repository }}
+    --dart-define=GIT_COMMIT=${{ github.sha }}
+    --dart-define=ENABLE_DONATIONS=true
+  LINUX_APT_PACKAGES: >
+    clang cmake meson ninja-build pkg-config nasm libgtk-3-dev libevdev-dev liblzma-dev
+    libstdc++-12-dev libasound2-dev libass-dev libfreetype-dev libfontconfig-dev libfribidi-dev
+    libharfbuzz-dev libepoxy-dev libegl-dev libgl-dev libgnutls28-dev libpipewire-0.3-dev
+    libva-dev libvdpau-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev
+    libxss-dev libxpresent-dev libxkbcommon-dev libpulse-dev libdbus-1-dev libdrm-dev
+    libdisplay-info-dev libgbm-dev libwayland-dev wayland-protocols liblcms2-dev libmujs-dev liblua5.2-dev
+    build-essential libarchive-tools imagemagick libcurl4-openssl-dev
+
+jobs:
+  build:
+    name: Build Linux x64 tarball
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+          pub-cache: false
+
+      - name: Cache Pub dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.yaml', 'pubspec.lock') }}
+
+      - name: Install Linux dependencies
+        shell: bash
+        run: |
+          read -r -a packages <<< "$LINUX_APT_PACKAGES"
+          for attempt in 1 2 3; do
+            if sudo apt-get update -o Acquire::Retries=3 && sudo apt-get install -y -o Acquire::Retries=3 "${packages[@]}"; then
+              exit 0
+            fi
+            sudo apt-get clean
+            sudo rm -rf /var/lib/apt/lists/*
+            sleep $((attempt * 15))
+          done
+          exit 1
+
+      - name: Cache libmpv prefix
+        id: libmpv-cache
+        uses: actions/cache@v4
+        with:
+          path: libmpv-prefix
+          key: libmpv-${{ runner.arch }}-${{ hashFiles('mpv-build.lock.json') }}
+
+      - name: Fetch libmpv
+        if: steps.libmpv-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          command -v zstd >/dev/null 2>&1 || { sudo apt-get update && sudo apt-get install -y --no-install-recommends zstd; }
+          python3 scripts/fetch_linux_libmpv.py --dest libmpv-prefix
+
+      - name: Install Dart dependencies
+        shell: bash
+        run: flutter pub get --enforce-lockfile --no-example
+
+      - name: Build Linux x64
+        shell: bash
+        env:
+          PKG_CONFIG_PATH: ${{ github.workspace }}/libmpv-prefix/lib/pkgconfig:${{ github.workspace }}/libmpv-prefix/lib/x86_64-linux-gnu/pkgconfig
+        run: flutter build linux --release ${{ env.RELEASE_DART_DEFINES }}
+
+      # Same order as upstream's job: libmpv first, then bundle-libs.sh, which
+      # resolves everything libmpv itself links.
+      - name: Copy libmpv into bundle
+        shell: bash
+        run: |
+          BUNDLE_DIR=build/linux/x64/release/bundle
+          LIBMPV_DIR=$(dirname "$(find libmpv-prefix -name 'libmpv.so' | head -1)")
+          cp -a "$LIBMPV_DIR"/libmpv.so* "$BUNDLE_DIR/lib/"
+          cp -a libmpv-prefix/lib/libshaderc_shared.so* "$BUNDLE_DIR/lib/"
+          echo "BUNDLE_DIR=$BUNDLE_DIR" >> "$GITHUB_ENV"
+
+      - name: Bundle shared libraries
+        shell: bash
+        run: bash linux/packaging/bundle-libs.sh "$BUNDLE_DIR"
+
+      - name: Copy wrapper script into bundle
+        shell: bash
+        run: cp linux/packaging/plezy.sh "$BUNDLE_DIR/plezy.sh"
+
+      - name: Create tarball
+        shell: bash
+        run: |
+          cd "$BUNDLE_DIR"
+          tar -czf "$GITHUB_WORKSPACE/plezy-linux-x64-x11.tar.gz" *
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plezy-linux-x64-x11
+          path: plezy-linux-x64-x11.tar.gz
+
+      - name: Publish release
+        if: ${{ inputs.release_tag != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.release_tag }}
+        shell: bash
+        run: |
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "$TAG (X11 build)" \
+            --notes "Linux x64 build of plezy with the Flutter-texture renderer restored, so video plays on X11 and XWayland (SteamOS Desktop Mode and Gaming Mode).
+
+          Extract anywhere and run \`./plezy.sh\`." \
+            plezy-linux-x64-x11.tar.gz \
+          || gh release upload "$TAG" plezy-linux-x64-x11.tar.gz --repo "$GITHUB_REPOSITORY" --clobber
