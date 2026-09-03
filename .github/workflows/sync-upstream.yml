@@ -1,0 +1,112 @@
+name: Sync upstream release
+
+# Watches upstream for a new release and replays the X11 patch onto it, then
+# runs the Linux build and publishes the result here under the same tag.
+#
+# The patch lives as the commits on x11-restore that sit above upstream's
+# history. After a successful replay the branch is moved onto the new tag, so
+# the patch is always expressed against the newest upstream it applied to and
+# the drift a cherry-pick has to bridge stays one release wide.
+
+on:
+  schedule:
+    # Daily; upstream releases roughly weekly, and a missed day costs nothing.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      upstream_tag:
+        description: Upstream tag to rebuild; omit for the latest release
+        default: ''
+        type: string
+      force:
+        description: Rebuild even when a release for that tag already exists here
+        default: false
+        type: boolean
+
+env:
+  UPSTREAM: edde746/plezy
+
+jobs:
+  replay:
+    name: Replay the X11 patch onto the newest upstream release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: x11-restore
+          fetch-depth: 0
+
+      - name: Resolve the upstream tag to build
+        id: target
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED: ${{ inputs.upstream_tag }}
+        shell: bash
+        run: |
+          tag="$REQUESTED"
+          if [[ -z "$tag" ]]; then
+            tag=$(gh release view --repo "$UPSTREAM" --json tagName --jq .tagName)
+          fi
+          echo "Upstream tag: $tag"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+          if [[ "${{ inputs.force }}" != "true" ]] \
+            && gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "A release for $tag already exists here; nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Replay the patch onto the tag
+        if: steps.target.outputs.skip != 'true'
+        env:
+          TAG: ${{ steps.target.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git remote add upstream "https://github.com/$UPSTREAM.git"
+          git fetch --no-tags upstream "refs/tags/$TAG:refs/tags/upstream-$TAG"
+          git fetch --no-tags upstream main:refs/remotes/upstream/main
+
+          # Everything on x11-restore above the upstream history *is* the patch,
+          # so the range needs no hand-maintained list of commit ids.
+          base=$(git merge-base HEAD upstream/main)
+          mapfile -t patch_commits < <(git rev-list --reverse "$base..HEAD")
+          if [[ ${#patch_commits[@]} -eq 0 ]]; then
+            echo "::error::No patch commits found above upstream on x11-restore." >&2
+            exit 1
+          fi
+          echo "Replaying ${#patch_commits[@]} commit(s) onto $TAG:"
+          git log --oneline "$base..HEAD" | cat
+
+          git checkout -B "replay/$TAG" "refs/tags/upstream-$TAG"
+          if ! git cherry-pick "${patch_commits[@]}"; then
+            echo "::error::The X11 patch no longer applies to $TAG. Conflicting paths:" >&2
+            git diff --name-only --diff-filter=U | sed 's/^/  /' >&2
+            git cherry-pick --abort || true
+            exit 1
+          fi
+
+          # The replay becomes the new patch baseline: next time the cherry-pick
+          # only has to bridge one release, not every release since.
+          git push --force origin "replay/$TAG:x11-restore"
+
+      - name: Build and publish
+        if: steps.target.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.target.outputs.tag }}
+        shell: bash
+        run: |
+          gh workflow run steamdeck-linux.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref x11-restore \
+            -f release_tag="$TAG"
+          echo "Build dispatched for $TAG."
