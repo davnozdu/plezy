@@ -3445,6 +3445,8 @@ extension on TranslationsIt {
 			'fileInfo.filePresent' => 'File presente',
 			'fileInfo.fileReadable' => 'Leggibile dal server',
 			'fileInfo.streamPath' => 'Percorso flusso',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Ottimizzato per lo streaming',
 			'fileInfo.has64bitOffsets' => 'Offset a 64 bit',
 			'fileInfo.protocol' => 'Protocollo',
@@ -3504,8 +3506,6 @@ extension on TranslationsIt {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy non ha potuto verificare quali file rimuoverà, quindi potrebbe eliminare più di quanto indicato sopra. Annulla e riprova, oppure elimina comunque.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Il tuo server non ha fornito i dettagli del file per questo elemento, quindi Plezy non può verificare quali file rimuoverà. Potrebbe eliminare più di quanto indicato sopra.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Elemento multimediale eliminato correttamente',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Impossibile eliminare l\'elemento multimediale',
 			'mediaMenu.rate' => 'Valuta',
 			'mediaMenu.playFromBeginning' => 'Riproduci dall\'inizio',
@@ -3961,6 +3961,8 @@ extension on TranslationsIt {
 			'libraries.groupings.tracks' => 'Brani',
 			'libraries.groupings.folders' => 'Cartelle',
 			'libraries.filterCategories.genre' => 'Genere',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Anno',
 			'libraries.filterCategories.contentRating' => 'Classificazione per età',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -4074,8 +4076,6 @@ extension on TranslationsIt {
 			'explore.watchlistNoMatch' => 'Impossibile associare questo elemento a una lista titoli',
 			'explore.notInLibrary' => 'Non è nella tua libreria',
 			'explore.inTheseLibraries' => 'In queste librerie',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Ricerca nella tua libreria...',
 			'explore.emptyTitle' => 'Ancora niente qui',
 			'explore.emptyMessage' => ({required Object source}) => 'Le sezioni di ${source} appariranno qui quando saranno disponibili dei contenuti.',
@@ -4477,6 +4477,8 @@ extension on TranslationsIt {
 			'downloads.syncRuleUpdated' => 'Regola di sincronizzazione aggiornata',
 			'downloads.syncRuleRemoved' => 'Regola di sincronizzazione rimossa',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Regola di sincronizzazione e download associati rimossi',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Le regole di sincronizzazione sono in fase di aggiornamento. Riprova tra un momento.',
 			'downloads.syncRuleCleanupUnavailable' => 'Non è stato possibile identificare in sicurezza i download associati. Riconnetti il server e riprova, oppure rimuovi la regola senza eliminare i download.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} nuovi episodi sincronizzati per ${title}',
@@ -4612,8 +4614,6 @@ extension on TranslationsIt {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Impossibile connettersi a qualsiasi indirizzo',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Connessione persa dopo ${attempts} tentativi',
 			'companionRemote.errors.connectionLost' => 'Connessione persa',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'La connessione si è chiusa prima dell\'autenticazione',
 			'videoSettings.playbackSpeed' => 'Velocità di riproduzione',
 			'videoSettings.normalSpeed' => 'Normale',

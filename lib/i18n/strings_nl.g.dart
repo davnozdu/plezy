@@ -3445,6 +3445,8 @@ extension on TranslationsNl {
 			'fileInfo.filePresent' => 'Bestand aanwezig',
 			'fileInfo.fileReadable' => 'Leesbaar door server',
 			'fileInfo.streamPath' => 'Streampad',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Geoptimaliseerd voor streaming',
 			'fileInfo.has64bitOffsets' => '64-bits offsets',
 			'fileInfo.protocol' => 'Protocol',
@@ -3504,8 +3506,6 @@ extension on TranslationsNl {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy kon niet controleren welke bestanden hiermee worden verwijderd, dus het kan meer verwijderen dan het hierboven genoemde item. Annuleer en probeer het opnieuw, of verwijder toch.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Je server heeft geen bestandsgegevens voor dit item verstrekt, dus Plezy kan niet controleren welke bestanden hiermee worden verwijderd. Het kan meer verwijderen dan het hierboven genoemde item.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Media-item succesvol verwijderd',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Verwijderen van media-item mislukt',
 			'mediaMenu.rate' => 'Beoordelen',
 			'mediaMenu.playFromBeginning' => 'Afspelen vanaf het begin',
@@ -3961,6 +3961,8 @@ extension on TranslationsNl {
 			'libraries.groupings.tracks' => 'Nummers',
 			'libraries.groupings.folders' => 'Mappen',
 			'libraries.filterCategories.genre' => 'Genre',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Jaar',
 			'libraries.filterCategories.contentRating' => 'Leeftijdsclassificatie',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -4074,8 +4076,6 @@ extension on TranslationsNl {
 			'explore.watchlistNoMatch' => 'Kon dit item niet aan een kijklijst koppelen',
 			'explore.notInLibrary' => 'Niet in je bibliotheek',
 			'explore.inTheseLibraries' => 'In deze bibliotheken',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Je bibliotheek controleren...',
 			'explore.emptyTitle' => 'Hier is nog niets',
 			'explore.emptyMessage' => ({required Object source}) => 'Rijen van ${source} verschijnen hier zodra ze inhoud hebben.',
@@ -4477,6 +4477,8 @@ extension on TranslationsNl {
 			'downloads.syncRuleUpdated' => 'Synchronisatieregel bijgewerkt',
 			'downloads.syncRuleRemoved' => 'Synchronisatieregel verwijderd',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Synchronisatieregel en gekoppelde downloads verwijderd',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Synchronisatieregels worden momenteel bijgewerkt. Probeer het over een moment opnieuw.',
 			'downloads.syncRuleCleanupUnavailable' => 'Gekoppelde downloads konden niet veilig worden geïdentificeerd. Maak opnieuw verbinding met de server en probeer het opnieuw, of verwijder de regel zonder de downloads te verwijderen.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} nieuwe afleveringen gesynchroniseerd voor ${title}',
@@ -4612,8 +4614,6 @@ extension on TranslationsNl {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Er kon met geen enkel adres verbinding worden gemaakt',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Verbinding verbroken na ${attempts} pogingen',
 			'companionRemote.errors.connectionLost' => 'Verbinding verloren',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'De verbinding is vóór de authenticatie gesloten',
 			'videoSettings.playbackSpeed' => 'Afspeelsnelheid',
 			'videoSettings.normalSpeed' => 'Normaal',

@@ -3445,6 +3445,8 @@ extension on TranslationsKk {
 			'fileInfo.filePresent' => 'Файл бар',
 			'fileInfo.fileReadable' => 'Сервер оқи алады',
 			'fileInfo.streamPath' => 'Ағын жолы',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Ағынды беру үшін оңтайландырылған',
 			'fileInfo.has64bitOffsets' => '64-биттік ығысулар',
 			'fileInfo.protocol' => 'Протокол',
@@ -3504,8 +3506,6 @@ extension on TranslationsKk {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy қандай файлдар өшірілетінін тексере алмады, сондықтан ол жоғарыда аталған элементтен артық өшіруі мүмкін. Бас тартып, қайталап көріңіз немесе бәрібір өшіріңіз.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Серверіңіз бұл элемент үшін файл мәліметтерін ұсынбады, сондықтан Plezy қандай файлдар өшірілетінін тексере алмайды. Ол жоғарыда аталған элементтен артық өшіруі мүмкін.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Медиа элементі сәтті өшірілді',
-			_ => null,
-		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Медиа элементін өшіру мүмкін болмады',
 			'mediaMenu.rate' => 'Бағалау',
 			'mediaMenu.playFromBeginning' => 'Басынан бастап ойнату',
@@ -3961,6 +3961,8 @@ extension on TranslationsKk {
 			'libraries.groupings.tracks' => 'Әндер',
 			'libraries.groupings.folders' => 'Қапшықтар',
 			'libraries.filterCategories.genre' => 'Жанр',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Жыл',
 			'libraries.filterCategories.contentRating' => 'Мазмұн рейтингі',
 			'libraries.filterCategories.tag' => 'Тег',
@@ -4074,8 +4076,6 @@ extension on TranslationsKk {
 			'explore.watchlistNoMatch' => 'Бұл элементті көру тізімімен сәйкестендіру мүмкін болмады',
 			'explore.notInLibrary' => 'Кітапханаңызда жоқ',
 			'explore.inTheseLibraries' => 'Осы кітапханаларда бар',
-			_ => null,
-		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Кітапхана тексерілуде...',
 			'explore.emptyTitle' => 'Әлі де мұнда ештеңе жоқ',
 			'explore.emptyMessage' => ({required Object source}) => '${source} дереккөзінен алынған қатарлар мұнда көрінеді.',
@@ -4477,6 +4477,8 @@ extension on TranslationsKk {
 			'downloads.syncRuleUpdated' => 'Синхрондау ережесі жаңартылды',
 			'downloads.syncRuleRemoved' => 'Синхрондау ережесі өшірілді',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Синхрондау ережесі және байланысты жүктеулер өшірілді',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Синхрондау ережелері қазір жаңартылуда. Сәлден соң қайталап көріңіз.',
 			'downloads.syncRuleCleanupUnavailable' => 'Байланысты жүктеулерді қауіпсіз анықтау мүмкін болмады. Серверге қайта қосылып көріңіз немесе ережені жүктеулерді жоймай өшіріңіз.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} үшін ${count} жаңа бөлім синхрондалды',
@@ -4612,8 +4614,6 @@ extension on TranslationsKk {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Ешбір мекенжайға қосылу мүмкін болмады',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => '${attempts} әрекеттен кейін байланыс үзілді',
 			'companionRemote.errors.connectionLost' => 'Байланыс үзілді',
-			_ => null,
-		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Аутентификациядан бұрын байланыс жабылды',
 			'videoSettings.playbackSpeed' => 'Ойнату жылдамдығы',
 			'videoSettings.normalSpeed' => 'Қалыпты',
