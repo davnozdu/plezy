@@ -1283,6 +1283,18 @@ class Translations$settings$en {
 
 	/// en: 'Export Plezy settings'
 	String get exportDialogTitle => 'Export Plezy settings';
+
+	/// en: 'Video rendering mode'
+	String get linuxVideoRenderMode => 'Video rendering mode';
+
+	/// en: 'Automatic prefers the native Wayland plane (HDR-capable); Texture forces the SDR fallback path.'
+	String get linuxVideoRenderModeDescription => 'Automatic prefers the native Wayland plane (HDR-capable); Texture forces the SDR fallback path.';
+
+	/// en: 'Automatic'
+	String get linuxVideoRenderModeAuto => 'Automatic';
+
+	/// en: 'Texture (SDR)'
+	String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -7447,6 +7459,10 @@ extension on Translations {
 			'settings.playerScopeLibrary' => 'Per library',
 			'settings.playerScopeTitle' => 'Per show or movie',
 			'settings.exportDialogTitle' => 'Export Plezy settings',
+			'settings.linuxVideoRenderMode' => 'Video rendering mode',
+			'settings.linuxVideoRenderModeDescription' => 'Automatic prefers the native Wayland plane (HDR-capable); Texture forces the SDR fallback path.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatic',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Search movies, shows, music...',
 			'search.tryDifferentTerm' => 'Try a different search term',
 			'search.searchYourMedia' => 'Search your media',
@@ -7628,6 +7644,8 @@ extension on Translations {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy could not check which files this will remove, so it may delete more than the item named above. Cancel and try again, or delete anyway.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Your server did not provide file details for this item, so Plezy cannot check which files this will remove. It may delete more than the item named above.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Media item deleted successfully',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Failed to delete media item',
 			'mediaMenu.rate' => 'Rate',
 			'mediaMenu.playFromBeginning' => 'Play from Beginning',
@@ -8205,6 +8223,8 @@ extension on Translations {
 			'explore.watchlistNoMatch' => 'Couldn\'t match this item to a watchlist',
 			'explore.notInLibrary' => 'Not in your library',
 			'explore.inTheseLibraries' => 'In these libraries',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Checking your library...',
 			'explore.libraryCheckFailed' => ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n, one: 'Couldn\'t check ${n} server', other: 'Couldn\'t check ${n} servers', ), 
 			'explore.emptyTitle' => 'Nothing here yet',
@@ -8751,6 +8771,8 @@ extension on Translations {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Failed to connect to any address',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Connection lost after ${attempts} attempts',
 			'companionRemote.errors.connectionLost' => 'Connection lost',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'The connection closed before authentication',
 			'videoSettings.playbackSpeed' => 'Playback Speed',
 			'videoSettings.normalSpeed' => 'Normal',

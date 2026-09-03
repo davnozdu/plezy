@@ -61,6 +61,7 @@ class PlaybackSettingsScreen extends StatelessWidget {
                 _hardwareDecodingTile(),
                 if (exoActive) _playbackBufferTile(),
                 if (exoActive) _tunneledPlaybackTile(),
+                if (Platform.isLinux) _linuxVideoRenderModeTile(),
                 if (PlatformDetector.supportsPictureInPicture()) _autoPipTile(),
               ],
             ),
@@ -557,6 +558,19 @@ class PlaybackSettingsScreen extends StatelessWidget {
     DvConversionModePreference.dv81 => t.settings.dvConversionDv81,
     DvConversionModePreference.hevcStrip => t.settings.dvConversionHevcStrip,
   };
+
+  Widget _linuxVideoRenderModeTile() => SettingSelectionTile<String>(
+    pref: SettingsService.linuxVideoRenderMode,
+    icon: Symbols.video_settings_rounded,
+    title: t.settings.linuxVideoRenderMode,
+    subtitleBuilder: (mode) =>
+        '${mode == 'texture' ? t.settings.linuxVideoRenderModeTexture : t.settings.linuxVideoRenderModeAuto}'
+        ' · ${t.settings.linuxVideoRenderModeDescription}',
+    options: [
+      DialogOption(value: 'auto', title: t.settings.linuxVideoRenderModeAuto),
+      DialogOption(value: 'texture', title: t.settings.linuxVideoRenderModeTexture),
+    ],
+  );
 
   Widget _playbackBufferTile() => SettingSelectionTile<PlaybackBufferTier>(
     pref: SettingsService.playbackBufferTier,

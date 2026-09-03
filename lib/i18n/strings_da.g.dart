@@ -505,6 +505,10 @@ class _Translations$settings$da extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Pr. bibliotek';
 	@override String get playerScopeTitle => 'Pr. serie eller film';
 	@override String get exportDialogTitle => 'Eksportér Plezy-indstillinger';
+	@override String get linuxVideoRenderMode => 'Video-gengivelsestilstand';
+	@override String get linuxVideoRenderModeDescription => 'Automatisk foretrækker det native Wayland-plan (HDR-kompatibelt); Texture tvinger SDR-fallback-stien.';
+	@override String get linuxVideoRenderModeAuto => 'Automatisk';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -3315,6 +3319,10 @@ extension on TranslationsDa {
 			'settings.playerScopeLibrary' => 'Pr. bibliotek',
 			'settings.playerScopeTitle' => 'Pr. serie eller film',
 			'settings.exportDialogTitle' => 'Eksportér Plezy-indstillinger',
+			'settings.linuxVideoRenderMode' => 'Video-gengivelsestilstand',
+			'settings.linuxVideoRenderModeDescription' => 'Automatisk foretrækker det native Wayland-plan (HDR-kompatibelt); Texture tvinger SDR-fallback-stien.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatisk',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Søg film, serier, musik...',
 			'search.tryDifferentTerm' => 'Prøv en anden søgning',
 			'search.searchYourMedia' => 'Søg i dine medier',
@@ -3496,6 +3504,8 @@ extension on TranslationsDa {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy kunne ikke kontrollere, hvilke filer dette vil fjerne, så det kan slette mere end det ovennævnte emne. Annuller og prøv igen, eller slet alligevel.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Din server leverede ikke filoplysninger for dette emne, så Plezy kan ikke kontrollere, hvilke filer dette vil fjerne. Det kan slette mere end det ovennævnte emne.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Mediet blev slettet',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Mediet kunne ikke slettes',
 			'mediaMenu.rate' => 'Bedøm',
 			'mediaMenu.playFromBeginning' => 'Afspil fra begyndelsen',
@@ -4064,6 +4074,8 @@ extension on TranslationsDa {
 			'explore.watchlistNoMatch' => 'Kunne ikke knytte dette element til en overvågningsliste',
 			'explore.notInLibrary' => 'Ikke i dit bibliotek',
 			'explore.inTheseLibraries' => 'I disse biblioteker',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Tjekker dit bibliotek...',
 			'explore.emptyTitle' => 'Der er ikke noget her endnu',
 			'explore.emptyMessage' => ({required Object source}) => 'Indholdsrækker fra ${source} vises her, når de har indhold.',
@@ -4600,6 +4612,8 @@ extension on TranslationsDa {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Kunne ikke oprette forbindelse til nogen adresse',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => 'Forbindelse mistet efter ${attempts} forsøg',
 			'companionRemote.errors.connectionLost' => 'Forbindelse mistet',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Forbindelsen blev lukket før godkendelsen',
 			'videoSettings.playbackSpeed' => 'Afspilningshastighed',
 			'videoSettings.normalSpeed' => 'Normal',

@@ -505,6 +505,10 @@ class _Translations$settings$tr extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Kitaplık başına';
 	@override String get playerScopeTitle => 'Dizi veya film başına';
 	@override String get exportDialogTitle => 'Plezy ayarlarını dışa aktar';
+	@override String get linuxVideoRenderMode => 'Video işleme modu';
+	@override String get linuxVideoRenderModeDescription => 'Otomatik, yerel Wayland düzlemini tercih eder (HDR destekli); Texture, SDR yedek yolunu zorlar.';
+	@override String get linuxVideoRenderModeAuto => 'Otomatik';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: search
@@ -3315,6 +3319,10 @@ extension on TranslationsTr {
 			'settings.playerScopeLibrary' => 'Kitaplık başına',
 			'settings.playerScopeTitle' => 'Dizi veya film başına',
 			'settings.exportDialogTitle' => 'Plezy ayarlarını dışa aktar',
+			'settings.linuxVideoRenderMode' => 'Video işleme modu',
+			'settings.linuxVideoRenderModeDescription' => 'Otomatik, yerel Wayland düzlemini tercih eder (HDR destekli); Texture, SDR yedek yolunu zorlar.',
+			'settings.linuxVideoRenderModeAuto' => 'Otomatik',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'search.hint' => 'Film, dizi, müzik ara...',
 			'search.tryDifferentTerm' => 'Farklı bir arama terimi deneyin',
 			'search.searchYourMedia' => 'Medyanızda arayın',
@@ -3496,6 +3504,8 @@ extension on TranslationsTr {
 			'mediaMenu.deleteScopeUnverifiedProbeFailed' => 'Plezy bunun hangi dosyaları sileceğini kontrol edemedi, bu yüzden yukarıda adı geçen ögeden daha fazlasını silebilir. İptal edip tekrar deneyin veya yine de silin.',
 			'mediaMenu.deleteScopeUnverifiedNoFileInfo' => 'Sunucunuz bu öge için dosya ayrıntıları sağlamadı, bu yüzden Plezy bunun hangi dosyaları sileceğini kontrol edemiyor. Yukarıda adı geçen ögeden daha fazlasını silebilir.',
 			'mediaMenu.mediaDeletedSuccessfully' => 'Medya ögesi başarıyla silindi',
+			_ => null,
+		} ?? switch (path) {
 			'mediaMenu.mediaFailedToDelete' => 'Medya ögesi silinemedi',
 			'mediaMenu.rate' => 'Oyla',
 			'mediaMenu.playFromBeginning' => 'Baştan Oynat',
@@ -4064,6 +4074,8 @@ extension on TranslationsTr {
 			'explore.watchlistNoMatch' => 'Bu öğe bir izleme listesiyle eşleştirilemedi',
 			'explore.notInLibrary' => 'Kitaplığınızda yok',
 			'explore.inTheseLibraries' => 'Bu kitaplıklarda var',
+			_ => null,
+		} ?? switch (path) {
 			'explore.checkingLibrary' => 'Kitaplığınız kontrol ediliyor...',
 			'explore.emptyTitle' => 'Henüz burada bir şey yok',
 			'explore.emptyMessage' => ({required Object source}) => '${source} kaynağındaki satırlar içerik bulunduğunda burada görünecektir.',
@@ -4600,6 +4612,8 @@ extension on TranslationsTr {
 			'companionRemote.errors.failedToConnectAnyAddress' => 'Hiçbir adrese bağlanılamadı',
 			'companionRemote.errors.connectionLostAfterAttempts' => ({required Object attempts}) => '${attempts} denemeden sonra bağlantı kesildi',
 			'companionRemote.errors.connectionLost' => 'Bağlantı kesildi',
+			_ => null,
+		} ?? switch (path) {
 			'companionRemote.closedBeforeAuth' => 'Bağlantı, kimlik doğrulamadan önce kapandı',
 			'videoSettings.playbackSpeed' => 'Oynatma Hızı',
 			'videoSettings.normalSpeed' => 'Normal',
