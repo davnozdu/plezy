@@ -4063,6 +4063,8 @@ extension on TranslationsTr {
 			'fileInfo.filePresent' => 'Dosya Mevcut',
 			'fileInfo.fileReadable' => 'Sunucu Tarafından Okunabilir',
 			'fileInfo.streamPath' => 'Akış Yolu',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Akış İçin Optimize Edilmiş',
 			'fileInfo.has64bitOffsets' => '64-bit Ofsetler',
 			'fileInfo.protocol' => 'Protokol',
@@ -4606,6 +4608,8 @@ extension on TranslationsTr {
 			'libraries.groupings.tracks' => 'Parçalar',
 			'libraries.groupings.folders' => 'Klasörler',
 			'libraries.filterCategories.genre' => 'Tür',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Yıl',
 			'libraries.filterCategories.contentRating' => 'İçerik Derecelendirmesi',
 			'libraries.filterCategories.tag' => 'Etiket',
@@ -5241,6 +5245,8 @@ extension on TranslationsTr {
 			'downloads.syncRuleUpdated' => 'Eşitleme kuralı güncellendi',
 			'downloads.syncRuleRemoved' => 'Eşitleme kuralı kaldırıldı',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Eşitleme kuralı ve ilişkili indirmeler kaldırıldı',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Eşitleme kuralları şu anda güncelleniyor. Birazdan tekrar deneyin.',
 			'downloads.syncRuleCleanupUnavailable' => 'İlişkili indirmeler güvenli biçimde belirlenemedi. Sunucuya yeniden bağlanıp tekrar deneyin veya kuralı indirmeleri silmeden kaldırın.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} için ${count} yeni bölüm eşitlendi',

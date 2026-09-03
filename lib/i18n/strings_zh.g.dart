@@ -4051,6 +4051,8 @@ extension on TranslationsZh {
 			'fileInfo.filePresent' => '文件存在',
 			'fileInfo.fileReadable' => '服务器可读',
 			'fileInfo.streamPath' => '流路径',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => '已针对流式传输优化',
 			'fileInfo.has64bitOffsets' => '64 位偏移量',
 			'fileInfo.protocol' => '协议',
@@ -4594,6 +4596,8 @@ extension on TranslationsZh {
 			'libraries.groupings.tracks' => '曲目',
 			'libraries.groupings.folders' => '文件夹',
 			'libraries.filterCategories.genre' => '类型',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => '年份',
 			'libraries.filterCategories.contentRating' => '内容分级',
 			'libraries.filterCategories.tag' => '标签',
@@ -5229,6 +5233,8 @@ extension on TranslationsZh {
 			'downloads.syncRuleUpdated' => '同步规则已更新',
 			'downloads.syncRuleRemoved' => '同步规则已删除',
 			'downloads.syncRuleAndDownloadsRemoved' => '同步规则及相关下载已删除',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => '同步规则正在更新中，请稍后再试。',
 			'downloads.syncRuleCleanupUnavailable' => '无法安全识别相关下载。请重新连接服务器后再试，或在不删除下载的情况下移除规则。',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '已为 ${title} 同步 ${count} 个新剧集',

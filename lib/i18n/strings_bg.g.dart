@@ -4063,6 +4063,8 @@ extension on TranslationsBg {
 			'fileInfo.filePresent' => 'Файлът е наличен',
 			'fileInfo.fileReadable' => 'Четим от сървъра',
 			'fileInfo.streamPath' => 'Път на потока',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Оптимизирано за стрийминг',
 			'fileInfo.has64bitOffsets' => '64-битови отмествания',
 			'fileInfo.protocol' => 'Протокол',
@@ -4606,6 +4608,8 @@ extension on TranslationsBg {
 			'libraries.groupings.tracks' => 'Песни',
 			'libraries.groupings.folders' => 'Папки',
 			'libraries.filterCategories.genre' => 'Жанр',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Година',
 			'libraries.filterCategories.contentRating' => 'Възрастов рейтинг',
 			'libraries.filterCategories.tag' => 'Таг',
@@ -5241,6 +5245,8 @@ extension on TranslationsBg {
 			'downloads.syncRuleUpdated' => 'Правилото за синхронизация е обновено',
 			'downloads.syncRuleRemoved' => 'Правилото за синхронизация е премахнато',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Правилото за синхронизация и свързаните изтегляния са премахнати',
+			_ => null,
+		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Правилата за синхронизация в момента се обновяват. Опитайте отново след малко.',
 			'downloads.syncRuleCleanupUnavailable' => 'Свързаните изтегляния не можаха да бъдат идентифицирани безопасно. Свържете се отново със сървъра и опитайте отново, или премахнете правилото, без да изтривате изтеглянията.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Синхронизирани са ${count} нови епизода за ${title}',
