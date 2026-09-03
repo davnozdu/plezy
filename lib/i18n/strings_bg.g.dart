@@ -609,6 +609,10 @@ class _Translations$settings$bg extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'По библиотека';
 	@override String get playerScopeTitle => 'По сериал или филм';
 	@override String get exportDialogTitle => 'Експортиране на настройките на Plezy';
+	@override String get linuxVideoRenderMode => 'Режим на видеото';
+	@override String get linuxVideoRenderModeDescription => 'Автоматично предпочита родната Wayland равнина (HDR-съвместима); Texture принуждава SDR резервния път.';
+	@override String get linuxVideoRenderModeAuto => 'Автоматично';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsBg {
 			'settings.playerScopeLibrary' => 'По библиотека',
 			'settings.playerScopeTitle' => 'По сериал или филм',
 			'settings.exportDialogTitle' => 'Експортиране на настройките на Plezy',
+			'settings.linuxVideoRenderMode' => 'Режим на видеото',
+			'settings.linuxVideoRenderModeDescription' => 'Автоматично предпочита родната Wayland равнина (HDR-съвместима); Texture принуждава SDR резервния път.',
+			'settings.linuxVideoRenderModeAuto' => 'Автоматично',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Вградени',
 			'themeEditor.presets' => 'Готови теми',
 			'themeEditor.custom' => 'Персонализирана',
@@ -3906,12 +3914,12 @@ extension on TranslationsBg {
 			'themeEditor.colors' => 'Цветове',
 			'themeEditor.preview' => 'Визуализация',
 			'themeEditor.slots.bg' => 'Фон',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Повърхност',
 			'themeEditor.slots.outline' => 'Контур',
 			'themeEditor.slots.text' => 'Текст',
 			'themeEditor.slots.textMuted' => 'Вторичен текст',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Акцент',
 			'themeEditor.opacity' => 'Непрозрачност',
 			'themeEditor.hexHint' => '#RRGGBB или #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsBg {
 			'profiles.profileNameHint' => 'напр. Гости, Деца, Семейна стая',
 			'profiles.pinProtectionOptional' => 'PIN защита (по желание)',
 			'profiles.pinExplain' => 'Изисква се 4-цифрен PIN за смяна на профили.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Продължи',
 			'profiles.pinsDontMatch' => 'PIN кодовете не съвпадат',
 			'profiles.tokenIdentityMismatch' => 'Токенът на профила в Plex съответства на неочакван сървър',
 			'connections.sectionTitle' => 'Връзки',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Добави връзка',
 			'connections.addConnectionSubtitleNoProfile' => 'Влезте с Plex или свържете Jellyfin или Emby сървър',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Добави към ${displayName}: Plex, Jellyfin, Emby или връзка от друг профил',
@@ -4934,12 +4942,12 @@ extension on TranslationsBg {
 			'liveTv.recordSettings.startEarly' => 'Започване по-рано (секунди)',
 			'liveTv.recordSettings.endLate' => 'Приключване по-късно (секунди)',
 			'liveTv.recordSettings.newOnly' => 'Само нови епизоди',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Записване от всеки канал',
 			'liveTv.recordSettings.anyTime' => 'Записване по всяко време',
 			'liveTv.recordSettings.skipInLibrary' => 'Пропускане на епизоди, които вече са в библиотеката',
 			'liveTv.recordSettings.keepUpTo' => 'Епизоди за запазване',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 запазва всички епизоди',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Започва след ${minutes} мин',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} в ${time}',
@@ -5448,12 +5456,12 @@ extension on TranslationsBg {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android HW',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
 			'performanceOverlay.decoderSoftware' => 'Софтуерен',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Хардуерен',
 			'performanceOverlay.tunnelingActive' => 'Активно',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (неуспешни: ${failures})',

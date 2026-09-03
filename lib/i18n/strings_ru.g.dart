@@ -609,6 +609,10 @@ class _Translations$settings$ru extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Для библиотеки';
 	@override String get playerScopeTitle => 'Для сериала или фильма';
 	@override String get exportDialogTitle => 'Экспорт настроек Plezy';
+	@override String get linuxVideoRenderMode => 'Режим рендеринга видео';
+	@override String get linuxVideoRenderModeDescription => 'Автоматический режим предпочитает нативную плоскость Wayland (поддержка HDR); Texture принудительно использует запасной путь SDR.';
+	@override String get linuxVideoRenderModeAuto => 'Автоматически';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3916,6 +3920,10 @@ extension on TranslationsRu {
 			'settings.playerScopeLibrary' => 'Для библиотеки',
 			'settings.playerScopeTitle' => 'Для сериала или фильма',
 			'settings.exportDialogTitle' => 'Экспорт настроек Plezy',
+			'settings.linuxVideoRenderMode' => 'Режим рендеринга видео',
+			'settings.linuxVideoRenderModeDescription' => 'Автоматический режим предпочитает нативную плоскость Wayland (поддержка HDR); Texture принудительно использует запасной путь SDR.',
+			'settings.linuxVideoRenderModeAuto' => 'Автоматически',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Встроенные',
 			'themeEditor.presets' => 'Готовые',
 			'themeEditor.custom' => 'Своя',
@@ -3930,12 +3938,12 @@ extension on TranslationsRu {
 			'themeEditor.colors' => 'Цвета',
 			'themeEditor.preview' => 'Предпросмотр',
 			'themeEditor.slots.bg' => 'Фон',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Поверхность',
 			'themeEditor.slots.outline' => 'Обводка',
 			'themeEditor.slots.text' => 'Текст',
 			'themeEditor.slots.textMuted' => 'Второстепенный текст',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Акцент',
 			'themeEditor.opacity' => 'Непрозрачность',
 			'themeEditor.hexHint' => '#RRGGBB или #AARRGGBB',
@@ -4444,12 +4452,12 @@ extension on TranslationsRu {
 			'profiles.profileNameHint' => 'например, Гости, Дети, Семейная комната',
 			'profiles.pinProtectionOptional' => 'Защита PIN-кодом (необязательно)',
 			'profiles.pinExplain' => 'Для переключения профилей нужен 4-значный PIN.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Продолжить',
 			'profiles.pinsDontMatch' => 'PIN-коды не совпадают',
 			'profiles.tokenIdentityMismatch' => 'Токен профиля Plex указал на неожиданный сервер',
 			'connections.sectionTitle' => 'Подключения',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Добавить подключение',
 			'connections.addConnectionSubtitleNoProfile' => 'Войдите через Plex или подключите сервер Jellyfin или Emby',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Добавить к ${displayName}: Plex, Jellyfin, Emby или подключение другого профиля',
@@ -4958,12 +4966,12 @@ extension on TranslationsRu {
 			'liveTv.recordSettings.startEarly' => 'Начинать раньше (секунды)',
 			'liveTv.recordSettings.endLate' => 'Заканчивать позже (секунды)',
 			'liveTv.recordSettings.newOnly' => 'Только новые эпизоды',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Записывать на любом канале',
 			'liveTv.recordSettings.anyTime' => 'Записывать в любое время',
 			'liveTv.recordSettings.skipInLibrary' => 'Пропускать эпизоды, уже имеющиеся в библиотеке',
 			'liveTv.recordSettings.keepUpTo' => 'Сколько эпизодов хранить',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 — хранить все эпизоды',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Начало через ${minutes} мин',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} в ${time}',
@@ -5472,12 +5480,12 @@ extension on TranslationsRu {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android, аппаратный',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA, аппаратный',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm, аппаратный',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek, аппаратный',
 			'performanceOverlay.decoderExynosHw' => 'Exynos, аппаратный',
 			'performanceOverlay.decoderSoftware' => 'Программный',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Аппаратный',
 			'performanceOverlay.tunnelingActive' => 'Активно',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (ошибок: ${failures})',

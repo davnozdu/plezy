@@ -609,6 +609,10 @@ class _Translations$settings$ja extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'ライブラリごと';
 	@override String get playerScopeTitle => '作品ごと';
 	@override String get exportDialogTitle => 'Plezyの設定をエクスポート';
+	@override String get linuxVideoRenderMode => '動画レンダリングモード';
+	@override String get linuxVideoRenderModeDescription => '自動はネイティブの Wayland プレーン（HDR 対応）を優先し、Texture は SDR フォールバック経路を強制します。';
+	@override String get linuxVideoRenderModeAuto => '自動';
+	@override String get linuxVideoRenderModeTexture => 'Texture（SDR）';
 }
 
 // Path: themeEditor
@@ -3880,6 +3884,10 @@ extension on TranslationsJa {
 			'settings.playerScopeLibrary' => 'ライブラリごと',
 			'settings.playerScopeTitle' => '作品ごと',
 			'settings.exportDialogTitle' => 'Plezyの設定をエクスポート',
+			'settings.linuxVideoRenderMode' => '動画レンダリングモード',
+			'settings.linuxVideoRenderModeDescription' => '自動はネイティブの Wayland プレーン（HDR 対応）を優先し、Texture は SDR フォールバック経路を強制します。',
+			'settings.linuxVideoRenderModeAuto' => '自動',
+			'settings.linuxVideoRenderModeTexture' => 'Texture（SDR）',
 			'themeEditor.builtIn' => '標準',
 			'themeEditor.presets' => 'プリセット',
 			'themeEditor.custom' => 'カスタム',
@@ -3894,12 +3902,12 @@ extension on TranslationsJa {
 			'themeEditor.colors' => '色',
 			'themeEditor.preview' => 'プレビュー',
 			'themeEditor.slots.bg' => '背景',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'サーフェス',
 			'themeEditor.slots.outline' => '枠線',
 			'themeEditor.slots.text' => 'テキスト',
 			'themeEditor.slots.textMuted' => '補助テキスト',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'アクセント',
 			'themeEditor.opacity' => '不透明度',
 			'themeEditor.hexHint' => '#RRGGBB または #AARRGGBB',
@@ -4408,12 +4416,12 @@ extension on TranslationsJa {
 			'profiles.profileNameHint' => '例：ゲスト、キッズ、ファミリールーム',
 			'profiles.pinProtectionOptional' => 'PIN保護（オプション）',
 			'profiles.pinExplain' => 'プロフィール切り替えには4桁のPINが必要です。',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => '続ける',
 			'profiles.pinsDontMatch' => 'PINが一致しません',
 			'profiles.tokenIdentityMismatch' => 'Plexプロフィールのトークンから予期しないサーバーが特定されました',
 			'connections.sectionTitle' => '接続',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => '接続を追加',
 			'connections.addConnectionSubtitleNoProfile' => 'Plexでサインインするか、JellyfinまたはEmbyサーバーに接続',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => '${displayName}に追加：Plex、Jellyfin、Emby、または別のプロフィールの接続',
@@ -4922,12 +4930,12 @@ extension on TranslationsJa {
 			'liveTv.recordSettings.startEarly' => '早めに開始（秒）',
 			'liveTv.recordSettings.endLate' => '遅めに終了（秒）',
 			'liveTv.recordSettings.newOnly' => '新しいエピソードのみ',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'すべてのチャンネルで録画',
 			'liveTv.recordSettings.anyTime' => 'すべての時間帯で録画',
 			'liveTv.recordSettings.skipInLibrary' => 'ライブラリにあるエピソードをスキップ',
 			'liveTv.recordSettings.keepUpTo' => '保持するエピソード数',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 ですべてのエピソードを保持',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => '${minutes}分後に開始',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} ${time}',
@@ -5436,12 +5444,12 @@ extension on TranslationsJa {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android HW',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
 			'performanceOverlay.decoderSoftware' => 'ソフトウェア',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'ハードウェア',
 			'performanceOverlay.tunnelingActive' => '有効',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted}（${failures}件失敗）',

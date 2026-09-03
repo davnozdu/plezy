@@ -609,6 +609,10 @@ class Translations$settings$zh extends Translations$settings$en {
 	@override String get playerScopeLibrary => '按媒体库';
 	@override String get playerScopeTitle => '按剧集或电影';
 	@override String get exportDialogTitle => '导出 Plezy 设置';
+	@override String get linuxVideoRenderMode => '视频渲染模式';
+	@override String get linuxVideoRenderModeDescription => '自动优先使用原生 Wayland 平面（支持 HDR）；纹理强制使用 SDR 回退路径。';
+	@override String get linuxVideoRenderModeAuto => '自动';
+	@override String get linuxVideoRenderModeTexture => '纹理（SDR）';
 }
 
 // Path: themeEditor
@@ -3880,6 +3884,10 @@ extension on TranslationsZh {
 			'settings.playerScopeLibrary' => '按媒体库',
 			'settings.playerScopeTitle' => '按剧集或电影',
 			'settings.exportDialogTitle' => '导出 Plezy 设置',
+			'settings.linuxVideoRenderMode' => '视频渲染模式',
+			'settings.linuxVideoRenderModeDescription' => '自动优先使用原生 Wayland 平面（支持 HDR）；纹理强制使用 SDR 回退路径。',
+			'settings.linuxVideoRenderModeAuto' => '自动',
+			'settings.linuxVideoRenderModeTexture' => '纹理（SDR）',
 			'themeEditor.builtIn' => '内置',
 			'themeEditor.presets' => '预设',
 			'themeEditor.custom' => '自定义',
@@ -3894,12 +3902,12 @@ extension on TranslationsZh {
 			'themeEditor.colors' => '颜色',
 			'themeEditor.preview' => '预览',
 			'themeEditor.slots.bg' => '背景',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => '表面',
 			'themeEditor.slots.outline' => '描边',
 			'themeEditor.slots.text' => '文字',
 			'themeEditor.slots.textMuted' => '次要文字',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => '强调色',
 			'themeEditor.opacity' => '不透明度',
 			'themeEditor.hexHint' => '#RRGGBB 或 #AARRGGBB',
@@ -4408,12 +4416,12 @@ extension on TranslationsZh {
 			'profiles.profileNameHint' => '例如：访客、儿童、客厅',
 			'profiles.pinProtectionOptional' => 'PIN 保护（可选）',
 			'profiles.pinExplain' => '切换用户资料时需要输入 4 位 PIN。',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => '继续',
 			'profiles.pinsDontMatch' => 'PIN 不匹配',
 			'profiles.tokenIdentityMismatch' => 'Plex 用户资料令牌解析到了非预期服务器',
 			'connections.sectionTitle' => '连接',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => '添加连接',
 			'connections.addConnectionSubtitleNoProfile' => '使用 Plex 登录，或连接 Jellyfin 或 Emby 服务器',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => '添加到 ${displayName}：Plex、Jellyfin、Emby，或其他用户资料的连接',
@@ -4922,12 +4930,12 @@ extension on TranslationsZh {
 			'liveTv.recordSettings.startEarly' => '提前开始（秒）',
 			'liveTv.recordSettings.endLate' => '延后结束（秒）',
 			'liveTv.recordSettings.newOnly' => '仅新剧集',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => '在任意频道录制',
 			'liveTv.recordSettings.anyTime' => '在任意时间录制',
 			'liveTv.recordSettings.skipInLibrary' => '跳过媒体库中已有的剧集',
 			'liveTv.recordSettings.keepUpTo' => '保留的剧集数',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 表示保留全部剧集',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => '${minutes} 分钟后开始',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} ${time}',
@@ -5436,12 +5444,12 @@ extension on TranslationsZh {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android 硬件',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA 硬件',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm 硬件',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek 硬件',
 			'performanceOverlay.decoderExynosHw' => 'Exynos 硬件',
 			'performanceOverlay.decoderSoftware' => '软件',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => '硬件',
 			'performanceOverlay.tunnelingActive' => '已启用',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted}（${failures} 个失败）',

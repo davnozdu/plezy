@@ -609,6 +609,10 @@ class _Translations$settings$de extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Pro Bibliothek';
 	@override String get playerScopeTitle => 'Pro Serie oder Film';
 	@override String get exportDialogTitle => 'Plezy-Einstellungen exportieren';
+	@override String get linuxVideoRenderMode => 'Video-Rendermodus';
+	@override String get linuxVideoRenderModeDescription => 'Automatisch bevorzugt die native Wayland-Ebene (HDR-fähig); Texture erzwingt den SDR-Fallback-Pfad.';
+	@override String get linuxVideoRenderModeAuto => 'Automatisch';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsDe {
 			'settings.playerScopeLibrary' => 'Pro Bibliothek',
 			'settings.playerScopeTitle' => 'Pro Serie oder Film',
 			'settings.exportDialogTitle' => 'Plezy-Einstellungen exportieren',
+			'settings.linuxVideoRenderMode' => 'Video-Rendermodus',
+			'settings.linuxVideoRenderModeDescription' => 'Automatisch bevorzugt die native Wayland-Ebene (HDR-fähig); Texture erzwingt den SDR-Fallback-Pfad.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatisch',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Integriert',
 			'themeEditor.presets' => 'Vorlagen',
 			'themeEditor.custom' => 'Benutzerdefiniert',
@@ -3906,12 +3914,12 @@ extension on TranslationsDe {
 			'themeEditor.colors' => 'Farben',
 			'themeEditor.preview' => 'Vorschau',
 			'themeEditor.slots.bg' => 'Hintergrund',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Oberfläche',
 			'themeEditor.slots.outline' => 'Kontur',
 			'themeEditor.slots.text' => 'Text',
 			'themeEditor.slots.textMuted' => 'Sekundärtext',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Akzent',
 			'themeEditor.opacity' => 'Deckkraft',
 			'themeEditor.hexHint' => '#RRGGBB oder #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsDe {
 			'profiles.profileNameHint' => 'z. B. Gäste, Kinder, Wohnzimmer',
 			'profiles.pinProtectionOptional' => 'PIN-Schutz (optional)',
 			'profiles.pinExplain' => '4-stellige PIN zum Profilwechsel erforderlich.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Weiter',
 			'profiles.pinsDontMatch' => 'PINs stimmen nicht überein',
 			'profiles.tokenIdentityMismatch' => 'Das Plex-Profil-Token wurde einem unerwarteten Server zugeordnet',
 			'connections.sectionTitle' => 'Verbindungen',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Verbindung hinzufügen',
 			'connections.addConnectionSubtitleNoProfile' => 'Mit Plex anmelden oder mit einem Jellyfin- oder Emby-Server verbinden',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Zu ${displayName} hinzufügen: Plex, Jellyfin, Emby oder eine andere Profilverbindung',
@@ -4934,12 +4942,12 @@ extension on TranslationsDe {
 			'liveTv.recordSettings.startEarly' => 'Früher starten (Sekunden)',
 			'liveTv.recordSettings.endLate' => 'Später beenden (Sekunden)',
 			'liveTv.recordSettings.newOnly' => 'Nur neue Episoden',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Auf jedem Sender aufnehmen',
 			'liveTv.recordSettings.anyTime' => 'Zu jeder Zeit aufnehmen',
 			'liveTv.recordSettings.skipInLibrary' => 'Episoden überspringen, die schon in der Bibliothek sind',
 			'liveTv.recordSettings.keepUpTo' => 'Zu behaltende Episoden',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 behält alle Episoden',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Beginnt in ${minutes} Min.',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} um ${time}',
@@ -5448,12 +5456,12 @@ extension on TranslationsDe {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android HW',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
 			'performanceOverlay.decoderSoftware' => 'Software',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Hardware',
 			'performanceOverlay.tunnelingActive' => 'Aktiv',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} fehlgeschlagen)',

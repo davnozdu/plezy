@@ -609,6 +609,10 @@ class _Translations$settings$uz extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Kutubxona boʻyicha';
 	@override String get playerScopeTitle => 'Serial yoki film boʻyicha';
 	@override String get exportDialogTitle => 'Plezy sozlamalarini eksport qilish';
+	@override String get linuxVideoRenderMode => 'Video ko\'rsatish rejimi';
+	@override String get linuxVideoRenderModeDescription => 'Avtomatik rejim mahalliy Wayland tekisligini afzal ko\'radi (HDR qo\'llab-quvvatlaydi); Texture SDR zaxira yo\'lini majbur qiladi.';
+	@override String get linuxVideoRenderModeAuto => 'Avtomatik';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsUz {
 			'settings.playerScopeLibrary' => 'Kutubxona boʻyicha',
 			'settings.playerScopeTitle' => 'Serial yoki film boʻyicha',
 			'settings.exportDialogTitle' => 'Plezy sozlamalarini eksport qilish',
+			'settings.linuxVideoRenderMode' => 'Video ko\'rsatish rejimi',
+			'settings.linuxVideoRenderModeDescription' => 'Avtomatik rejim mahalliy Wayland tekisligini afzal ko\'radi (HDR qo\'llab-quvvatlaydi); Texture SDR zaxira yo\'lini majbur qiladi.',
+			'settings.linuxVideoRenderModeAuto' => 'Avtomatik',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Oʻrnatilgan',
 			'themeEditor.presets' => 'Tayyor mavzular',
 			'themeEditor.custom' => 'Shaxsiy',
@@ -3906,12 +3914,12 @@ extension on TranslationsUz {
 			'themeEditor.colors' => 'Ranglar',
 			'themeEditor.preview' => 'Oldindan koʻrish',
 			'themeEditor.slots.bg' => 'Fon',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Sirt',
 			'themeEditor.slots.outline' => 'Kontur',
 			'themeEditor.slots.text' => 'Matn',
 			'themeEditor.slots.textMuted' => 'Ikkilamchi matn',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Urgʻu rangi',
 			'themeEditor.opacity' => 'Noshaffoflik',
 			'themeEditor.hexHint' => '#RRGGBB yoki #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsUz {
 			'profiles.profileNameHint' => 'masalan, Mehmonlar, Bolalar',
 			'profiles.pinProtectionOptional' => 'PIN himoyasi (ixtiyoriy)',
 			'profiles.pinExplain' => 'Profillar orasida oʻtish uchun 4 xonali PIN kod talab qilinadi.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Davom ettirish',
 			'profiles.pinsDontMatch' => 'PIN kodlar mos kelmadi',
 			'profiles.tokenIdentityMismatch' => 'Plex profil tokeni kutilmagan serverga tegishli boʻlib chiqdi',
 			'connections.sectionTitle' => 'Ulanishlar',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Ulanish qoʻshish',
 			'connections.addConnectionSubtitleNoProfile' => 'Plex orqali kiring yoki Jellyfin yoki Emby serveriga ulaning',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => '${displayName} profiliga qoʻshish: Plex, Jellyfin, Emby yoki boshqa ulanish',
@@ -4934,12 +4942,12 @@ extension on TranslationsUz {
 			'liveTv.recordSettings.startEarly' => 'Erta boshlash (soniya)',
 			'liveTv.recordSettings.endLate' => 'Kech tugatish (soniya)',
 			'liveTv.recordSettings.newOnly' => 'Faqat yangi epizodlar',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Istalgan kanaldan yozib olish',
 			'liveTv.recordSettings.anyTime' => 'Istalgan vaqtda yozib olish',
 			'liveTv.recordSettings.skipInLibrary' => 'Kutubxonada mavjud epizodlarni oʻtkazib yuborish',
 			'liveTv.recordSettings.keepUpTo' => 'Saqlanadigan epizodlar',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 barcha epizodlarni saqlaydi',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => '${minutes} daqiqadan keyin boshlanadi',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day}, soat ${time} da',
@@ -5448,12 +5456,12 @@ extension on TranslationsUz {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android HW',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
 			'performanceOverlay.decoderSoftware' => 'Dasturiy',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Apparat',
 			'performanceOverlay.tunnelingActive' => 'Faol',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} ta muvaffaqiyatsiz)',

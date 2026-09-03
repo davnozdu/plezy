@@ -609,6 +609,10 @@ class _Translations$settings$nb extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Per bibliotek';
 	@override String get playerScopeTitle => 'Per serie eller film';
 	@override String get exportDialogTitle => 'Eksporter Plezy-innstillinger';
+	@override String get linuxVideoRenderMode => 'Video-gjengivelsesmodus';
+	@override String get linuxVideoRenderModeDescription => 'Automatisk foretrekker det native Wayland-planet (HDR-kompatibelt); Texture tvinger SDR-fallback-stien.';
+	@override String get linuxVideoRenderModeAuto => 'Automatisk';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsNb {
 			'settings.playerScopeLibrary' => 'Per bibliotek',
 			'settings.playerScopeTitle' => 'Per serie eller film',
 			'settings.exportDialogTitle' => 'Eksporter Plezy-innstillinger',
+			'settings.linuxVideoRenderMode' => 'Video-gjengivelsesmodus',
+			'settings.linuxVideoRenderModeDescription' => 'Automatisk foretrekker det native Wayland-planet (HDR-kompatibelt); Texture tvinger SDR-fallback-stien.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatisk',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Innebygde',
 			'themeEditor.presets' => 'Forhåndsinnstillinger',
 			'themeEditor.custom' => 'Egendefinert',
@@ -3906,12 +3914,12 @@ extension on TranslationsNb {
 			'themeEditor.colors' => 'Farger',
 			'themeEditor.preview' => 'Forhåndsvisning',
 			'themeEditor.slots.bg' => 'Bakgrunn',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Overflate',
 			'themeEditor.slots.outline' => 'Kontur',
 			'themeEditor.slots.text' => 'Tekst',
 			'themeEditor.slots.textMuted' => 'Sekundærtekst',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Aksent',
 			'themeEditor.opacity' => 'Opasitet',
 			'themeEditor.hexHint' => '#RRGGBB eller #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsNb {
 			'profiles.profileNameHint' => 'f.eks. Gjester, Barn, Familierom',
 			'profiles.pinProtectionOptional' => 'PIN-beskyttelse (valgfri)',
 			'profiles.pinExplain' => '4-sifret PIN kreves for å bytte profiler.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Fortsett',
 			'profiles.pinsDontMatch' => 'PIN-ene samsvarer ikke',
 			'profiles.tokenIdentityMismatch' => 'Plex-profiltokenet ble knyttet til en uventet server',
 			'connections.sectionTitle' => 'Tilkoblinger',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Legg til tilkobling',
 			'connections.addConnectionSubtitleNoProfile' => 'Logg inn med Plex eller koble til en Jellyfin- eller Emby-server',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Legg til for ${displayName}: Plex, Jellyfin, Emby eller en annen profiltilkobling',
@@ -4934,12 +4942,12 @@ extension on TranslationsNb {
 			'liveTv.recordSettings.startEarly' => 'Start tidligere (sekunder)',
 			'liveTv.recordSettings.endLate' => 'Slutt senere (sekunder)',
 			'liveTv.recordSettings.newOnly' => 'Bare nye episoder',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Ta opp på alle kanaler',
 			'liveTv.recordSettings.anyTime' => 'Ta opp når som helst',
 			'liveTv.recordSettings.skipInLibrary' => 'Hopp over episoder som allerede finnes i biblioteket',
 			'liveTv.recordSettings.keepUpTo' => 'Episoder som skal beholdes',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 beholder alle episoder',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Starter om ${minutes} min',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} kl. ${time}',
@@ -5448,12 +5456,12 @@ extension on TranslationsNb {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android-maskinvare',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA-maskinvare',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm-maskinvare',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek-maskinvare',
 			'performanceOverlay.decoderExynosHw' => 'Exynos-maskinvare',
 			'performanceOverlay.decoderSoftware' => 'Programvare',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Maskinvare',
 			'performanceOverlay.tunnelingActive' => 'Aktiv',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} mislyktes)',

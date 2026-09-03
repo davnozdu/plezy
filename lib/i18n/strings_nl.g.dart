@@ -609,6 +609,10 @@ class _Translations$settings$nl extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Per bibliotheek';
 	@override String get playerScopeTitle => 'Per serie of film';
 	@override String get exportDialogTitle => 'Plezy-instellingen exporteren';
+	@override String get linuxVideoRenderMode => 'Videoweergavemodus';
+	@override String get linuxVideoRenderModeDescription => 'Automatisch geeft de voorkeur aan het native Wayland-vlak (HDR-compatibel); Texture dwingt het SDR-reservepad af.';
+	@override String get linuxVideoRenderModeAuto => 'Automatisch';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsNl {
 			'settings.playerScopeLibrary' => 'Per bibliotheek',
 			'settings.playerScopeTitle' => 'Per serie of film',
 			'settings.exportDialogTitle' => 'Plezy-instellingen exporteren',
+			'settings.linuxVideoRenderMode' => 'Videoweergavemodus',
+			'settings.linuxVideoRenderModeDescription' => 'Automatisch geeft de voorkeur aan het native Wayland-vlak (HDR-compatibel); Texture dwingt het SDR-reservepad af.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatisch',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Ingebouwd',
 			'themeEditor.presets' => 'Voorinstellingen',
 			'themeEditor.custom' => 'Aangepast',
@@ -3906,12 +3914,12 @@ extension on TranslationsNl {
 			'themeEditor.colors' => 'Kleuren',
 			'themeEditor.preview' => 'Voorbeeld',
 			'themeEditor.slots.bg' => 'Achtergrond',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Oppervlak',
 			'themeEditor.slots.outline' => 'Rand',
 			'themeEditor.slots.text' => 'Tekst',
 			'themeEditor.slots.textMuted' => 'Secundaire tekst',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Accent',
 			'themeEditor.opacity' => 'Dekking',
 			'themeEditor.hexHint' => '#RRGGBB of #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsNl {
 			'profiles.profileNameHint' => 'bijv. Gasten, Kinderen, Woonkamer',
 			'profiles.pinProtectionOptional' => 'Pincodebeveiliging (optioneel)',
 			'profiles.pinExplain' => 'Een viercijferige pincode is vereist om van profiel te wisselen.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Doorgaan',
 			'profiles.pinsDontMatch' => 'De pincodes komen niet overeen',
 			'profiles.tokenIdentityMismatch' => 'Het token van het Plex-profiel bleek bij een onverwachte server te horen',
 			'connections.sectionTitle' => 'Verbindingen',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Verbinding toevoegen',
 			'connections.addConnectionSubtitleNoProfile' => 'Meld je aan met Plex of verbind een Jellyfin- of Emby-server',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Toevoegen aan ${displayName}: Plex, Jellyfin, Emby of een andere profielverbinding',
@@ -4934,12 +4942,12 @@ extension on TranslationsNl {
 			'liveTv.recordSettings.startEarly' => 'Eerder beginnen (seconden)',
 			'liveTv.recordSettings.endLate' => 'Later stoppen (seconden)',
 			'liveTv.recordSettings.newOnly' => 'Alleen nieuwe afleveringen',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Op elke zender opnemen',
 			'liveTv.recordSettings.anyTime' => 'Op elk tijdstip opnemen',
 			'liveTv.recordSettings.skipInLibrary' => 'Afleveringen overslaan die al in de bibliotheek staan',
 			'liveTv.recordSettings.keepUpTo' => 'Te bewaren afleveringen',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 bewaart alle afleveringen',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Begint over ${minutes} min',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} om ${time}',
@@ -5448,12 +5456,12 @@ extension on TranslationsNl {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android HW',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
 			'performanceOverlay.decoderSoftware' => 'Software',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Hardware',
 			'performanceOverlay.tunnelingActive' => 'Actief',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} mislukt)',

@@ -609,6 +609,10 @@ class _Translations$settings$sv extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Per bibliotek';
 	@override String get playerScopeTitle => 'Per serie eller film';
 	@override String get exportDialogTitle => 'Exportera Plezy-inställningar';
+	@override String get linuxVideoRenderMode => 'Videorenderingsläge';
+	@override String get linuxVideoRenderModeDescription => 'Automatiskt föredrar det inbyggda Wayland-planet (HDR-kompatibelt); Texture tvingar SDR-reservvägen.';
+	@override String get linuxVideoRenderModeAuto => 'Automatiskt';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsSv {
 			'settings.playerScopeLibrary' => 'Per bibliotek',
 			'settings.playerScopeTitle' => 'Per serie eller film',
 			'settings.exportDialogTitle' => 'Exportera Plezy-inställningar',
+			'settings.linuxVideoRenderMode' => 'Videorenderingsläge',
+			'settings.linuxVideoRenderModeDescription' => 'Automatiskt föredrar det inbyggda Wayland-planet (HDR-kompatibelt); Texture tvingar SDR-reservvägen.',
+			'settings.linuxVideoRenderModeAuto' => 'Automatiskt',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Inbyggda',
 			'themeEditor.presets' => 'Förinställda',
 			'themeEditor.custom' => 'Anpassat',
@@ -3906,12 +3914,12 @@ extension on TranslationsSv {
 			'themeEditor.colors' => 'Färger',
 			'themeEditor.preview' => 'Förhandsgranskning',
 			'themeEditor.slots.bg' => 'Bakgrund',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Yta',
 			'themeEditor.slots.outline' => 'Kontur',
 			'themeEditor.slots.text' => 'Text',
 			'themeEditor.slots.textMuted' => 'Sekundär text',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Accentfärg',
 			'themeEditor.opacity' => 'Opacitet',
 			'themeEditor.hexHint' => '#RRGGBB eller #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsSv {
 			'profiles.profileNameHint' => 't.ex. Gäster, Barn eller Familjerum',
 			'profiles.pinProtectionOptional' => 'PIN-skydd (valfritt)',
 			'profiles.pinExplain' => 'En fyrsiffrig PIN-kod krävs för att byta profil.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Fortsätt',
 			'profiles.pinsDontMatch' => 'PIN-koderna stämmer inte överens',
 			'profiles.tokenIdentityMismatch' => 'Plex-profiltoken kopplades till en oväntad server',
 			'connections.sectionTitle' => 'Anslutningar',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Lägg till anslutning',
 			'connections.addConnectionSubtitleNoProfile' => 'Logga in med Plex eller anslut en Jellyfin- eller Emby-server',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => 'Lägg till för ${displayName}: Plex, Jellyfin, Emby eller en annan profilanslutning',
@@ -4934,12 +4942,12 @@ extension on TranslationsSv {
 			'liveTv.recordSettings.startEarly' => 'Börja tidigare (sekunder)',
 			'liveTv.recordSettings.endLate' => 'Sluta senare (sekunder)',
 			'liveTv.recordSettings.newOnly' => 'Endast nya avsnitt',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Spela in på alla kanaler',
 			'liveTv.recordSettings.anyTime' => 'Spela in när som helst',
 			'liveTv.recordSettings.skipInLibrary' => 'Hoppa över avsnitt som redan finns i biblioteket',
 			'liveTv.recordSettings.keepUpTo' => 'Avsnitt att behålla',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 behåller alla avsnitt',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Börjar om ${minutes} min',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} kl. ${time}',
@@ -5448,12 +5456,12 @@ extension on TranslationsSv {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android HW',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA HW',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm HW',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek HW',
 			'performanceOverlay.decoderExynosHw' => 'Exynos HW',
 			'performanceOverlay.decoderSoftware' => 'Programvara',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Maskinvara',
 			'performanceOverlay.tunnelingActive' => 'Aktiv',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} misslyckades)',

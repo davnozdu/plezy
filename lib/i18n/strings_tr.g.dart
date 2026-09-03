@@ -609,6 +609,10 @@ class _Translations$settings$tr extends Translations$settings$en {
 	@override String get playerScopeLibrary => 'Kitaplık başına';
 	@override String get playerScopeTitle => 'Dizi veya film başına';
 	@override String get exportDialogTitle => 'Plezy ayarlarını dışa aktar';
+	@override String get linuxVideoRenderMode => 'Video işleme modu';
+	@override String get linuxVideoRenderModeDescription => 'Otomatik, yerel Wayland düzlemini tercih eder (HDR destekli); Texture, SDR yedek yolunu zorlar.';
+	@override String get linuxVideoRenderModeAuto => 'Otomatik';
+	@override String get linuxVideoRenderModeTexture => 'Texture (SDR)';
 }
 
 // Path: themeEditor
@@ -3892,6 +3896,10 @@ extension on TranslationsTr {
 			'settings.playerScopeLibrary' => 'Kitaplık başına',
 			'settings.playerScopeTitle' => 'Dizi veya film başına',
 			'settings.exportDialogTitle' => 'Plezy ayarlarını dışa aktar',
+			'settings.linuxVideoRenderMode' => 'Video işleme modu',
+			'settings.linuxVideoRenderModeDescription' => 'Otomatik, yerel Wayland düzlemini tercih eder (HDR destekli); Texture, SDR yedek yolunu zorlar.',
+			'settings.linuxVideoRenderModeAuto' => 'Otomatik',
+			'settings.linuxVideoRenderModeTexture' => 'Texture (SDR)',
 			'themeEditor.builtIn' => 'Yerleşik',
 			'themeEditor.presets' => 'Hazır Temalar',
 			'themeEditor.custom' => 'Özel',
@@ -3906,12 +3914,12 @@ extension on TranslationsTr {
 			'themeEditor.colors' => 'Renkler',
 			'themeEditor.preview' => 'Önizleme',
 			'themeEditor.slots.bg' => 'Arka plan',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Yüzey',
 			'themeEditor.slots.outline' => 'Kenarlık',
 			'themeEditor.slots.text' => 'Metin',
 			'themeEditor.slots.textMuted' => 'İkincil metin',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.accent' => 'Vurgu',
 			'themeEditor.opacity' => 'Opaklık',
 			'themeEditor.hexHint' => '#RRGGBB veya #AARRGGBB',
@@ -4420,12 +4428,12 @@ extension on TranslationsTr {
 			'profiles.profileNameHint' => 'ör. Misafirler, Çocuklar, Oturma Odası',
 			'profiles.pinProtectionOptional' => 'PIN koruması (isteğe bağlı)',
 			'profiles.pinExplain' => 'Profiller arasında geçiş yapmak için 4 haneli PIN gereklidir.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.continueButton' => 'Devam Et',
 			'profiles.pinsDontMatch' => 'PIN\'ler eşleşmiyor',
 			'profiles.tokenIdentityMismatch' => 'Plex profil belirtecinin beklenmeyen bir sunucuya ait olduğu belirlendi',
 			'connections.sectionTitle' => 'Bağlantılar',
-			_ => null,
-		} ?? switch (path) {
 			'connections.addConnection' => 'Bağlantı ekle',
 			'connections.addConnectionSubtitleNoProfile' => 'Plex ile giriş yapın veya bir Jellyfin ya da Emby sunucusu bağlayın',
 			'connections.addConnectionSubtitleScoped' => ({required Object displayName}) => '${displayName} profiline ekle: Plex, Jellyfin, Emby veya başka bir profil bağlantısı',
@@ -4934,12 +4942,12 @@ extension on TranslationsTr {
 			'liveTv.recordSettings.startEarly' => 'Erken başlat (saniye)',
 			'liveTv.recordSettings.endLate' => 'Geç bitir (saniye)',
 			'liveTv.recordSettings.newOnly' => 'Yalnızca yeni bölümler',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.anyChannel' => 'Herhangi bir kanalda kaydet',
 			'liveTv.recordSettings.anyTime' => 'Herhangi bir saatte kaydet',
 			'liveTv.recordSettings.skipInLibrary' => 'Kitaplıkta zaten bulunan bölümleri atla',
 			'liveTv.recordSettings.keepUpTo' => 'Saklanacak bölüm sayısı',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpToHint' => '0 tüm bölümleri saklar',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => '${minutes} dk içinde başlıyor',
 			'liveTv.dayAtTime' => ({required Object day, required Object time}) => '${day} saat ${time}',
@@ -5448,12 +5456,12 @@ extension on TranslationsTr {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android Donanım',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA Donanım',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm Donanım',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek Donanım',
 			'performanceOverlay.decoderExynosHw' => 'Exynos Donanım',
 			'performanceOverlay.decoderSoftware' => 'Yazılım',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderHardware' => 'Donanım',
 			'performanceOverlay.tunnelingActive' => 'Etkin',
 			'performanceOverlay.dvRpuFailed' => ({required Object converted, required Object failures}) => '${converted} (${failures} başarısız)',
