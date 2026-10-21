@@ -4059,8 +4059,6 @@ extension on TranslationsDe {
 			'fileInfo.filePresent' => 'Datei vorhanden',
 			'fileInfo.fileReadable' => 'Vom Server lesbar',
 			'fileInfo.streamPath' => 'Stream-Pfad',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Für Streaming optimiert',
 			'fileInfo.has64bitOffsets' => '64-Bit-Offsets',
 			'fileInfo.protocol' => 'Protokoll',
@@ -4604,8 +4602,6 @@ extension on TranslationsDe {
 			'libraries.groupings.tracks' => 'Titel',
 			'libraries.groupings.folders' => 'Ordner',
 			'libraries.filterCategories.genre' => 'Genre',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Jahr',
 			'libraries.filterCategories.contentRating' => 'Altersfreigabe',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -5239,8 +5235,6 @@ extension on TranslationsDe {
 			'downloads.syncRuleUpdated' => 'Synchronisierungsregel aktualisiert',
 			'downloads.syncRuleRemoved' => 'Synchronisierungsregel entfernt',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Synchronisierungsregel und zugehörige Downloads entfernt',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Synchronisierungsregeln werden gerade aktualisiert. Versuche es gleich noch einmal.',
 			'downloads.syncRuleCleanupUnavailable' => 'Zugehörige Downloads konnten nicht sicher ermittelt werden. Verbinde den Server erneut und versuche es noch einmal, oder entferne die Regel, ohne die Downloads zu löschen.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} neue Episoden für ${title} synchronisiert',

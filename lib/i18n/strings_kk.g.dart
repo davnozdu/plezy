@@ -4059,8 +4059,6 @@ extension on TranslationsKk {
 			'fileInfo.filePresent' => 'Файл бар',
 			'fileInfo.fileReadable' => 'Сервер оқи алады',
 			'fileInfo.streamPath' => 'Ағын жолы',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Ағынды беру үшін оңтайландырылған',
 			'fileInfo.has64bitOffsets' => '64-биттік ығысулар',
 			'fileInfo.protocol' => 'Протокол',
@@ -4604,8 +4602,6 @@ extension on TranslationsKk {
 			'libraries.groupings.tracks' => 'Әндер',
 			'libraries.groupings.folders' => 'Қапшықтар',
 			'libraries.filterCategories.genre' => 'Жанр',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Жыл',
 			'libraries.filterCategories.contentRating' => 'Мазмұн рейтингі',
 			'libraries.filterCategories.tag' => 'Тег',
@@ -5239,8 +5235,6 @@ extension on TranslationsKk {
 			'downloads.syncRuleUpdated' => 'Синхрондау ережесі жаңартылды',
 			'downloads.syncRuleRemoved' => 'Синхрондау ережесі өшірілді',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Синхрондау ережесі және байланысты жүктеулер өшірілді',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Синхрондау ережелері қазір жаңартылуда. Сәлден соң қайталап көріңіз.',
 			'downloads.syncRuleCleanupUnavailable' => 'Байланысты жүктеулерді қауіпсіз анықтау мүмкін болмады. Серверге қайта қосылып көріңіз немесе ережені жүктеулерді жоймай өшіріңіз.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} үшін ${count} жаңа бөлім синхрондалды',

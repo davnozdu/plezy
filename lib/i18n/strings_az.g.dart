@@ -4059,8 +4059,6 @@ extension on TranslationsAz {
 			'fileInfo.filePresent' => 'Fayl mövcuddur',
 			'fileInfo.fileReadable' => 'Server tərəfindən oxuna bilir',
 			'fileInfo.streamPath' => 'Axın yolu',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Yayım üçün optimallaşdırılıb',
 			'fileInfo.has64bitOffsets' => '64-bit ofsetlər',
 			'fileInfo.protocol' => 'Protokol',
@@ -4604,8 +4602,6 @@ extension on TranslationsAz {
 			'libraries.groupings.tracks' => 'Mahnılar',
 			'libraries.groupings.folders' => 'Qovluqlar',
 			'libraries.filterCategories.genre' => 'Janr',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'İl',
 			'libraries.filterCategories.contentRating' => 'Məzmun reytinqi',
 			'libraries.filterCategories.tag' => 'Teq',
@@ -5239,8 +5235,6 @@ extension on TranslationsAz {
 			'downloads.syncRuleUpdated' => 'Eyniləşdirmə qaydası yeniləndi',
 			'downloads.syncRuleRemoved' => 'Eyniləşdirmə qaydası silindi',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Eyniləşdirmə qaydası və əlaqəli yükləmələr silindi',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Eyniləşdirmə qaydaları hazırda yenilənir. Bir azdan təzədən cəhd edin.',
 			'downloads.syncRuleCleanupUnavailable' => 'Əlaqəli yükləmələr təhlükəsiz şəkildə müəyyən edilə bilmədi. Serverə yenidən qoşulub cəhd edin və ya qaydanı yükləmələri silmədən silin.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} üçün ${count} yeni seriya eyniləşdirildi',

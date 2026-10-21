@@ -4059,8 +4059,6 @@ extension on TranslationsUz {
 			'fileInfo.filePresent' => 'Fayl mavjud',
 			'fileInfo.fileReadable' => 'Server tomonidan oʻqiladigan',
 			'fileInfo.streamPath' => 'Oqim yoʻli',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Oqimli uzatish uchun optimallashtirilgan',
 			'fileInfo.has64bitOffsets' => '64-bitli siljishlar',
 			'fileInfo.protocol' => 'Protokol',
@@ -4604,8 +4602,6 @@ extension on TranslationsUz {
 			'libraries.groupings.tracks' => 'Taronalar',
 			'libraries.groupings.folders' => 'Jildlar',
 			'libraries.filterCategories.genre' => 'Janr',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Yil',
 			'libraries.filterCategories.contentRating' => 'Kontent reytingi',
 			'libraries.filterCategories.tag' => 'Teg',
@@ -5239,8 +5235,6 @@ extension on TranslationsUz {
 			'downloads.syncRuleUpdated' => 'Sinxronlash qoidasi yangilandi',
 			'downloads.syncRuleRemoved' => 'Sinxronlash qoidasi oʻchirildi',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Sinxronlash qoidasi va bogʻliq yuklamalar oʻchirildi',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Sinxronlash qoidalari hozir yangilanmoqda. Bir ozdan soʻng qayta urinib koʻring.',
 			'downloads.syncRuleCleanupUnavailable' => 'Bogʻliq yuklamalarni xavfsiz aniqlab boʻlmadi. Serverga qayta ulanib koʻring yoki yuklamalarni oʻchirmasdan qoidani olib tashlang.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} uchun ${count} yangi qism sinxronlandi',

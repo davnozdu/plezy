@@ -237,6 +237,12 @@ class _Translations$update$ru extends Translations$update$en {
 	@override String get viewRelease => 'Посмотреть релиз';
 	@override String get latestVersion => 'У вас последняя версия';
 	@override String get checkFailed => 'Не удалось проверить обновления';
+	@override String get install => 'Обновить';
+	@override String downloading({required Object percent}) => 'Загрузка… ${percent}%';
+	@override String get installing => 'Установка…';
+	@override String installed({required Object version}) => 'Версия ${version} установлена. Перезапустите Plezy, чтобы начать ею пользоваться.';
+	@override String get restart => 'Перезапустить';
+	@override String installFailed({required Object error}) => 'Не удалось установить обновление: ${error}';
 }
 
 // Path: supporter
@@ -3558,6 +3564,12 @@ extension on TranslationsRu {
 			'update.viewRelease' => 'Посмотреть релиз',
 			'update.latestVersion' => 'У вас последняя версия',
 			'update.checkFailed' => 'Не удалось проверить обновления',
+			'update.install' => 'Обновить',
+			'update.downloading' => ({required Object percent}) => 'Загрузка… ${percent}%',
+			'update.installing' => 'Установка…',
+			'update.installed' => ({required Object version}) => 'Версия ${version} установлена. Перезапустите Plezy, чтобы начать ею пользоваться.',
+			'update.restart' => 'Перезапустить',
+			'update.installFailed' => ({required Object error}) => 'Не удалось установить обновление: ${error}',
 			'supporter.title' => 'Plezy Supporter',
 			'supporter.intro' => 'Разовая покупка, которая поддерживает разработку Plezy и открывает косметические дополнения:',
 			'supporter.presetThemes' => 'Готовые темы',
@@ -3929,14 +3941,14 @@ extension on TranslationsRu {
 			'themeEditor.locked' => 'Доступно с Supporter',
 			'themeEditor.savedLocked' => 'Сохранено — станет доступно с Supporter',
 			'themeEditor.title' => 'Своя тема',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.startFrom' => 'Взять за основу',
 			'themeEditor.startFromDescription' => 'Скопировать все цвета из другой темы',
 			'themeEditor.colors' => 'Цвета',
 			'themeEditor.preview' => 'Предпросмотр',
 			'themeEditor.slots.bg' => 'Фон',
 			'themeEditor.slots.surface' => 'Поверхность',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.outline' => 'Обводка',
 			'themeEditor.slots.text' => 'Текст',
 			'themeEditor.slots.textMuted' => 'Второстепенный текст',
@@ -4083,8 +4095,6 @@ extension on TranslationsRu {
 			'fileInfo.filePresent' => 'Файл присутствует',
 			'fileInfo.fileReadable' => 'Доступен для чтения сервером',
 			'fileInfo.streamPath' => 'Путь потока',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Оптимизировано для потоковой передачи',
 			'fileInfo.has64bitOffsets' => '64-битные смещения',
 			'fileInfo.protocol' => 'Протокол',
@@ -4445,14 +4455,14 @@ extension on TranslationsRu {
 			'profiles.incorrectPinTryAgain' => 'Неверный PIN. Попробуйте ещё раз.',
 			'profiles.sourceProfileMissingParentAccount' => 'У исходного профиля отсутствует родительская учётная запись.',
 			'profiles.failedToLoadHomeUsers' => 'Не удалось загрузить пользователей Plex Home. Проверьте подключение и попробуйте ещё раз.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.failedToVerifyPin' => 'Не удалось проверить PIN.',
 			'profiles.newProfile' => 'Новый профиль',
 			'profiles.profileNameHint' => 'например, Гости, Дети, Семейная комната',
 			'profiles.pinProtectionOptional' => 'Защита PIN-кодом (необязательно)',
 			'profiles.pinExplain' => 'Для переключения профилей нужен 4-значный PIN.',
 			'profiles.continueButton' => 'Продолжить',
-			_ => null,
-		} ?? switch (path) {
 			'profiles.pinsDontMatch' => 'PIN-коды не совпадают',
 			'profiles.tokenIdentityMismatch' => 'Токен профиля Plex указал на неожиданный сервер',
 			'connections.sectionTitle' => 'Подключения',
@@ -4628,8 +4638,6 @@ extension on TranslationsRu {
 			'libraries.groupings.tracks' => 'Треки',
 			'libraries.groupings.folders' => 'Папки',
 			'libraries.filterCategories.genre' => 'Жанр',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Год',
 			'libraries.filterCategories.contentRating' => 'Возрастной рейтинг',
 			'libraries.filterCategories.tag' => 'Тег',
@@ -4961,14 +4969,14 @@ extension on TranslationsRu {
 			'liveTv.rulesProcessRequested' => 'Запрошен пересчёт правил',
 			'liveTv.rulesProcessFailed' => 'Не удалось повторно применить правила записи',
 			'liveTv.recordShow' => 'Записать передачу',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.recordSettings.startEarly' => 'Начинать раньше (секунды)',
 			'liveTv.recordSettings.endLate' => 'Заканчивать позже (секунды)',
 			'liveTv.recordSettings.newOnly' => 'Только новые эпизоды',
 			'liveTv.recordSettings.anyChannel' => 'Записывать на любом канале',
 			'liveTv.recordSettings.anyTime' => 'Записывать в любое время',
 			'liveTv.recordSettings.skipInLibrary' => 'Пропускать эпизоды, уже имеющиеся в библиотеке',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.recordSettings.keepUpTo' => 'Сколько эпизодов хранить',
 			'liveTv.recordSettings.keepUpToHint' => '0 — хранить все эпизоды',
 			'liveTv.startingInMinutes' => ({required Object minutes}) => 'Начало через ${minutes} мин',
@@ -5263,8 +5271,6 @@ extension on TranslationsRu {
 			'downloads.syncRuleUpdated' => 'Правило синхронизации обновлено',
 			'downloads.syncRuleRemoved' => 'Правило синхронизации удалено',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Правило синхронизации и связанные загрузки удалены',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Правила синхронизации сейчас обновляются. Попробуйте снова чуть позже.',
 			'downloads.syncRuleCleanupUnavailable' => 'Не удалось надёжно определить связанные загрузки. Переподключите сервер и повторите попытку либо удалите правило без удаления загрузок.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Синхронизировано ${count} новых эпизодов для ${title}',
@@ -5477,14 +5483,14 @@ extension on TranslationsRu {
 			'performanceOverlay.player' => 'Плеер',
 			'performanceOverlay.memory' => 'Память',
 			'performanceOverlay.uiFps' => 'FPS интерфейса',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.fps' => 'FPS',
 			'performanceOverlay.decoderAndroidHw' => 'Android, аппаратный',
 			'performanceOverlay.decoderNvidiaHw' => 'NVIDIA, аппаратный',
 			'performanceOverlay.decoderQualcommHw' => 'Qualcomm, аппаратный',
 			'performanceOverlay.decoderMediatekHw' => 'MediaTek, аппаратный',
 			'performanceOverlay.decoderExynosHw' => 'Exynos, аппаратный',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.decoderSoftware' => 'Программный',
 			'performanceOverlay.decoderHardware' => 'Аппаратный',
 			'performanceOverlay.tunnelingActive' => 'Активно',

@@ -4047,8 +4047,6 @@ extension on TranslationsKo {
 			'fileInfo.filePresent' => '파일 있음',
 			'fileInfo.fileReadable' => '서버에서 읽기 가능',
 			'fileInfo.streamPath' => '스트림 경로',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => '스트리밍 최적화',
 			'fileInfo.has64bitOffsets' => '64비트 오프셋',
 			'fileInfo.protocol' => '프로토콜',
@@ -4592,8 +4590,6 @@ extension on TranslationsKo {
 			'libraries.groupings.tracks' => '트랙',
 			'libraries.groupings.folders' => '폴더',
 			'libraries.filterCategories.genre' => '장르',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => '연도',
 			'libraries.filterCategories.contentRating' => '시청 등급',
 			'libraries.filterCategories.tag' => '태그',
@@ -5227,8 +5223,6 @@ extension on TranslationsKo {
 			'downloads.syncRuleUpdated' => '동기화 규칙 업데이트됨',
 			'downloads.syncRuleRemoved' => '동기화 규칙 제거됨',
 			'downloads.syncRuleAndDownloadsRemoved' => '동기화 규칙과 연결된 다운로드가 삭제되었습니다',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => '동기화 규칙이 현재 업데이트 중입니다. 잠시 후 다시 시도하세요.',
 			'downloads.syncRuleCleanupUnavailable' => '연결된 다운로드를 안전하게 확인할 수 없습니다. 서버에 다시 연결한 후 시도하거나, 다운로드를 삭제하지 않고 규칙만 제거하세요.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title}의 새 에피소드 ${count}개 동기화됨',
