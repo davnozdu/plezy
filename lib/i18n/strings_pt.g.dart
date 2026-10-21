@@ -4063,8 +4063,6 @@ extension on TranslationsPt {
 			'fileInfo.filePresent' => 'Arquivo presente',
 			'fileInfo.fileReadable' => 'Legível pelo servidor',
 			'fileInfo.streamPath' => 'Caminho do fluxo',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Otimizado para transmissão',
 			'fileInfo.has64bitOffsets' => 'Deslocamentos de 64 bits',
 			'fileInfo.protocol' => 'Protocolo',
@@ -4608,8 +4606,6 @@ extension on TranslationsPt {
 			'libraries.groupings.tracks' => 'Faixas',
 			'libraries.groupings.folders' => 'Pastas',
 			'libraries.filterCategories.genre' => 'Gênero',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Ano',
 			'libraries.filterCategories.contentRating' => 'Classificação indicativa',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -5245,8 +5241,6 @@ extension on TranslationsPt {
 			'downloads.syncRuleUpdated' => 'Regra de sincronização atualizada',
 			'downloads.syncRuleRemoved' => 'Regra de sincronização removida',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Regra de sincronização e downloads associados removidos',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'As regras de sincronização estão sendo atualizadas. Tente novamente em instantes.',
 			'downloads.syncRuleCleanupUnavailable' => 'Os downloads associados não puderam ser identificados com segurança. Reconecte o servidor e tente novamente, ou remova a regra sem excluir os downloads.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} novos episódios sincronizados para ${title}',

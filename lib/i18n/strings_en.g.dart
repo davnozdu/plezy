@@ -416,6 +416,24 @@ class Translations$update$en {
 
 	/// en: 'Failed to check for updates'
 	String get checkFailed => 'Failed to check for updates';
+
+	/// en: 'Update Now'
+	String get install => 'Update Now';
+
+	/// en: 'Downloading… ${percent}%'
+	String downloading({required Object percent}) => 'Downloading… ${percent}%';
+
+	/// en: 'Installing…'
+	String get installing => 'Installing…';
+
+	/// en: 'Version ${version} is installed. Restart Plezy to start using it.'
+	String installed({required Object version}) => 'Version ${version} is installed. Restart Plezy to start using it.';
+
+	/// en: 'Restart Now'
+	String get restart => 'Restart Now';
+
+	/// en: 'The update could not be installed: ${error}'
+	String installFailed({required Object error}) => 'The update could not be installed: ${error}';
 }
 
 // Path: supporter
@@ -8266,6 +8284,12 @@ extension on Translations {
 			'update.viewRelease' => 'View Release',
 			'update.latestVersion' => 'You are on the latest version',
 			'update.checkFailed' => 'Failed to check for updates',
+			'update.install' => 'Update Now',
+			'update.downloading' => ({required Object percent}) => 'Downloading… ${percent}%',
+			'update.installing' => 'Installing…',
+			'update.installed' => ({required Object version}) => 'Version ${version} is installed. Restart Plezy to start using it.',
+			'update.restart' => 'Restart Now',
+			'update.installFailed' => ({required Object error}) => 'The update could not be installed: ${error}',
 			'supporter.title' => 'Theme & Icon Pack',
 			'supporter.intro' => 'An optional one-time purchase that adds cosmetic extras:',
 			'supporter.presetThemes' => 'Preset themes',
@@ -8637,14 +8661,14 @@ extension on Translations {
 			'themeEditor.editCustomDescription' => 'Choose every color yourself',
 			'themeEditor.locked' => 'Unlock with the Theme & Icon Pack',
 			'themeEditor.savedLocked' => 'Saved — unlocks with the Theme & Icon Pack',
+			_ => null,
+		} ?? switch (path) {
 			'themeEditor.title' => 'Custom Theme',
 			'themeEditor.startFrom' => 'Start from',
 			'themeEditor.startFromDescription' => 'Copy all colors from another theme',
 			'themeEditor.colors' => 'Colors',
 			'themeEditor.preview' => 'Preview',
 			'themeEditor.slots.bg' => 'Background',
-			_ => null,
-		} ?? switch (path) {
 			'themeEditor.slots.surface' => 'Surface',
 			'themeEditor.slots.outline' => 'Outline',
 			'themeEditor.slots.text' => 'Text',
@@ -8788,8 +8812,6 @@ extension on Translations {
 			'fileInfo.duration' => 'Duration',
 			'fileInfo.previewThumbnails' => 'Preview Thumbnails',
 			'fileInfo.previewIndex' => 'Preview Index',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.packetLength' => 'Packet Length',
 			'fileInfo.filePresent' => 'File Present',
 			'fileInfo.fileReadable' => 'Readable by Server',
@@ -9153,14 +9175,14 @@ extension on Translations {
 			'profiles.borrowFromProfile' => ({required Object displayName}) => 'From ${displayName}',
 			'profiles.borrowConnectionBorrowed' => 'Connection borrowed.',
 			'profiles.borrowFailed' => 'Failed to borrow connection.',
+			_ => null,
+		} ?? switch (path) {
 			'profiles.incorrectPin' => 'Incorrect PIN.',
 			'profiles.incorrectPinTryAgain' => 'Incorrect PIN. Please try again.',
 			'profiles.sourceProfileMissingParentAccount' => 'Source profile is missing its parent account.',
 			'profiles.failedToLoadHomeUsers' => 'Could not load your Plex Home users. Check your connection and try again.',
 			'profiles.failedToVerifyPin' => 'Failed to verify PIN.',
 			'profiles.newProfile' => 'New profile',
-			_ => null,
-		} ?? switch (path) {
 			'profiles.profileNameHint' => 'e.g. Guests, Kids, Family Room',
 			'profiles.pinProtectionOptional' => 'PIN protection (optional)',
 			'profiles.pinExplain' => '4-digit PIN required to switch profiles.',
@@ -9337,8 +9359,6 @@ extension on Translations {
 			'libraries.groupings.all' => 'All',
 			'libraries.groupings.movies' => 'Movies',
 			'libraries.groupings.shows' => 'TV Shows',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.groupings.seasons' => 'Seasons',
 			'libraries.groupings.episodes' => 'Episodes',
 			'libraries.groupings.artists' => 'Artists',
@@ -9669,14 +9689,14 @@ extension on Translations {
 			'liveTv.recordNotAvailable' => 'Recording not available for this program',
 			'liveTv.recordingCancelled' => 'Recording canceled',
 			'liveTv.recordingRuleDeleted' => 'Recording rule deleted',
+			_ => null,
+		} ?? switch (path) {
 			'liveTv.processRecordingRules' => 'Re-evaluate rules',
 			'liveTv.recordingInProgress' => 'Recording now',
 			'liveTv.recordingsCount' => ({required Object count}) => '${count} scheduled',
 			'liveTv.editRule' => 'Edit rule',
 			'liveTv.editRuleAction' => 'Edit',
 			'liveTv.recordingRuleUpdated' => 'Recording rule updated',
-			_ => null,
-		} ?? switch (path) {
 			'liveTv.guideReloadRequested' => 'Guide refresh requested',
 			'liveTv.guideReloadFailed' => 'Couldn\'t refresh the guide',
 			'liveTv.rulesProcessRequested' => 'Rule re-evaluation requested',
@@ -9967,8 +9987,6 @@ extension on Translations {
 			'downloads.nextNUnwatched' => ({required Object count}) => 'Next ${count} unwatched',
 			'downloads.customAmount' => 'Custom amount...',
 			'downloads.includeSpecials' => 'Include Specials',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.howManyEpisodes' => 'How many episodes?',
 			'downloads.invalidEpisodeCount' => 'Enter a valid episode count.',
 			'downloads.keepSynced' => 'Keep synced',
@@ -10185,14 +10203,14 @@ extension on Translations {
 			'performanceOverlay.dropped' => 'Dropped',
 			'performanceOverlay.dvRpus' => 'DV RPUs',
 			'performanceOverlay.dvRpuAverage' => 'DV RPU Avg',
+			_ => null,
+		} ?? switch (path) {
 			'performanceOverlay.dvSampleAverage' => 'DV Sample Avg',
 			'performanceOverlay.maxLuma' => 'Max Luma',
 			'performanceOverlay.minLuma' => 'Min Luma',
 			'performanceOverlay.maxCll' => 'MaxCLL',
 			'performanceOverlay.maxFall' => 'MaxFALL',
 			'performanceOverlay.cacheUsed' => 'Cache Used',
-			_ => null,
-		} ?? switch (path) {
 			'performanceOverlay.cacheLimit' => 'Cache Limit',
 			'performanceOverlay.speed' => 'Speed',
 			'performanceOverlay.player' => 'Player',
