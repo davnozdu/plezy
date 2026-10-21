@@ -3554,12 +3554,12 @@ extension on TranslationsBg {
 			'fileInfo.nalLengthSize' => 'Размер на дължината на NAL',
 			'fileInfo.scalingMatrix' => 'Персонализирана матрица за мащабиране',
 			'fileInfo.streamIdentifier' => 'Идентификатор на потока',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Индекс на потока',
 			'fileInfo.streamId' => 'ID на потока',
 			'fileInfo.language' => 'Език',
 			'fileInfo.languageCode' => 'Код на езика',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Заглавие на пистата',
 			'fileInfo.channels' => 'Канали',
 			'fileInfo.sampleRate' => 'Честота на дискретизация',
@@ -3586,8 +3586,6 @@ extension on TranslationsBg {
 			'fileInfo.filePresent' => 'Файлът е наличен',
 			'fileInfo.fileReadable' => 'Четим от сървъра',
 			'fileInfo.streamPath' => 'Път на потока',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Оптимизирано за стрийминг',
 			'fileInfo.has64bitOffsets' => '64-битови отмествания',
 			'fileInfo.protocol' => 'Протокол',
@@ -4070,12 +4068,12 @@ extension on TranslationsBg {
 			'libraries.scanLibraryFiles' => 'Сканирай файловете на библиотеката',
 			'libraries.scanLibrary' => 'Сканирай библиотеката',
 			'libraries.analyze' => 'Анализирай',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Анализирай библиотеката',
 			'libraries.refreshMetadata' => 'Опресни метаданни',
 			'libraries.emptyTrash' => 'Изпразни кошчето',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Изпразване на кошчето за "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Кошчето е изпразнено за "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Неуспешно изпразване на кошчето: ${error}',
 			'libraries.analyzing' => ({required Object title}) => 'Анализиране на "${title}"...',
@@ -4123,8 +4121,6 @@ extension on TranslationsBg {
 			'libraries.groupings.tracks' => 'Песни',
 			'libraries.groupings.folders' => 'Папки',
 			'libraries.filterCategories.genre' => 'Жанр',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Година',
 			'libraries.filterCategories.contentRating' => 'Възрастов рейтинг',
 			'libraries.filterCategories.tag' => 'Таг',
@@ -4586,12 +4582,12 @@ extension on TranslationsBg {
 			'watchTogether.resumingWithout' => ({required Object name}) => 'Продължаване без ${name}',
 			'watchTogether.waitingForParticipants' => 'Изчакване другите да заредят...',
 			'watchTogether.waitingForName' => ({required Object name}) => 'Изчакване на ${name}...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Скорошни стаи',
 			'watchTogether.renameRoom' => 'Преименувай стая',
 			'watchTogether.removeRoom' => 'Премахни',
 			'watchTogether.guestSwitchUnavailable' => 'Превключването не е възможно — сървърът е недостъпен за синхронизация',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Превключването не е възможно — съдържанието не е намерено на този сървър',
 			'watchTogether.defaultDisplayName' => 'Потребител',
 			'watchTogether.errors.timedOut' => 'Релейният сървър не отговори навреме',
@@ -4657,8 +4653,6 @@ extension on TranslationsBg {
 			'downloads.syncRuleUpdated' => 'Правилото за синхронизация е обновено',
 			'downloads.syncRuleRemoved' => 'Правилото за синхронизация е премахнато',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Правилото за синхронизация и свързаните изтегляния са премахнати',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Правилата за синхронизация в момента се обновяват. Опитайте отново след малко.',
 			'downloads.syncRuleCleanupUnavailable' => 'Свързаните изтегляния не можаха да бъдат идентифицирани безопасно. Свържете се отново със сървъра и опитайте отново, или премахнете правилото, без да изтривате изтеглянията.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Синхронизирани са ${count} нови епизода за ${title}',
@@ -5102,12 +5096,12 @@ extension on TranslationsBg {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Удостоверете Plex акаунт. Домашните потребители стават профили.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => 'Свържи се с ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Въведете URL адреса на сървъра, потребителското име и паролата.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => 'Впишете се в своя ${product} сървър. Обвързва се с ${name}.',
 			'addServer.borrowFromAnotherProfile' => 'Използвай от друг профил',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Използвай връзка от друг профил. PIN-защитените профили изискват PIN.',
 			'addServer.invalidCredentials' => 'Невалидно потребителско име или парола',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Отговорът при удостоверяване не беше валиден JSON',
 			'addServer.authResponseIncomplete' => 'Отговорът за вход от сървъра беше непълен',
 			'addServer.quickConnectRejected' => 'Quick Connect беше отхвърлен от сървъра',

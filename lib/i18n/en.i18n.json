@@ -113,7 +113,13 @@
     "skipVersion": "Skip This Version",
     "viewRelease": "View Release",
     "latestVersion": "You are on the latest version",
-    "checkFailed": "Failed to check for updates"
+    "checkFailed": "Failed to check for updates",
+    "install": "Update Now",
+    "downloading": "Downloading… ${percent}%",
+    "installing": "Installing…",
+    "installed": "Version ${version} is installed. Restart Plezy to start using it.",
+    "restart": "Restart Now",
+    "installFailed": "The update could not be installed: ${error}"
   },
   "settings": {
     "title": "Settings",

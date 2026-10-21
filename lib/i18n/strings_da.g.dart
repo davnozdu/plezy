@@ -3554,12 +3554,12 @@ extension on TranslationsDa {
 			'fileInfo.nalLengthSize' => 'NAL-længdestørrelse',
 			'fileInfo.scalingMatrix' => 'Brugerdefineret skaleringsmatrix',
 			'fileInfo.streamIdentifier' => 'Strømidentifikator',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Strømindex',
 			'fileInfo.streamId' => 'Strøm-ID',
 			'fileInfo.language' => 'Sprog',
 			'fileInfo.languageCode' => 'Sprogkode',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Sportitel',
 			'fileInfo.channels' => 'Kanaler',
 			'fileInfo.sampleRate' => 'Samplingshastighed',
@@ -3586,8 +3586,6 @@ extension on TranslationsDa {
 			'fileInfo.filePresent' => 'Fil til stede',
 			'fileInfo.fileReadable' => 'Læsbar af serveren',
 			'fileInfo.streamPath' => 'Strømsti',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Optimeret til streaming',
 			'fileInfo.has64bitOffsets' => '64-bit-forskydninger',
 			'fileInfo.protocol' => 'Protokol',
@@ -4070,12 +4068,12 @@ extension on TranslationsDa {
 			'libraries.scanLibraryFiles' => 'Scan biblioteksfiler',
 			'libraries.scanLibrary' => 'Scan bibliotek',
 			'libraries.analyze' => 'Analysér',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Analysér bibliotek',
 			'libraries.refreshMetadata' => 'Opdater metadata',
 			'libraries.emptyTrash' => 'Tøm papirkurv',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Tømmer papirkurv for "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Papirkurv tømt for "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Kunne ikke tømme papirkurv: ${error}',
 			'libraries.analyzing' => ({required Object title}) => 'Analyserer "${title}"...',
@@ -4123,8 +4121,6 @@ extension on TranslationsDa {
 			'libraries.groupings.tracks' => 'Numre',
 			'libraries.groupings.folders' => 'Mapper',
 			'libraries.filterCategories.genre' => 'Genre',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'År',
 			'libraries.filterCategories.contentRating' => 'Aldersvurdering',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -4586,12 +4582,12 @@ extension on TranslationsDa {
 			'watchTogether.resumingWithout' => ({required Object name}) => 'Fortsætter uden ${name}',
 			'watchTogether.waitingForParticipants' => 'Venter på, at de andre bliver klar...',
 			'watchTogether.waitingForName' => ({required Object name}) => 'Venter på ${name}...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Seneste rum',
 			'watchTogether.renameRoom' => 'Omdøb rum',
 			'watchTogether.removeRoom' => 'Fjern',
 			'watchTogether.guestSwitchUnavailable' => 'Kunne ikke skifte — server ikke tilgængelig for synkronisering',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Kunne ikke skifte — indhold blev ikke fundet på denne server',
 			'watchTogether.defaultDisplayName' => 'Bruger',
 			'watchTogether.errors.timedOut' => 'Relayserveren svarede ikke i tide',
@@ -4657,8 +4653,6 @@ extension on TranslationsDa {
 			'downloads.syncRuleUpdated' => 'Synkroniseringsregel opdateret',
 			'downloads.syncRuleRemoved' => 'Synkroniseringsregel fjernet',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Synkroniseringsregel og tilknyttede downloads fjernet',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Synkroniseringsregler opdateres lige nu. Prøv igen om et øjeblik.',
 			'downloads.syncRuleCleanupUnavailable' => 'Tilknyttede downloads kunne ikke identificeres sikkert. Genopret forbindelse til serveren og prøv igen, eller fjern reglen uden at slette downloads.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Synkroniserede ${count} nye episoder for ${title}',
@@ -5102,12 +5096,12 @@ extension on TranslationsDa {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Godkend en Plex-konto. Plex Home-brugere bliver til profiler.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => 'Opret forbindelse til ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Indtast din server-URL, brugernavn og adgangskode.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => 'Log ind på din ${product}-server. Tilknyttes til ${name}.',
 			'addServer.borrowFromAnotherProfile' => 'Lån fra en anden profil',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Genbrug en anden profils forbindelse. PIN-beskyttede profiler kræver en PIN.',
 			'addServer.invalidCredentials' => 'Ugyldigt brugernavn eller ugyldig adgangskode',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Godkendelsessvaret var ikke gyldig JSON',
 			'addServer.authResponseIncomplete' => 'Loginsvaret fra serveren var ufuldstændigt',
 			'addServer.quickConnectRejected' => 'Quick Connect blev afvist af serveren',

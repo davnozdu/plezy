@@ -3554,12 +3554,12 @@ extension on TranslationsNl {
 			'fileInfo.nalLengthSize' => 'NAL-lengte',
 			'fileInfo.scalingMatrix' => 'Aangepaste schalingsmatrix',
 			'fileInfo.streamIdentifier' => 'Stream-id',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Streamindex',
 			'fileInfo.streamId' => 'Stream-ID',
 			'fileInfo.language' => 'Taal',
 			'fileInfo.languageCode' => 'Taalcode',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Tracktitel',
 			'fileInfo.channels' => 'Kanalen',
 			'fileInfo.sampleRate' => 'Samplingsnelheid',
@@ -3586,8 +3586,6 @@ extension on TranslationsNl {
 			'fileInfo.filePresent' => 'Bestand aanwezig',
 			'fileInfo.fileReadable' => 'Leesbaar door server',
 			'fileInfo.streamPath' => 'Streampad',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Geoptimaliseerd voor streaming',
 			'fileInfo.has64bitOffsets' => '64-bits offsets',
 			'fileInfo.protocol' => 'Protocol',
@@ -4070,12 +4068,12 @@ extension on TranslationsNl {
 			'libraries.scanLibraryFiles' => 'Bibliotheekbestanden scannen',
 			'libraries.scanLibrary' => 'Bibliotheek scannen',
 			'libraries.analyze' => 'Analyseren',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Bibliotheek analyseren',
 			'libraries.refreshMetadata' => 'Metadata vernieuwen',
 			'libraries.emptyTrash' => 'Prullenbak legen',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Prullenbak legen voor "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Prullenbak geleegd voor "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Kon prullenbak niet legen: ${error}',
 			'libraries.analyzing' => ({required Object title}) => 'Analyseren "${title}"...',
@@ -4123,8 +4121,6 @@ extension on TranslationsNl {
 			'libraries.groupings.tracks' => 'Nummers',
 			'libraries.groupings.folders' => 'Mappen',
 			'libraries.filterCategories.genre' => 'Genre',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Jaar',
 			'libraries.filterCategories.contentRating' => 'Leeftijdsclassificatie',
 			'libraries.filterCategories.tag' => 'Tag',
@@ -4586,12 +4582,12 @@ extension on TranslationsNl {
 			'watchTogether.resumingWithout' => ({required Object name}) => 'Hervatten zonder ${name}',
 			'watchTogether.waitingForParticipants' => 'Wachten tot anderen klaar zijn met laden...',
 			'watchTogether.waitingForName' => ({required Object name}) => 'Wachten op ${name}...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Recente kamers',
 			'watchTogether.renameRoom' => 'Kamer hernoemen',
 			'watchTogether.removeRoom' => 'Verwijderen',
 			'watchTogether.guestSwitchUnavailable' => 'Kon niet schakelen — server niet beschikbaar voor synchronisatie',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Kon niet schakelen — inhoud niet gevonden op deze server',
 			'watchTogether.defaultDisplayName' => 'Gebruiker',
 			'watchTogether.errors.timedOut' => 'De relayserver heeft niet op tijd gereageerd',
@@ -4657,8 +4653,6 @@ extension on TranslationsNl {
 			'downloads.syncRuleUpdated' => 'Synchronisatieregel bijgewerkt',
 			'downloads.syncRuleRemoved' => 'Synchronisatieregel verwijderd',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Synchronisatieregel en gekoppelde downloads verwijderd',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Synchronisatieregels worden momenteel bijgewerkt. Probeer het over een moment opnieuw.',
 			'downloads.syncRuleCleanupUnavailable' => 'Gekoppelde downloads konden niet veilig worden geïdentificeerd. Maak opnieuw verbinding met de server en probeer het opnieuw, of verwijder de regel zonder de downloads te verwijderen.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} nieuwe afleveringen gesynchroniseerd voor ${title}',
@@ -5102,12 +5096,12 @@ extension on TranslationsNl {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Autoriseer een Plex-account. Home-gebruikers worden profielen.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => 'Verbinding maken met ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Voer je server-URL, gebruikersnaam en wachtwoord in.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => 'Meld je aan bij je ${product}-server. Wordt gekoppeld aan ${name}.',
 			'addServer.borrowFromAnotherProfile' => 'Van een ander profiel lenen',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Hergebruik de verbinding van een ander profiel. Voor profielen met pincodebeveiliging is een pincode vereist.',
 			'addServer.invalidCredentials' => 'Ongeldige gebruikersnaam of ongeldig wachtwoord',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Het authenticatieantwoord was geen geldige JSON',
 			'addServer.authResponseIncomplete' => 'Het aanmeldingsantwoord van de server was onvolledig',
 			'addServer.quickConnectRejected' => 'Quick Connect is door de server geweigerd',

@@ -3554,12 +3554,12 @@ extension on TranslationsTr {
 			'fileInfo.nalLengthSize' => 'NAL Uzunluk Boyutu',
 			'fileInfo.scalingMatrix' => 'Özel Ölçekleme Matrisi',
 			'fileInfo.streamIdentifier' => 'Akış Tanımlayıcısı',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Akış Dizini',
 			'fileInfo.streamId' => 'Akış Kimliği',
 			'fileInfo.language' => 'Dil',
 			'fileInfo.languageCode' => 'Dil Kodu',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Parça Başlığı',
 			'fileInfo.channels' => 'Kanallar',
 			'fileInfo.sampleRate' => 'Örnekleme Hızı',
@@ -3586,8 +3586,6 @@ extension on TranslationsTr {
 			'fileInfo.filePresent' => 'Dosya Mevcut',
 			'fileInfo.fileReadable' => 'Sunucu Tarafından Okunabilir',
 			'fileInfo.streamPath' => 'Akış Yolu',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Akış İçin Optimize Edilmiş',
 			'fileInfo.has64bitOffsets' => '64-bit Ofsetler',
 			'fileInfo.protocol' => 'Protokol',
@@ -4070,12 +4068,12 @@ extension on TranslationsTr {
 			'libraries.scanLibraryFiles' => 'Kitaplık Dosyalarını Tarayınız',
 			'libraries.scanLibrary' => 'Kitaplığı Taramak',
 			'libraries.analyze' => 'Analiz Et',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Kitaplığı Analiz Et',
 			'libraries.refreshMetadata' => 'Meta Verileri Yenile',
 			'libraries.emptyTrash' => 'Çöpü Boşalt',
 			'libraries.emptyingTrash' => ({required Object title}) => '"${title}" için çöp boşaltılıyor...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '"${title}" için çöp boşaltıldı',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Çöp boşaltılamadı: ${error}',
 			'libraries.analyzing' => ({required Object title}) => '"${title}" analiz ediliyor...',
@@ -4123,8 +4121,6 @@ extension on TranslationsTr {
 			'libraries.groupings.tracks' => 'Parçalar',
 			'libraries.groupings.folders' => 'Klasörler',
 			'libraries.filterCategories.genre' => 'Tür',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Yıl',
 			'libraries.filterCategories.contentRating' => 'İçerik Derecelendirmesi',
 			'libraries.filterCategories.tag' => 'Etiket',
@@ -4586,12 +4582,12 @@ extension on TranslationsTr {
 			'watchTogether.resumingWithout' => ({required Object name}) => '${name} olmadan devam ediliyor',
 			'watchTogether.waitingForParticipants' => 'Diğerlerinin yüklemesi bekleniyor...',
 			'watchTogether.waitingForName' => ({required Object name}) => '${name} bekleniyor...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Son Odalar',
 			'watchTogether.renameRoom' => 'Odayı Yeniden Adlandır',
 			'watchTogether.removeRoom' => 'Kaldır',
 			'watchTogether.guestSwitchUnavailable' => 'Geçiş yapılamadı — eşitleme için sunucu mevcut değil',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Geçiş yapılamadı — içerik bu sunucuda bulunamadı',
 			'watchTogether.defaultDisplayName' => 'Kullanıcı',
 			'watchTogether.errors.timedOut' => 'Aktarıcı sunucusu zamanında yanıt vermedi',
@@ -4657,8 +4653,6 @@ extension on TranslationsTr {
 			'downloads.syncRuleUpdated' => 'Eşitleme kuralı güncellendi',
 			'downloads.syncRuleRemoved' => 'Eşitleme kuralı kaldırıldı',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Eşitleme kuralı ve ilişkili indirmeler kaldırıldı',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Eşitleme kuralları şu anda güncelleniyor. Birazdan tekrar deneyin.',
 			'downloads.syncRuleCleanupUnavailable' => 'İlişkili indirmeler güvenli biçimde belirlenemedi. Sunucuya yeniden bağlanıp tekrar deneyin veya kuralı indirmeleri silmeden kaldırın.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} için ${count} yeni bölüm eşitlendi',
@@ -5102,12 +5096,12 @@ extension on TranslationsTr {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Bir Plex hesabını yetkilendirin. Ev kullanıcıları profile dönüşür.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '${product} ile Bağlan',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Sunucu URL\'nizi, kullanıcı adınızı ve şifrenizi girin.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '${product} sunucunuza giriş yapın. ${name} profiline bağlanır.',
 			'addServer.borrowFromAnotherProfile' => 'Başka bir profilden ödünç al',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Başka bir profilin bağlantısını yeniden kullanın. PIN korumalı profiller bir PIN gerektirir.',
 			'addServer.invalidCredentials' => 'Geçersiz kullanıcı adı veya şifre',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Kimlik doğrulama yanıtı geçerli bir JSON değildi',
 			'addServer.authResponseIncomplete' => 'Sunucudan gelen oturum açma yanıtı eksikti',
 			'addServer.quickConnectRejected' => 'Quick Connect sunucu tarafından reddedildi',

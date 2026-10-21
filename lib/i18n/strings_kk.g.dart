@@ -3554,12 +3554,12 @@ extension on TranslationsKk {
 			'fileInfo.nalLengthSize' => 'NAL ұзындық өлшемі',
 			'fileInfo.scalingMatrix' => 'Теңшелетін масштабтау матрицасы',
 			'fileInfo.streamIdentifier' => 'Ағын идентификаторы',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Ағын индексі',
 			'fileInfo.streamId' => 'Ағын ID',
 			'fileInfo.language' => 'Тіл',
 			'fileInfo.languageCode' => 'Тіл коды',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Трек атауы',
 			'fileInfo.channels' => 'Арналар',
 			'fileInfo.sampleRate' => 'Дискретизация жиілігі',
@@ -3586,8 +3586,6 @@ extension on TranslationsKk {
 			'fileInfo.filePresent' => 'Файл бар',
 			'fileInfo.fileReadable' => 'Сервер оқи алады',
 			'fileInfo.streamPath' => 'Ағын жолы',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Ағынды беру үшін оңтайландырылған',
 			'fileInfo.has64bitOffsets' => '64-биттік ығысулар',
 			'fileInfo.protocol' => 'Протокол',
@@ -4070,12 +4068,12 @@ extension on TranslationsKk {
 			'libraries.scanLibraryFiles' => 'Файлдарды сканерлеу',
 			'libraries.scanLibrary' => 'Кітапхананы сканерлеу',
 			'libraries.analyze' => 'Талдау жасау',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Кітапханаға талдау жасау',
 			'libraries.refreshMetadata' => 'Метадеректерді жаңарту',
 			'libraries.emptyTrash' => 'Себетті тазалау',
 			'libraries.emptyingTrash' => ({required Object title}) => '"${title}" себеті тазалануда...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '"${title}" себеті тазаланды',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Себетті тазалау мүмкін болмады: ${error}',
 			'libraries.analyzing' => ({required Object title}) => '"${title}" талдануда...',
@@ -4123,8 +4121,6 @@ extension on TranslationsKk {
 			'libraries.groupings.tracks' => 'Әндер',
 			'libraries.groupings.folders' => 'Қапшықтар',
 			'libraries.filterCategories.genre' => 'Жанр',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Жыл',
 			'libraries.filterCategories.contentRating' => 'Мазмұн рейтингі',
 			'libraries.filterCategories.tag' => 'Тег',
@@ -4586,12 +4582,12 @@ extension on TranslationsKk {
 			'watchTogether.resumingWithout' => ({required Object name}) => '${name} ескерусіз жалғастырылуда',
 			'watchTogether.waitingForParticipants' => 'Басқалардың жүктеуін күтуде...',
 			'watchTogether.waitingForName' => ({required Object name}) => '${name} күтілуде...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Соңғы бөлмелер',
 			'watchTogether.renameRoom' => 'Бөлме атын өзгерткіңіз келе ме?',
 			'watchTogether.removeRoom' => 'Өшіру',
 			'watchTogether.guestSwitchUnavailable' => 'Ауысу мүмкін болмады — сервер синхрондау үшін қолжетімсіз',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Ауысу мүмкін болмады — мазмұн табылмады',
 			'watchTogether.defaultDisplayName' => 'Пайдаланушы',
 			'watchTogether.errors.timedOut' => 'Реле сервері уақытында жауап бермеді',
@@ -4657,8 +4653,6 @@ extension on TranslationsKk {
 			'downloads.syncRuleUpdated' => 'Синхрондау ережесі жаңартылды',
 			'downloads.syncRuleRemoved' => 'Синхрондау ережесі өшірілді',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Синхрондау ережесі және байланысты жүктеулер өшірілді',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Синхрондау ережелері қазір жаңартылуда. Сәлден соң қайталап көріңіз.',
 			'downloads.syncRuleCleanupUnavailable' => 'Байланысты жүктеулерді қауіпсіз анықтау мүмкін болмады. Серверге қайта қосылып көріңіз немесе ережені жүктеулерді жоймай өшіріңіз.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} үшін ${count} жаңа бөлім синхрондалды',
@@ -5102,12 +5096,12 @@ extension on TranslationsKk {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Plex тіркелгісін авторизациялаңыз. Home пайдаланушылары профильдерге айналады.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '${product} қосылу',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Сервер URL мекенжайын, пайдаланушы атын және құпия сөзді енгізіңіз.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '${product} серверіне кіріңіз. ${name} тіркелгісіне байланыстырылады.',
 			'addServer.borrowFromAnotherProfile' => 'Басқа профильден алу',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Басқа профильдің қосылымын қайта пайдалану. PIN кодпен қорғалған профильдер PIN кодты талап етеді.',
 			'addServer.invalidCredentials' => 'Пайдаланушы аты немесе құпия сөз қате',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Аутентификация жауабы жарамды JSON болмады',
 			'addServer.authResponseIncomplete' => 'Сервердің кіру жауабы толық емес',
 			'addServer.quickConnectRejected' => 'Сервер Quick Connect сұрауын қабылдамады',

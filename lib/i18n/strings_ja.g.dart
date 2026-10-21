@@ -3543,12 +3543,12 @@ extension on TranslationsJa {
 			'fileInfo.nalLengthSize' => 'NAL 長さサイズ',
 			'fileInfo.scalingMatrix' => 'カスタムスケーリングマトリックス',
 			'fileInfo.streamIdentifier' => 'ストリーム識別子',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'ストリームインデックス',
 			'fileInfo.streamId' => 'ストリーム ID',
 			'fileInfo.language' => '言語',
 			'fileInfo.languageCode' => '言語コード',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'トラックタイトル',
 			'fileInfo.channels' => 'チャンネル',
 			'fileInfo.sampleRate' => 'サンプルレート',
@@ -3575,8 +3575,6 @@ extension on TranslationsJa {
 			'fileInfo.filePresent' => 'ファイルあり',
 			'fileInfo.fileReadable' => 'サーバーから読み取り可能',
 			'fileInfo.streamPath' => 'ストリームパス',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'ストリーミング最適化',
 			'fileInfo.has64bitOffsets' => '64ビットオフセット',
 			'fileInfo.protocol' => 'プロトコル',
@@ -4059,12 +4057,12 @@ extension on TranslationsJa {
 			'libraries.scanLibraryFiles' => 'ライブラリファイルをスキャン',
 			'libraries.scanLibrary' => 'ライブラリをスキャン',
 			'libraries.analyze' => '解析',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'ライブラリを解析',
 			'libraries.refreshMetadata' => 'メタデータを更新',
 			'libraries.emptyTrash' => 'ゴミ箱を空にする',
 			'libraries.emptyingTrash' => ({required Object title}) => '「${title}」のゴミ箱を空にしています…',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '「${title}」のゴミ箱を空にしました',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'ゴミ箱を空にできませんでした: ${error}',
 			'libraries.analyzing' => ({required Object title}) => '「${title}」を解析中…',
@@ -4112,8 +4110,6 @@ extension on TranslationsJa {
 			'libraries.groupings.tracks' => '曲',
 			'libraries.groupings.folders' => 'フォルダ',
 			'libraries.filterCategories.genre' => 'ジャンル',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => '年',
 			'libraries.filterCategories.contentRating' => '視聴年齢区分',
 			'libraries.filterCategories.tag' => 'タグ',
@@ -4575,12 +4571,12 @@ extension on TranslationsJa {
 			'watchTogether.resumingWithout' => ({required Object name}) => '${name}抜きで再開',
 			'watchTogether.waitingForParticipants' => '他の参加者の読み込みを待っています…',
 			'watchTogether.waitingForName' => ({required Object name}) => '${name}を待っています…',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => '最近のルーム',
 			'watchTogether.renameRoom' => 'ルーム名を変更',
 			'watchTogether.removeRoom' => '削除',
 			'watchTogether.guestSwitchUnavailable' => '切り替えられません — 同期に必要なサーバーを利用できません',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => '切り替えられません — このサーバーにコンテンツが見つかりません',
 			'watchTogether.defaultDisplayName' => 'ユーザー',
 			'watchTogether.errors.timedOut' => 'リレーサーバーが時間内に応答しませんでした',
@@ -4646,8 +4642,6 @@ extension on TranslationsJa {
 			'downloads.syncRuleUpdated' => '同期ルールを更新しました',
 			'downloads.syncRuleRemoved' => '同期ルールを削除しました',
 			'downloads.syncRuleAndDownloadsRemoved' => '同期ルールと関連するダウンロードを削除しました',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => '同期ルールが更新中です。しばらくしてからもう一度お試しください。',
 			'downloads.syncRuleCleanupUnavailable' => '関連するダウンロードを安全に特定できませんでした。サーバーに再接続して再試行するか、ダウンロードを削除せずにルールを削除してください。',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title}の新しいエピソードを${count}件同期しました',
@@ -5091,12 +5085,12 @@ extension on TranslationsJa {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Plexアカウントを承認します。Homeユーザーはプロフィールになります。',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '${product}に接続',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'サーバーのURL、ユーザー名、パスワードを入力してください。',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '${product}サーバーにサインインします。「${name}」に紐付けられます。',
 			'addServer.borrowFromAnotherProfile' => '別のプロフィールの接続を利用',
 			'addServer.borrowFromAnotherProfileSubtitle' => '別のプロフィールの接続を再利用します。PINで保護されたプロフィールにはPINが必要です。',
 			'addServer.invalidCredentials' => 'ユーザー名またはパスワードが正しくありません',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => '認証レスポンスが有効なJSONではありません',
 			'addServer.authResponseIncomplete' => 'サーバーからのサインイン応答が不完全です',
 			'addServer.quickConnectRejected' => 'Quick Connectがサーバーに拒否されました',

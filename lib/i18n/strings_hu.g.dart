@@ -3554,12 +3554,12 @@ extension on TranslationsHu {
 			'fileInfo.nalLengthSize' => 'NAL hosszméret',
 			'fileInfo.scalingMatrix' => 'Egyéni méretezési mátrix',
 			'fileInfo.streamIdentifier' => 'Adatfolyam-azonosító',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Adatfolyam-index',
 			'fileInfo.streamId' => 'Adatfolyam azonosítója',
 			'fileInfo.language' => 'Nyelv',
 			'fileInfo.languageCode' => 'Nyelvkód',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Sáv címe',
 			'fileInfo.channels' => 'Csatornák',
 			'fileInfo.sampleRate' => 'Mintavételi frekvencia',
@@ -3586,8 +3586,6 @@ extension on TranslationsHu {
 			'fileInfo.filePresent' => 'Fájl jelen van',
 			'fileInfo.fileReadable' => 'A szerver számára olvasható',
 			'fileInfo.streamPath' => 'Adatfolyam útvonala',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Adatfolyam-továbbításra optimalizálva',
 			'fileInfo.has64bitOffsets' => '64 bites eltolások',
 			'fileInfo.protocol' => 'Protokoll',
@@ -4070,12 +4068,12 @@ extension on TranslationsHu {
 			'libraries.scanLibraryFiles' => 'Könyvtárfájlok beolvasása',
 			'libraries.scanLibrary' => 'Könyvtár beolvasása',
 			'libraries.analyze' => 'Elemzés',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Könyvtár elemzése',
 			'libraries.refreshMetadata' => 'Metaadatok frissítése',
 			'libraries.emptyTrash' => 'Lomtár ürítése',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Lomtár ürítése a következőhöz: "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Lomtár kiürítve a következőhöz: "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Nem sikerült a lomtár ürítése: ${error}',
 			'libraries.analyzing' => ({required Object title}) => '"${title}" elemzése...',
@@ -4123,8 +4121,6 @@ extension on TranslationsHu {
 			'libraries.groupings.tracks' => 'Zeneszámok',
 			'libraries.groupings.folders' => 'Mappák',
 			'libraries.filterCategories.genre' => 'Műfaj',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Év',
 			'libraries.filterCategories.contentRating' => 'Korhatár-besorolás',
 			'libraries.filterCategories.tag' => 'Címke',
@@ -4586,12 +4582,12 @@ extension on TranslationsHu {
 			'watchTogether.resumingWithout' => ({required Object name}) => 'Folytatás a következő nélkül: ${name}',
 			'watchTogether.waitingForParticipants' => 'Várakozás, amíg a többieknél betöltődik a tartalom...',
 			'watchTogether.waitingForName' => ({required Object name}) => 'Várakozás: ${name}...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Legutóbbi szobák',
 			'watchTogether.renameRoom' => 'Szoba átnevezése',
 			'watchTogether.removeRoom' => 'Eltávolítás',
 			'watchTogether.guestSwitchUnavailable' => 'Nem sikerült a váltás — a szerver nem érhető el szinkronizáláshoz',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Nem sikerült a váltás — a tartalom nem található ezen a szerveren',
 			'watchTogether.defaultDisplayName' => 'Felhasználó',
 			'watchTogether.errors.timedOut' => 'A relészerver nem válaszolt időben',
@@ -4657,8 +4653,6 @@ extension on TranslationsHu {
 			'downloads.syncRuleUpdated' => 'Szinkronizálási szabály frissítve',
 			'downloads.syncRuleRemoved' => 'Szinkronizálási szabály eltávolítva',
 			'downloads.syncRuleAndDownloadsRemoved' => 'A szinkronszabály és a kapcsolódó letöltések eltávolítva',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'A szinkronszabályok éppen frissülnek. Próbálja újra egy pillanat múlva.',
 			'downloads.syncRuleCleanupUnavailable' => 'A kapcsolódó letöltések nem azonosíthatók biztonságosan. Csatlakoztassa újra a szervert, és próbálja újra, vagy távolítsa el a szabályt a letöltések törlése nélkül.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} új epizód szinkronizálva a következőhöz: ${title}',
@@ -5102,12 +5096,12 @@ extension on TranslationsHu {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Plex-fiók engedélyezése. A Plex Home-felhasználókból profilok lesznek.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => 'Csatlakozás a(z) ${product} szolgáltatáshoz',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Adja meg a szerver URL-jét, felhasználónevét és jelszavát.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => 'Jelentkezzen be a(z) ${product} szerverére. A(z) ${name} szolgáltatáshoz kötődik.',
 			'addServer.borrowFromAnotherProfile' => 'Kapcsolat használata másik profilból',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Egy másik profil kapcsolatának használata. A PIN-kóddal védett profilokhoz PIN-kód szükséges.',
 			'addServer.invalidCredentials' => 'Érvénytelen felhasználónév vagy jelszó',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'A hitelesítési válasz nem érvényes JSON',
 			'addServer.authResponseIncomplete' => 'A szerver bejelentkezési válasza hiányos volt',
 			'addServer.quickConnectRejected' => 'A szerver elutasította a Quick Connect-kérést',

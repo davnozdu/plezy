@@ -3554,12 +3554,12 @@ extension on TranslationsEs {
 			'fileInfo.nalLengthSize' => 'Tamaño de longitud NAL',
 			'fileInfo.scalingMatrix' => 'Matriz de escalado personalizada',
 			'fileInfo.streamIdentifier' => 'Identificador de flujo',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Índice de flujo',
 			'fileInfo.streamId' => 'ID de flujo',
 			'fileInfo.language' => 'Idioma',
 			'fileInfo.languageCode' => 'Código de idioma',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Título de la pista',
 			'fileInfo.channels' => 'Canales',
 			'fileInfo.sampleRate' => 'Frecuencia de muestreo',
@@ -3586,8 +3586,6 @@ extension on TranslationsEs {
 			'fileInfo.filePresent' => 'Archivo presente',
 			'fileInfo.fileReadable' => 'Legible por el servidor',
 			'fileInfo.streamPath' => 'Ruta del flujo',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Optimizado para transmisión',
 			'fileInfo.has64bitOffsets' => 'Desplazamientos de 64 bits',
 			'fileInfo.protocol' => 'Protocolo',
@@ -4070,12 +4068,12 @@ extension on TranslationsEs {
 			'libraries.scanLibraryFiles' => 'Escanear archivos de la biblioteca',
 			'libraries.scanLibrary' => 'Escanear biblioteca',
 			'libraries.analyze' => 'Analizar',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Analizar biblioteca',
 			'libraries.refreshMetadata' => 'Actualizar metadatos',
 			'libraries.emptyTrash' => 'Vaciar papelera',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Vaciando papelera de "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Papelera vaciada para "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Error al vaciar papelera: ${error}',
 			'libraries.analyzing' => ({required Object title}) => 'Analizando "${title}"...',
@@ -4123,8 +4121,6 @@ extension on TranslationsEs {
 			'libraries.groupings.tracks' => 'Canciones',
 			'libraries.groupings.folders' => 'Carpetas',
 			'libraries.filterCategories.genre' => 'Género',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Año',
 			'libraries.filterCategories.contentRating' => 'Clasificación por edad',
 			'libraries.filterCategories.tag' => 'Etiqueta',
@@ -4586,12 +4582,12 @@ extension on TranslationsEs {
 			'watchTogether.resumingWithout' => ({required Object name}) => 'Reanudando sin ${name}',
 			'watchTogether.waitingForParticipants' => 'Esperando a que los demás carguen el contenido...',
 			'watchTogether.waitingForName' => ({required Object name}) => 'Esperando a ${name}...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Salas recientes',
 			'watchTogether.renameRoom' => 'Renombrar sala',
 			'watchTogether.removeRoom' => 'Eliminar',
 			'watchTogether.guestSwitchUnavailable' => 'No se pudo cambiar — servidor no disponible para sincronización',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'No se pudo cambiar — contenido no encontrado en este servidor',
 			'watchTogether.defaultDisplayName' => 'Usuario',
 			'watchTogether.errors.timedOut' => 'El servidor de retransmisión no respondió a tiempo',
@@ -4657,8 +4653,6 @@ extension on TranslationsEs {
 			'downloads.syncRuleUpdated' => 'Regla de sincronización actualizada',
 			'downloads.syncRuleRemoved' => 'Regla de sincronización eliminada',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Regla de sincronización y descargas asociadas eliminadas',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Las reglas de sincronización se están actualizando. Inténtalo de nuevo en un momento.',
 			'downloads.syncRuleCleanupUnavailable' => 'No se pudieron identificar las descargas asociadas de forma segura. Vuelve a conectar el servidor e inténtalo de nuevo, o elimina la regla sin borrar las descargas.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => '${count} nuevos episodios sincronizados para ${title}',
@@ -5102,12 +5096,12 @@ extension on TranslationsEs {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Autoriza una cuenta Plex. Los usuarios de Home se convierten en perfiles.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => 'Conectar a ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Introduce la URL de tu servidor, el nombre de usuario y la contraseña.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => 'Inicia sesión en tu servidor ${product}. Se vincula a ${name}.',
 			'addServer.borrowFromAnotherProfile' => 'Tomar prestado de otro perfil',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Reutiliza la conexión de otro perfil. Los perfiles protegidos con PIN requieren un PIN.',
 			'addServer.invalidCredentials' => 'Usuario o contraseña no válidos',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'La respuesta de autenticación no era un JSON válido',
 			'addServer.authResponseIncomplete' => 'La respuesta de inicio de sesión del servidor estaba incompleta',
 			'addServer.quickConnectRejected' => 'Quick Connect fue rechazado por el servidor',

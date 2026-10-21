@@ -216,6 +216,12 @@ class _Translations$update$ru extends Translations$update$en {
 	@override String get viewRelease => 'Посмотреть релиз';
 	@override String get latestVersion => 'У вас последняя версия';
 	@override String get checkFailed => 'Не удалось проверить обновления';
+	@override String get install => 'Обновить';
+	@override String downloading({required Object percent}) => 'Загрузка… ${percent}%';
+	@override String get installing => 'Установка…';
+	@override String installed({required Object version}) => 'Версия ${version} установлена. Перезапустите Plezy, чтобы начать ею пользоваться.';
+	@override String get restart => 'Перезапустить';
+	@override String installFailed({required Object error}) => 'Не удалось установить обновление: ${error}';
 }
 
 // Path: settings
@@ -3166,6 +3172,12 @@ extension on TranslationsRu {
 			'update.viewRelease' => 'Посмотреть релиз',
 			'update.latestVersion' => 'У вас последняя версия',
 			'update.checkFailed' => 'Не удалось проверить обновления',
+			'update.install' => 'Обновить',
+			'update.downloading' => ({required Object percent}) => 'Загрузка… ${percent}%',
+			'update.installing' => 'Установка…',
+			'update.installed' => ({required Object version}) => 'Версия ${version} установлена. Перезапустите Plezy, чтобы начать ею пользоваться.',
+			'update.restart' => 'Перезапустить',
+			'update.installFailed' => ({required Object error}) => 'Не удалось установить обновление: ${error}',
 			'settings.title' => 'Настройки',
 			'settings.supportDeveloper' => 'Поддержать Plezy',
 			'settings.supportDeveloperDescription' => 'Пожертвуйте через Liberapay на развитие',
@@ -3570,6 +3582,8 @@ extension on TranslationsRu {
 			'fileInfo.dolbyVision' => 'Dolby Vision',
 			'fileInfo.dolbyVisionLevel' => 'Уровень Dolby Vision',
 			'fileInfo.dolbyVisionVersion' => 'Версия Dolby Vision',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.dolbyVisionLayers' => 'Слои Dolby Vision',
 			'fileInfo.baseLayerCompatibility' => 'Совместимость базового слоя',
 			'fileInfo.avcBitstream' => 'Битовый поток AVC',
@@ -3580,8 +3594,6 @@ extension on TranslationsRu {
 			'fileInfo.streamId' => 'ID потока',
 			'fileInfo.language' => 'Язык',
 			'fileInfo.languageCode' => 'Код языка',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Название дорожки',
 			'fileInfo.channels' => 'Каналы',
 			'fileInfo.sampleRate' => 'Частота дискретизации',
@@ -3608,8 +3620,6 @@ extension on TranslationsRu {
 			'fileInfo.filePresent' => 'Файл присутствует',
 			'fileInfo.fileReadable' => 'Доступен для чтения сервером',
 			'fileInfo.streamPath' => 'Путь потока',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Оптимизировано для потоковой передачи',
 			'fileInfo.has64bitOffsets' => '64-битные смещения',
 			'fileInfo.protocol' => 'Протокол',
@@ -4086,6 +4096,8 @@ extension on TranslationsRu {
 			'errors.reasonNotFound' => 'элемента больше нет на сервере',
 			'errors.reasonServerError' => 'сервер сообщил об ошибке',
 			'errors.reasonCancelled' => 'запрос был отменён',
+			_ => null,
+		} ?? switch (path) {
 			'errors.reasonUnexpected' => 'произошла непредвиденная ошибка',
 			'libraries.title' => 'Библиотеки',
 			'libraries.fallbackTitle' => 'Библиотека',
@@ -4096,8 +4108,6 @@ extension on TranslationsRu {
 			'libraries.refreshMetadata' => 'Обновить метаданные',
 			'libraries.emptyTrash' => 'Очистить корзину',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Очистка корзины для "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Корзина очищена для "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Не удалось очистить корзину: ${error}',
 			'libraries.analyzing' => ({required Object title}) => 'Анализ "${title}"...',
@@ -4145,8 +4155,6 @@ extension on TranslationsRu {
 			'libraries.groupings.tracks' => 'Треки',
 			'libraries.groupings.folders' => 'Папки',
 			'libraries.filterCategories.genre' => 'Жанр',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Год',
 			'libraries.filterCategories.contentRating' => 'Возрастной рейтинг',
 			'libraries.filterCategories.tag' => 'Тег',
@@ -4602,6 +4610,8 @@ extension on TranslationsRu {
 			'watchTogether.participantPaused' => ({required Object name}) => '${name} поставил на паузу',
 			'watchTogether.participantResumed' => ({required Object name}) => '${name} возобновил',
 			'watchTogether.participantSeeked' => ({required Object name}) => '${name} перемотал',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.participantChangedSpeed' => ({required Object name, required Object speed}) => '${name} установил скорость ${speed}',
 			'watchTogether.participantBuffering' => ({required Object name}) => 'У ${name} идёт буферизация',
 			'watchTogether.participantNeedsUpdate' => ({required Object name}) => '${name} использует старую версию приложения — синхронизация недоступна',
@@ -4612,8 +4622,6 @@ extension on TranslationsRu {
 			'watchTogether.renameRoom' => 'Переименовать комнату',
 			'watchTogether.removeRoom' => 'Удалить',
 			'watchTogether.guestSwitchUnavailable' => 'Не удалось переключиться — сервер недоступен для синхронизации',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Не удалось переключиться — содержимое не найдено на этом сервере',
 			'watchTogether.defaultDisplayName' => 'Пользователь',
 			'watchTogether.errors.timedOut' => 'Сервер ретрансляции не ответил вовремя',
@@ -4679,8 +4687,6 @@ extension on TranslationsRu {
 			'downloads.syncRuleUpdated' => 'Правило синхронизации обновлено',
 			'downloads.syncRuleRemoved' => 'Правило синхронизации удалено',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Правило синхронизации и связанные загрузки удалены',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Правила синхронизации сейчас обновляются. Попробуйте снова чуть позже.',
 			'downloads.syncRuleCleanupUnavailable' => 'Не удалось надёжно определить связанные загрузки. Переподключите сервер и повторите попытку либо удалите правило без удаления загрузок.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Синхронизировано ${count} новых эпизодов для ${title}',
@@ -5118,6 +5124,8 @@ extension on TranslationsRu {
 			'addServer.failedToRegisterAccount' => ({required Object error}) => 'Не удалось зарегистрировать учётную запись: ${error}',
 			'addServer.enterMediaBrowserUrlError' => ({required Object product}) => 'Введите URL вашего сервера ${product}',
 			'addServer.addConnectionTitle' => 'Добавить подключение',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.addConnectionTitleScoped' => ({required Object name}) => 'Добавить в ${name}',
 			'addServer.signInWithPlexCard' => 'Войти через Plex',
 			'addServer.signInWithPlexCardSubtitle' => 'Авторизуйте это устройство. Общие серверы будут добавлены.',
@@ -5128,8 +5136,6 @@ extension on TranslationsRu {
 			'addServer.borrowFromAnotherProfile' => 'Использовать подключение другого профиля',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Повторно используйте подключение другого профиля. Для защищённых профилей потребуется PIN.',
 			'addServer.invalidCredentials' => 'Неверное имя пользователя или пароль',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Ответ аутентификации не является допустимым JSON',
 			'addServer.authResponseIncomplete' => 'Ответ сервера при входе оказался неполным',
 			'addServer.quickConnectRejected' => 'Quick Connect был отклонён сервером',

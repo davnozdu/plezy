@@ -3554,12 +3554,12 @@ extension on TranslationsUz {
 			'fileInfo.nalLengthSize' => 'NAL uzunlik oʻlchami',
 			'fileInfo.scalingMatrix' => 'Maxsus masshtablash matritsasi',
 			'fileInfo.streamIdentifier' => 'Oqim identifikatori',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Oqim indeksi',
 			'fileInfo.streamId' => 'Oqim ID-si',
 			'fileInfo.language' => 'Til',
 			'fileInfo.languageCode' => 'Til kodi',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Trek nomi',
 			'fileInfo.channels' => 'Kanallar',
 			'fileInfo.sampleRate' => 'Namuna tezligi',
@@ -3586,8 +3586,6 @@ extension on TranslationsUz {
 			'fileInfo.filePresent' => 'Fayl mavjud',
 			'fileInfo.fileReadable' => 'Server tomonidan oʻqiladigan',
 			'fileInfo.streamPath' => 'Oqim yoʻli',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Oqimli uzatish uchun optimallashtirilgan',
 			'fileInfo.has64bitOffsets' => '64-bitli siljishlar',
 			'fileInfo.protocol' => 'Protokol',
@@ -4070,12 +4068,12 @@ extension on TranslationsUz {
 			'libraries.scanLibraryFiles' => 'Fayllarni skanerlash',
 			'libraries.scanLibrary' => 'Kutubxonani skanerlash',
 			'libraries.analyze' => 'Tahlil qilish',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Kutubxonani tahlil qilish',
 			'libraries.refreshMetadata' => 'Metamaʼlumotlarni yangilash',
 			'libraries.emptyTrash' => 'Savatni tozalash',
 			'libraries.emptyingTrash' => ({required Object title}) => '"${title}" savati tozalanmoqda...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '"${title}" savati tozalandi',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Savatni tozalab boʻlmadi: ${error}',
 			'libraries.analyzing' => ({required Object title}) => '"${title}" tahlil qilinmoqda...',
@@ -4123,8 +4121,6 @@ extension on TranslationsUz {
 			'libraries.groupings.tracks' => 'Taronalar',
 			'libraries.groupings.folders' => 'Jildlar',
 			'libraries.filterCategories.genre' => 'Janr',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'Yil',
 			'libraries.filterCategories.contentRating' => 'Kontent reytingi',
 			'libraries.filterCategories.tag' => 'Teg',
@@ -4586,12 +4582,12 @@ extension on TranslationsUz {
 			'watchTogether.resumingWithout' => ({required Object name}) => '${name} hisobga olinmasdan davom ettirilmoqda',
 			'watchTogether.waitingForParticipants' => 'Boshqalarning yuklashini kutilmoqda...',
 			'watchTogether.waitingForName' => ({required Object name}) => '${name} kutilmoqda...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Yaqindagi xonalar',
 			'watchTogether.renameRoom' => 'Xona nomini oʻzgartirish',
 			'watchTogether.removeRoom' => 'Oʻchirish',
 			'watchTogether.guestSwitchUnavailable' => 'Oʻtib boʻlmadi — server sinxronlash uchun mavjud emas',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Oʻtib boʻlmadi — kontent topilmadi',
 			'watchTogether.defaultDisplayName' => 'Foydalanuvchi',
 			'watchTogether.errors.timedOut' => 'Rele serveri oʻz vaqtida javob bermadi',
@@ -4657,8 +4653,6 @@ extension on TranslationsUz {
 			'downloads.syncRuleUpdated' => 'Sinxronlash qoidasi yangilandi',
 			'downloads.syncRuleRemoved' => 'Sinxronlash qoidasi oʻchirildi',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Sinxronlash qoidasi va bogʻliq yuklamalar oʻchirildi',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Sinxronlash qoidalari hozir yangilanmoqda. Bir ozdan soʻng qayta urinib koʻring.',
 			'downloads.syncRuleCleanupUnavailable' => 'Bogʻliq yuklamalarni xavfsiz aniqlab boʻlmadi. Serverga qayta ulanib koʻring yoki yuklamalarni oʻchirmasdan qoidani olib tashlang.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} uchun ${count} yangi qism sinxronlandi',
@@ -5102,12 +5096,12 @@ extension on TranslationsUz {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Plex hisobini avtorizatsiya qiling. Home foydalanuvchilari profillarga aylanadi.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '${product}ga ulanish',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Server URL-ini, foydalanuvchi nomini va parolni kiriting.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '${product} serveringizga kiring. ${name} profiliga bogʻlanadi.',
 			'addServer.borrowFromAnotherProfile' => 'Boshqa profildan olish',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Boshqa profilning ulanishidan qayta foydalaning.',
 			'addServer.invalidCredentials' => 'Foydalanuvchi nomi yoki parol notoʻgʻri',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Autentifikatsiya javobi yaroqli JSON emas',
 			'addServer.authResponseIncomplete' => 'Serverdan kelgan kirish javobi toʻliq emas',
 			'addServer.quickConnectRejected' => 'Quick Connect server tomonidan rad etildi',

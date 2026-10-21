@@ -3554,12 +3554,12 @@ extension on TranslationsAz {
 			'fileInfo.nalLengthSize' => 'NAL uzunluq ölçüsü',
 			'fileInfo.scalingMatrix' => 'Xüsusi miqyaslama matrisi',
 			'fileInfo.streamIdentifier' => 'Axın identifikatoru',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Axın indeksi',
 			'fileInfo.streamId' => 'Axın ID-si',
 			'fileInfo.language' => 'Dil',
 			'fileInfo.languageCode' => 'Dil kodu',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Trek başlığı',
 			'fileInfo.channels' => 'Kanallar',
 			'fileInfo.sampleRate' => 'Diskretləşdirmə tezliyi',
@@ -3586,8 +3586,6 @@ extension on TranslationsAz {
 			'fileInfo.filePresent' => 'Fayl mövcuddur',
 			'fileInfo.fileReadable' => 'Server tərəfindən oxuna bilir',
 			'fileInfo.streamPath' => 'Axın yolu',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Yayım üçün optimallaşdırılıb',
 			'fileInfo.has64bitOffsets' => '64-bit ofsetlər',
 			'fileInfo.protocol' => 'Protokol',
@@ -4070,12 +4068,12 @@ extension on TranslationsAz {
 			'libraries.scanLibraryFiles' => 'Kitabxana fayllarını skan et',
 			'libraries.scanLibrary' => 'Kitabxananı skan et',
 			'libraries.analyze' => 'Analiz et',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Kitabxananı analiz et',
 			'libraries.refreshMetadata' => 'Meta-məlumatları yenilə',
 			'libraries.emptyTrash' => 'Zibil qutusunu təmizlə',
 			'libraries.emptyingTrash' => ({required Object title}) => '"${title}" üçün zibil qutusu təmizlənir...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '"${title}" üçün zibil qutusu təmizləndi',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Zibil qutusu təmizlənə bilmədi: ${error}',
 			'libraries.analyzing' => ({required Object title}) => '"${title}" analiz edilir...',
@@ -4123,8 +4121,6 @@ extension on TranslationsAz {
 			'libraries.groupings.tracks' => 'Mahnılar',
 			'libraries.groupings.folders' => 'Qovluqlar',
 			'libraries.filterCategories.genre' => 'Janr',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'İl',
 			'libraries.filterCategories.contentRating' => 'Məzmun reytinqi',
 			'libraries.filterCategories.tag' => 'Teq',
@@ -4586,12 +4582,12 @@ extension on TranslationsAz {
 			'watchTogether.resumingWithout' => ({required Object name}) => '${name} olmadan davam edilir',
 			'watchTogether.waitingForParticipants' => 'Digərlərinin yükləməsi gözlənilir...',
 			'watchTogether.waitingForName' => ({required Object name}) => '${name} gözlənilir...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Son otaqlar',
 			'watchTogether.renameRoom' => 'Otağın adını dəyişdir',
 			'watchTogether.removeRoom' => 'Sil',
 			'watchTogether.guestSwitchUnavailable' => 'Keçid etmək olmadı — eyniləşdirmə üçün server əlçatan deyil',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Keçid etmək olmadı — məzmun bu serverdə tapılmadı',
 			'watchTogether.defaultDisplayName' => 'İstifadəçi',
 			'watchTogether.errors.timedOut' => 'Rele serveri vaxtında cavab vermədi',
@@ -4657,8 +4653,6 @@ extension on TranslationsAz {
 			'downloads.syncRuleUpdated' => 'Eyniləşdirmə qaydası yeniləndi',
 			'downloads.syncRuleRemoved' => 'Eyniləşdirmə qaydası silindi',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Eyniləşdirmə qaydası və əlaqəli yükləmələr silindi',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Eyniləşdirmə qaydaları hazırda yenilənir. Bir azdan təzədən cəhd edin.',
 			'downloads.syncRuleCleanupUnavailable' => 'Əlaqəli yükləmələr təhlükəsiz şəkildə müəyyən edilə bilmədi. Serverə yenidən qoşulub cəhd edin və ya qaydanı yükləmələri silmədən silin.',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '${title} üçün ${count} yeni seriya eyniləşdirildi',
@@ -5102,12 +5096,12 @@ extension on TranslationsAz {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Plex hesabını səlahiyyətləndirin. Home istifadəçiləri profillərə çevrilir.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '${product}-a qoşul',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Server URL-inizi, istifadəçi adınızı və şifrənizi daxil edin.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '${product} serverinizə daxil olun. ${name} ilə əlaqələndirilir.',
 			'addServer.borrowFromAnotherProfile' => 'Başqa profildən götür',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Başqa profilin qoşulmasını yenidən istifadə edin. PIN ilə qorunan profillər PIN tələb edir.',
 			'addServer.invalidCredentials' => 'İstifadəçi adı və ya şifrə yanlışdır',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Autentifikasiya cavabı etibarlı JSON deyildi',
 			'addServer.authResponseIncomplete' => 'Serverin giriş cavabı natamam idi',
 			'addServer.quickConnectRejected' => 'Quick Connect server tərəfindən rədd edildi',

@@ -377,6 +377,24 @@ class Translations$update$en {
 
 	/// en: 'Failed to check for updates'
 	String get checkFailed => 'Failed to check for updates';
+
+	/// en: 'Update Now'
+	String get install => 'Update Now';
+
+	/// en: 'Downloading… ${percent}%'
+	String downloading({required Object percent}) => 'Downloading… ${percent}%';
+
+	/// en: 'Installing…'
+	String get installing => 'Installing…';
+
+	/// en: 'Version ${version} is installed. Restart Plezy to start using it.'
+	String installed({required Object version}) => 'Version ${version} is installed. Restart Plezy to start using it.';
+
+	/// en: 'Restart Now'
+	String get restart => 'Restart Now';
+
+	/// en: 'The update could not be installed: ${error}'
+	String installFailed({required Object error}) => 'The update could not be installed: ${error}';
 }
 
 // Path: settings
@@ -7491,6 +7509,12 @@ extension on Translations {
 			'update.viewRelease' => 'View Release',
 			'update.latestVersion' => 'You are on the latest version',
 			'update.checkFailed' => 'Failed to check for updates',
+			'update.install' => 'Update Now',
+			'update.downloading' => ({required Object percent}) => 'Downloading… ${percent}%',
+			'update.installing' => 'Installing…',
+			'update.installed' => ({required Object version}) => 'Version ${version} is installed. Restart Plezy to start using it.',
+			'update.restart' => 'Restart Now',
+			'update.installFailed' => ({required Object error}) => 'The update could not be installed: ${error}',
 			'settings.title' => 'Settings',
 			'settings.supportDeveloper' => 'Support Plezy',
 			'settings.supportDeveloperDescription' => 'Donate via Liberapay to fund development',
@@ -7895,6 +7919,8 @@ extension on Translations {
 			'fileInfo.colorRange' => 'Color Range',
 			'fileInfo.colorPrimaries' => 'Color Primaries',
 			'fileInfo.colorTransfer' => 'Color Transfer',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.chromaSubsampling' => 'Chroma Subsampling',
 			'fileInfo.chromaLocation' => 'Chroma Location',
 			'fileInfo.scanType' => 'Scan Type',
@@ -7905,8 +7931,6 @@ extension on Translations {
 			'fileInfo.dolbyVision' => 'Dolby Vision',
 			'fileInfo.dolbyVisionLevel' => 'Dolby Vision Level',
 			'fileInfo.dolbyVisionVersion' => 'Dolby Vision Version',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.dolbyVisionLayers' => 'Dolby Vision Layers',
 			'fileInfo.baseLayerCompatibility' => 'Base Layer Compatibility',
 			'fileInfo.avcBitstream' => 'AVC Bitstream',
@@ -7939,8 +7963,6 @@ extension on Translations {
 			'fileInfo.duration' => 'Duration',
 			'fileInfo.previewThumbnails' => 'Preview Thumbnails',
 			'fileInfo.previewIndex' => 'Preview Index',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.packetLength' => 'Packet Length',
 			'fileInfo.filePresent' => 'File Present',
 			'fileInfo.fileReadable' => 'Readable by Server',
@@ -8411,6 +8433,8 @@ extension on Translations {
 			'errors.connectionFailed' => 'Unable to connect to media server',
 			'errors.unableToLoad' => ({required Object context}) => 'Unable to load ${context}. Please try again.',
 			'errors.noClientAvailable' => 'No client available',
+			_ => null,
+		} ?? switch (path) {
 			'errors.pleaseEnterToken' => 'Please enter a token',
 			'errors.invalidToken' => 'Invalid token',
 			'errors.failedToVerifyToken' => ({required Object error}) => 'Failed to verify token: ${error}',
@@ -8421,8 +8445,6 @@ extension on Translations {
 			'errors.reasonUnreachable' => 'the server could not be reached',
 			'errors.reasonRefused' => 'the server refused the request',
 			'errors.reasonNotFound' => 'the item is no longer on the server',
-			_ => null,
-		} ?? switch (path) {
 			'errors.reasonServerError' => 'the server reported an error',
 			'errors.reasonCancelled' => 'the request was cancelled',
 			'errors.reasonUnexpected' => 'an unexpected error occurred',
@@ -8475,8 +8497,6 @@ extension on Translations {
 			'libraries.groupings.all' => 'All',
 			'libraries.groupings.movies' => 'Movies',
 			'libraries.groupings.shows' => 'TV Shows',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.groupings.seasons' => 'Seasons',
 			'libraries.groupings.episodes' => 'Episodes',
 			'libraries.groupings.artists' => 'Artists',
@@ -8927,6 +8947,8 @@ extension on Translations {
 			'watchTogether.participants' => 'Participants',
 			'watchTogether.host' => 'Host',
 			'watchTogether.hostBadge' => 'HOST',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.youAreHost' => 'You are the host',
 			'watchTogether.makeHost' => 'Make host',
 			'watchTogether.makeHostQuestion' => 'Transfer host?',
@@ -8937,8 +8959,6 @@ extension on Translations {
 			'watchTogether.hostTransferFailed' => ({required Object name}) => 'Couldn\'t make ${name} the host',
 			'watchTogether.watchingWithOthers' => 'Watching with others',
 			'watchTogether.endSession' => 'End Session',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.leaveSession' => 'Leave Session',
 			'watchTogether.endSessionQuestion' => 'End Session?',
 			'watchTogether.leaveSessionQuestion' => 'Leave Session?',
@@ -9034,8 +9054,6 @@ extension on Translations {
 			'downloads.nextNUnwatched' => ({required Object count}) => 'Next ${count} unwatched',
 			'downloads.customAmount' => 'Custom amount...',
 			'downloads.includeSpecials' => 'Include Specials',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.howManyEpisodes' => 'How many episodes?',
 			'downloads.invalidEpisodeCount' => 'Enter a valid episode count.',
 			'downloads.keepSynced' => 'Keep synced',
@@ -9443,6 +9461,8 @@ extension on Translations {
 			'services.hubSubtitle' => 'Sync watch progress and request new titles.',
 			'services.integrations' => 'Integrations',
 			'services.notConnected' => 'Not connected',
+			_ => null,
+		} ?? switch (path) {
 			'services.connectedAs' => ({required Object username}) => 'Connected as @${username}',
 			'services.scrobble' => 'Track progress automatically',
 			'services.scrobbleDescription' => 'Update your list when you finish an episode or movie.',
@@ -9453,8 +9473,6 @@ extension on Translations {
 			'services.names.anilist' => 'AniList',
 			'services.names.simkl' => 'Simkl',
 			'services.names.seerr' => 'Seerr',
-			_ => null,
-		} ?? switch (path) {
 			'services.names.mdblist' => 'MDBList',
 			'services.simklReconnect.title' => 'Reconnect Simkl',
 			'services.simklReconnect.subtitle' => 'Simkl is retiring the sign-in method this connection uses. Reconnecting opens simkl.com to approve Plezy — Plezy never sees your password. Your watch history stays on Simkl.',

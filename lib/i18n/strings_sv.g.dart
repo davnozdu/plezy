@@ -3554,12 +3554,12 @@ extension on TranslationsSv {
 			'fileInfo.nalLengthSize' => 'NAL-längdstorlek',
 			'fileInfo.scalingMatrix' => 'Anpassad skalningsmatris',
 			'fileInfo.streamIdentifier' => 'Strömidentifierare',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => 'Strömindex',
 			'fileInfo.streamId' => 'Ström-ID',
 			'fileInfo.language' => 'Språk',
 			'fileInfo.languageCode' => 'Språkkod',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => 'Spårnamn',
 			'fileInfo.channels' => 'Kanaler',
 			'fileInfo.sampleRate' => 'Samplingsfrekvens',
@@ -3586,8 +3586,6 @@ extension on TranslationsSv {
 			'fileInfo.filePresent' => 'Fil finns',
 			'fileInfo.fileReadable' => 'Läsbar av servern',
 			'fileInfo.streamPath' => 'Strömsökväg',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => 'Optimerad för streaming',
 			'fileInfo.has64bitOffsets' => '64-bitars offsetvärden',
 			'fileInfo.protocol' => 'Protokoll',
@@ -4070,12 +4068,12 @@ extension on TranslationsSv {
 			'libraries.scanLibraryFiles' => 'Skanna biblioteksfiler',
 			'libraries.scanLibrary' => 'Skanna bibliotek',
 			'libraries.analyze' => 'Analysera',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => 'Analysera bibliotek',
 			'libraries.refreshMetadata' => 'Uppdatera metadata',
 			'libraries.emptyTrash' => 'Töm papperskorg',
 			'libraries.emptyingTrash' => ({required Object title}) => 'Tömmer papperskorgen för "${title}"...',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => 'Papperskorgen har tömts för "${title}"',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => 'Det gick inte att tömma papperskorgen: ${error}',
 			'libraries.analyzing' => ({required Object title}) => 'Analyserar "${title}"...',
@@ -4123,8 +4121,6 @@ extension on TranslationsSv {
 			'libraries.groupings.tracks' => 'Låtar',
 			'libraries.groupings.folders' => 'Mappar',
 			'libraries.filterCategories.genre' => 'Genre',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => 'År',
 			'libraries.filterCategories.contentRating' => 'Åldersgräns',
 			'libraries.filterCategories.tag' => 'Tagg',
@@ -4586,12 +4582,12 @@ extension on TranslationsSv {
 			'watchTogether.resumingWithout' => ({required Object name}) => 'Återupptar utan ${name}',
 			'watchTogether.waitingForParticipants' => 'Väntar på att de andra ska ladda klart...',
 			'watchTogether.waitingForName' => ({required Object name}) => 'Väntar på ${name}...',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => 'Senaste rummen',
 			'watchTogether.renameRoom' => 'Byt namn på rummet',
 			'watchTogether.removeRoom' => 'Ta bort',
 			'watchTogether.guestSwitchUnavailable' => 'Kunde inte byta — server inte tillgänglig för synkronisering',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => 'Kunde inte byta — innehåll hittades inte på denna server',
 			'watchTogether.defaultDisplayName' => 'Användare',
 			'watchTogether.errors.timedOut' => 'Reläservern svarade inte i tid',
@@ -4657,8 +4653,6 @@ extension on TranslationsSv {
 			'downloads.syncRuleUpdated' => 'Synkregel uppdaterad',
 			'downloads.syncRuleRemoved' => 'Synkregel borttagen',
 			'downloads.syncRuleAndDownloadsRemoved' => 'Synkregel och associerade nedladdningar borttagna',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => 'Synkregler uppdateras just nu. Försök igen om en liten stund.',
 			'downloads.syncRuleCleanupUnavailable' => 'Associerade nedladdningar kunde inte identifieras på ett säkert sätt. Återanslut servern och försök igen, eller ta bort regeln utan att ta bort nedladdningar.',
 			'downloads.syncedNewEpisodes' => ({required Object count, required Object title}) => 'Synkroniserade ${count} nya avsnitt för ${title}',
@@ -5102,12 +5096,12 @@ extension on TranslationsSv {
 			'addServer.signInWithPlexCardSubtitleScoped' => 'Auktorisera ett Plex-konto. Home-användare blir profiler.',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => 'Anslut till ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => 'Ange din server-URL, användarnamn och lösenord.',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => 'Logga in på din ${product}-server. Knyts till ${name}.',
 			'addServer.borrowFromAnotherProfile' => 'Låna från en annan profil',
 			'addServer.borrowFromAnotherProfileSubtitle' => 'Återanvänd en annan profils anslutning. PIN-skyddade profiler kräver en PIN.',
 			'addServer.invalidCredentials' => 'Ogiltigt användarnamn eller lösenord',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => 'Autentiseringssvaret var inte ett giltigt JSON-svar',
 			'addServer.authResponseIncomplete' => 'Inloggningssvaret från servern var ofullständigt',
 			'addServer.quickConnectRejected' => 'Quick Connect avvisades av servern',

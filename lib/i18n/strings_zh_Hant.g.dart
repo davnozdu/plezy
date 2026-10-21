@@ -3544,12 +3544,12 @@ extension on TranslationsZhHant {
 			'fileInfo.nalLengthSize' => 'NAL 長度大小',
 			'fileInfo.scalingMatrix' => '自訂縮放矩陣',
 			'fileInfo.streamIdentifier' => '串流識別碼',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => '串流索引',
 			'fileInfo.streamId' => '串流 ID',
 			'fileInfo.language' => '語言',
 			'fileInfo.languageCode' => '語言代碼',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => '軌道名稱',
 			'fileInfo.channels' => '聲道數',
 			'fileInfo.sampleRate' => '取樣率',
@@ -3576,8 +3576,6 @@ extension on TranslationsZhHant {
 			'fileInfo.filePresent' => '檔案存在',
 			'fileInfo.fileReadable' => '伺服器可讀取',
 			'fileInfo.streamPath' => '串流路徑',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => '已最佳化串流播放',
 			'fileInfo.has64bitOffsets' => '具 64 位元偏移量',
 			'fileInfo.protocol' => '通訊協定',
@@ -4060,12 +4058,12 @@ extension on TranslationsZhHant {
 			'libraries.scanLibraryFiles' => '掃描媒體庫檔案',
 			'libraries.scanLibrary' => '掃描媒體庫',
 			'libraries.analyze' => '分析',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => '分析媒體庫',
 			'libraries.refreshMetadata' => '重新整理中繼資料',
 			'libraries.emptyTrash' => '清空垃圾桶',
 			'libraries.emptyingTrash' => ({required Object title}) => '正在清空「${title}」的垃圾桶…',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '已清空「${title}」的垃圾桶',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => '無法清空垃圾桶：${error}',
 			'libraries.analyzing' => ({required Object title}) => '正在分析「${title}」…',
@@ -4113,8 +4111,6 @@ extension on TranslationsZhHant {
 			'libraries.groupings.tracks' => '曲目',
 			'libraries.groupings.folders' => '資料夾',
 			'libraries.filterCategories.genre' => '類型',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => '年份',
 			'libraries.filterCategories.contentRating' => '分級',
 			'libraries.filterCategories.tag' => '標籤',
@@ -4576,12 +4572,12 @@ extension on TranslationsZhHant {
 			'watchTogether.resumingWithout' => ({required Object name}) => '不等待 ${name}，繼續播放',
 			'watchTogether.waitingForParticipants' => '正在等待其他人載入…',
 			'watchTogether.waitingForName' => ({required Object name}) => '正在等待 ${name}…',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => '最近的房間',
 			'watchTogether.renameRoom' => '重新命名房間',
 			'watchTogether.removeRoom' => '移除',
 			'watchTogether.guestSwitchUnavailable' => '無法切換 — 伺服器無法進行同步',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => '無法切換 — 在此伺服器上找不到內容',
 			'watchTogether.defaultDisplayName' => '使用者',
 			'watchTogether.errors.timedOut' => '中繼伺服器未及時回應',
@@ -4647,8 +4643,6 @@ extension on TranslationsZhHant {
 			'downloads.syncRuleUpdated' => '同步規則已更新',
 			'downloads.syncRuleRemoved' => '同步規則已刪除',
 			'downloads.syncRuleAndDownloadsRemoved' => '同步規則與相關的下載內容已刪除',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => '同步規則正在更新中。請稍後再試。',
 			'downloads.syncRuleCleanupUnavailable' => '無法安全地識別相關的下載內容。請重新連線伺服器後再試，或在不刪除下載內容的情況下移除規則。',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '已為 ${title} 同步 ${count} 個新單集',
@@ -5092,12 +5086,12 @@ extension on TranslationsZhHant {
 			'addServer.signInWithPlexCardSubtitleScoped' => '授權 Plex 帳戶。Home 使用者會建立為個別的使用者設定檔。',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '連線至 ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => '輸入您的伺服器 URL、使用者名稱與密碼。',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '登入您的 ${product} 伺服器。將綁定至 ${name}。',
 			'addServer.borrowFromAnotherProfile' => '從另一個使用者設定檔共用',
 			'addServer.borrowFromAnotherProfileSubtitle' => '重複使用另一個使用者設定檔的連線資訊。受 PIN 碼保護的使用者設定檔需輸入 PIN 碼。',
 			'addServer.invalidCredentials' => '使用者名稱或密碼無效',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => '驗證回應不是有效的 JSON',
 			'addServer.authResponseIncomplete' => '伺服器傳回的登入回應不完整',
 			'addServer.quickConnectRejected' => 'Quick Connect 遭到伺服器拒絕',

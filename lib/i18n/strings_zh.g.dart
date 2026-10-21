@@ -3543,12 +3543,12 @@ extension on TranslationsZh {
 			'fileInfo.nalLengthSize' => 'NAL 长度',
 			'fileInfo.scalingMatrix' => '自定义缩放矩阵',
 			'fileInfo.streamIdentifier' => '流标识符',
+			_ => null,
+		} ?? switch (path) {
 			'fileInfo.streamIndex' => '流索引',
 			'fileInfo.streamId' => '流 ID',
 			'fileInfo.language' => '语言',
 			'fileInfo.languageCode' => '语言代码',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.streamTitle' => '轨道标题',
 			'fileInfo.channels' => '声道',
 			'fileInfo.sampleRate' => '采样率',
@@ -3575,8 +3575,6 @@ extension on TranslationsZh {
 			'fileInfo.filePresent' => '文件存在',
 			'fileInfo.fileReadable' => '服务器可读',
 			'fileInfo.streamPath' => '流路径',
-			_ => null,
-		} ?? switch (path) {
 			'fileInfo.optimizedForStreaming' => '已针对流式传输优化',
 			'fileInfo.has64bitOffsets' => '64 位偏移量',
 			'fileInfo.protocol' => '协议',
@@ -4059,12 +4057,12 @@ extension on TranslationsZh {
 			'libraries.scanLibraryFiles' => '扫描媒体库文件',
 			'libraries.scanLibrary' => '扫描媒体库',
 			'libraries.analyze' => '分析',
+			_ => null,
+		} ?? switch (path) {
 			'libraries.analyzeLibrary' => '分析媒体库',
 			'libraries.refreshMetadata' => '刷新元数据',
 			'libraries.emptyTrash' => '清空回收站',
 			'libraries.emptyingTrash' => ({required Object title}) => '正在清空“${title}”的回收站…',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.trashEmptied' => ({required Object title}) => '已清空“${title}”的回收站',
 			'libraries.failedToEmptyTrash' => ({required Object error}) => '无法清空回收站：${error}',
 			'libraries.analyzing' => ({required Object title}) => '正在分析“${title}”…',
@@ -4112,8 +4110,6 @@ extension on TranslationsZh {
 			'libraries.groupings.tracks' => '曲目',
 			'libraries.groupings.folders' => '文件夹',
 			'libraries.filterCategories.genre' => '类型',
-			_ => null,
-		} ?? switch (path) {
 			'libraries.filterCategories.year' => '年份',
 			'libraries.filterCategories.contentRating' => '内容分级',
 			'libraries.filterCategories.tag' => '标签',
@@ -4575,12 +4571,12 @@ extension on TranslationsZh {
 			'watchTogether.resumingWithout' => ({required Object name}) => '不再等待 ${name}，继续播放',
 			'watchTogether.waitingForParticipants' => '正在等待其他人加载…',
 			'watchTogether.waitingForName' => ({required Object name}) => '正在等待 ${name}…',
+			_ => null,
+		} ?? switch (path) {
 			'watchTogether.recentRooms' => '最近的房间',
 			'watchTogether.renameRoom' => '重命名房间',
 			'watchTogether.removeRoom' => '移除',
 			'watchTogether.guestSwitchUnavailable' => '无法切换 — 服务器不可用于同步',
-			_ => null,
-		} ?? switch (path) {
 			'watchTogether.guestSwitchFailed' => '无法切换 — 在此服务器上未找到内容',
 			'watchTogether.defaultDisplayName' => '用户',
 			'watchTogether.errors.timedOut' => '中继服务器未及时响应',
@@ -4646,8 +4642,6 @@ extension on TranslationsZh {
 			'downloads.syncRuleUpdated' => '同步规则已更新',
 			'downloads.syncRuleRemoved' => '同步规则已删除',
 			'downloads.syncRuleAndDownloadsRemoved' => '同步规则及相关下载已删除',
-			_ => null,
-		} ?? switch (path) {
 			'downloads.syncRuleCleanupBusy' => '同步规则正在更新中，请稍后再试。',
 			'downloads.syncRuleCleanupUnavailable' => '无法安全识别相关下载。请重新连接服务器后再试，或在不删除下载的情况下移除规则。',
 			'downloads.syncedNewEpisodes' => ({required Object title, required Object count}) => '已为 ${title} 同步 ${count} 个新剧集',
@@ -5091,12 +5085,12 @@ extension on TranslationsZh {
 			'addServer.signInWithPlexCardSubtitleScoped' => '授权一个 Plex 账户。Plex Home 用户将成为 Plezy 用户资料。',
 			'addServer.connectToMediaBrowserCard' => ({required Object product}) => '连接到 ${product}',
 			'addServer.connectToMediaBrowserCardSubtitle' => '输入你的服务器 URL、用户名和密码。',
+			_ => null,
+		} ?? switch (path) {
 			'addServer.connectToMediaBrowserCardSubtitleScoped' => ({required Object product, required Object name}) => '登录你的 ${product} 服务器。将绑定到 ${name}。',
 			'addServer.borrowFromAnotherProfile' => '使用其他用户资料的连接',
 			'addServer.borrowFromAnotherProfileSubtitle' => '复用另一个用户资料的连接。受 PIN 保护的用户资料需要输入 PIN。',
 			'addServer.invalidCredentials' => '用户名或密码无效',
-			_ => null,
-		} ?? switch (path) {
 			'addServer.authResponseNotJson' => '身份验证响应不是有效的 JSON',
 			'addServer.authResponseIncomplete' => '服务器返回的登录响应不完整',
 			'addServer.quickConnectRejected' => '服务器拒绝了 Quick Connect',
