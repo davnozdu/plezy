@@ -38,7 +38,9 @@ env:
 jobs:
   build:
     name: Build Linux x64 tarball
-    runs-on: ubuntu-latest
+    # Pinned like upstream's Linux x64 job: the prebuilt libmpv links the
+    # libdisplay-info soname 24.04 ships, which ubuntu-latest no longer has.
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:
@@ -96,7 +98,7 @@ jobs:
         shell: bash
         env:
           PKG_CONFIG_PATH: ${{ github.workspace }}/libmpv-prefix/lib/pkgconfig:${{ github.workspace }}/libmpv-prefix/lib/x86_64-linux-gnu/pkgconfig
-        run: flutter build linux --release ${{ env.RELEASE_DART_DEFINES }}
+        run: flutter build linux --release ${{ env.RELEASE_DART_DEFINES }} --dart-define=SUPPORTER_MODE=unlocked
 
       # Same order as upstream's job: libmpv first, then bundle-libs.sh, which
       # resolves everything libmpv itself links.
