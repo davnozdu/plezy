@@ -435,6 +435,11 @@ class SideNavigationRailState extends State<SideNavigationRail> with MountedSetS
 
   bool _isHovered = false;
   bool _isTouchExpanded = false;
+
+  /// Desktop gamepad/keyboard session: a hidden cursor parked over the rail
+  /// (gamescope keeps it wherever the last touch or mouse left it) must not
+  /// hold the rail open, so hover expansion is ignored until the pointer moves.
+  bool _pointerExpansionSuppressed = false;
   bool _lastReportedFloatingPanel = false;
   Timer? _collapseTimer;
   static const double collapsedWidth = 80.0;
@@ -486,9 +491,9 @@ class SideNavigationRailState extends State<SideNavigationRail> with MountedSetS
   late final FocusMemoryTracker _focusTracker;
 
   /// Whether the sidebar should be expanded (always, hover, or focus)
-  bool get _shouldExpand => widget.alwaysExpanded || _isHovered || _isTouchExpanded || widget.isSidebarFocused;
+  bool get _shouldExpand => widget.alwaysExpanded || _interactionExpanded || widget.isSidebarFocused;
 
-  bool get _interactionExpanded => _isHovered || _isTouchExpanded;
+  bool get _interactionExpanded => (_isHovered && !_pointerExpansionSuppressed) || _isTouchExpanded;
 
   /// True while the rail floats over the content as an M3E modal panel.
   ///
@@ -514,6 +519,19 @@ class SideNavigationRailState extends State<SideNavigationRail> with MountedSetS
     _collapseTimer?.cancel();
     _focusTracker.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final suppressed = PlatformDetector.isDesktopOS() && InputModeTracker.isKeyboardMode(context);
+    if (suppressed == _pointerExpansionSuppressed) return;
+    final wasInteractionExpanded = _interactionExpanded;
+    _pointerExpansionSuppressed = suppressed;
+    // A gamepad or keyboard press also dismisses a tap-opened panel, which
+    // otherwise only closes on a tap outside it.
+    if (suppressed) _isTouchExpanded = false;
+    if (wasInteractionExpanded != _interactionExpanded) _scheduleFloatingPanelNotification();
   }
 
   @override

@@ -45,6 +45,7 @@ import 'services/settings_service.dart';
 import 'services/agent_control_service.dart';
 import 'widgets/agent_control_scope.dart';
 import 'widgets/settings_builder.dart';
+import 'utils/gamescope_session.dart';
 import 'utils/iphone_duo.dart';
 import 'utils/platform_detector.dart';
 import 'utils/pointer_scroll_axis.dart';
@@ -1055,7 +1056,7 @@ void _startNonessentialInitialization(SettingsService settings) {
 
   bestEffort('Fullscreen monitor', () async {
     FullscreenStateManager().startMonitoring();
-    if (PlatformDetector.isDesktopOS() && settings.read(SettingsService.startInFullscreen)) {
+    if (PlatformDetector.isDesktopOS() && (settings.read(SettingsService.startInFullscreen) || isGamescopeSession())) {
       await FullscreenStateManager().enterFullscreen();
     }
   });

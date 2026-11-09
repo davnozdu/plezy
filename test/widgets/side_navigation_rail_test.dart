@@ -114,6 +114,7 @@ Future<void> _pumpBasicRail(
   double? height,
   CatalogSourcesProvider? catalogSources,
   ValueChanged<bool>? onFloatingPanelChanged,
+  bool withInputModeTracker = false,
 }) async {
   await SettingsService.getInstance();
 
@@ -142,24 +143,23 @@ Future<void> _pumpBasicRail(
     onFloatingPanelChanged: onFloatingPanelChanged,
   );
 
-  await tester.pumpWidget(
-    TranslationProvider(
-      child: MultiProvider(
-        providers: [
-          ChangeNotifierProvider<LibrariesProvider>.value(value: librariesProvider),
-          ChangeNotifierProvider<HiddenLibrariesProvider>.value(value: hiddenLibrariesProvider),
-          ChangeNotifierProvider<MultiServerProvider>.value(value: multiServerProvider),
-          if (catalogSources != null) ChangeNotifierProvider<CatalogSourcesProvider>.value(value: catalogSources),
-        ],
-        child: MaterialApp(
-          theme: ThemeData(extensions: const [testMonoTokens]),
-          home: Scaffold(
-            body: height == null ? rail : SizedBox(height: height, child: rail),
-          ),
+  final app = TranslationProvider(
+    child: MultiProvider(
+      providers: [
+        ChangeNotifierProvider<LibrariesProvider>.value(value: librariesProvider),
+        ChangeNotifierProvider<HiddenLibrariesProvider>.value(value: hiddenLibrariesProvider),
+        ChangeNotifierProvider<MultiServerProvider>.value(value: multiServerProvider),
+        if (catalogSources != null) ChangeNotifierProvider<CatalogSourcesProvider>.value(value: catalogSources),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(extensions: const [testMonoTokens]),
+        home: Scaffold(
+          body: height == null ? rail : SizedBox(height: height, child: rail),
         ),
       ),
     ),
   );
+  await tester.pumpWidget(withInputModeTracker ? InputModeTracker(child: app) : app);
   await tester.pumpAndSettle();
 }
 
@@ -681,6 +681,34 @@ void main() {
 
     expect(tester.getSize(rail).width, SideNavigationRailState.collapsedWidth);
     expect(scrimReports.last, isFalse);
+  });
+
+  /// Gamescope parks the hidden cursor wherever the last touch left it; when
+  /// that is over the rail, gamepad input must still collapse the hover panel,
+  /// and real mouse movement must bring it back.
+  testWidgets('gamepad input collapses a hover panel held open by a parked cursor', (tester) async {
+    final scrimReports = <bool>[];
+    await _pumpBasicRail(tester, onFloatingPanelChanged: scrimReports.add, withInputModeTracker: true);
+
+    final rail = find.descendant(of: find.byType(SideNavigationRail), matching: find.byType(AnimatedContainer)).first;
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(gesture.removePointer);
+    await gesture.addPointer(location: const Offset(799, 599));
+    await tester.pump();
+    await gesture.moveTo(tester.getCenter(rail));
+    await tester.pumpAndSettle();
+    expect(tester.getSize(rail).width, SideNavigationRailState.expandedWidth);
+    expect(scrimReports.last, isTrue);
+
+    InputModeTracker.reportNonPointerInput();
+    await tester.pumpAndSettle();
+    expect(tester.getSize(rail).width, SideNavigationRailState.collapsedWidth);
+    expect(scrimReports.last, isFalse);
+
+    await gesture.moveTo(tester.getCenter(rail) + const Offset(0, 4));
+    await tester.pumpAndSettle();
+    expect(tester.getSize(rail).width, SideNavigationRailState.expandedWidth);
+    expect(scrimReports.last, isTrue);
   });
 
   /// An always-open rail is docked: hovering it must not report a floating

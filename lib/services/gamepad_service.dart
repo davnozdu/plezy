@@ -12,6 +12,7 @@ import '../utils/app_logger.dart';
 import '../utils/key_event_simulator.dart' as key_sim;
 import '../utils/platform_detector.dart';
 import '../utils/text_input_diagnostics.dart';
+import 'fullscreen_state_manager.dart';
 
 String _describeGamepadButton(GamepadButtonEvent event) {
   return 'button=${event.button} pressed=${event.pressed} value=${event.value} gamepad=${event.gamepadId}';
@@ -481,6 +482,10 @@ class GamepadService with WindowListener {
           _dispatchTabNavigation(previous: true);
         case GamepadButton.rightShoulder:
           _dispatchTabNavigation(previous: false);
+        // View/Select: handhelds (ROG Ally, Legion Go, Steam Deck) have no
+        // F11, and outside gamescope the window starts windowed.
+        case GamepadButton.back:
+          if (_isDesktop && !Platform.isMacOS) unawaited(FullscreenStateManager().toggleFullscreen());
         default:
           break;
       }
