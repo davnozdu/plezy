@@ -117,7 +117,7 @@ jobs:
 
       - name: Copy wrapper script into bundle
         shell: bash
-        run: cp linux/packaging/plezy.sh "$BUNDLE_DIR/plezy.sh"
+        run: install -m 0755 linux/packaging/plezy.sh "$BUNDLE_DIR/plezy.sh"
 
       - name: Create tarball
         shell: bash

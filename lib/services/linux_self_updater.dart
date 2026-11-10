@@ -128,6 +128,7 @@ class LinuxSelfUpdater {
       if (!looksLikeBundle(staging)) {
         throw StateError('${p.basename(archive.path)} is not a Plezy Linux bundle');
       }
+      await _ensureExecutable(staging);
       final names = await staging.list().map((entry) => p.basename(entry.path)).toList();
 
       final previous = Directory(p.join(installDir.path, previousDirName));
@@ -168,6 +169,21 @@ class LinuxSelfUpdater {
     final executable = await wrapper.exists() ? wrapper.path : p.join(installDir.path, 'plezy');
     await Process.start(executable, const [], mode: ProcessStartMode.detached);
     exit(0);
+  }
+
+  /// Release tarballs have shipped `plezy.sh` (and could ship the binary)
+  /// without the executable bit, which left the relaunch and the Steam
+  /// shortcut pointing at a script that would not start.
+  static Future<void> _ensureExecutable(Directory bundle) async {
+    final paths = [
+      for (final name in const ['plezy', 'plezy.sh'])
+        if (File(p.join(bundle.path, name)).existsSync()) p.join(bundle.path, name),
+    ];
+    if (paths.isEmpty) return;
+    final result = await Process.run('chmod', ['+x', ...paths]);
+    if (result.exitCode != 0) {
+      throw ProcessException('chmod', ['+x', ...paths], '${result.stderr}'.trim(), result.exitCode);
+    }
   }
 
   static Future<void> _rename(String from, String to) async {

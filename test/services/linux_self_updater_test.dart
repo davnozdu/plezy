@@ -56,6 +56,18 @@ void main() {
     expect(Directory(p.join(install.path, LinuxSelfUpdater.stagingDirName)).existsSync(), isFalse);
   });
 
+  test('marks the binary and the wrapper executable even when the archive did not', () async {
+    final install = await writeBundle(p.join(root.path, 'Plezy'), '1');
+
+    // writeBundle leaves both files at 0644, like the CI tarball did.
+    await LinuxSelfUpdater.install(await packBundle('2'), install);
+
+    for (final name in ['plezy', 'plezy.sh']) {
+      final mode = File(p.join(install.path, name)).statSync().mode;
+      expect(mode & 0x49, 0x49, reason: '$name should be executable, mode ${mode.toRadixString(8)}');
+    }
+  });
+
   test('keeps exactly one previous copy across updates', () async {
     final install = await writeBundle(p.join(root.path, 'Plezy'), '1');
 
